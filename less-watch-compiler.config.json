@@ -1,0 +1,6 @@
+{
+    "watchFolder": "src/css",
+    "outputFolder": "src/css/out",
+    "mainFile": "App.less",
+    "sourceMap": true
+}
