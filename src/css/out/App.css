@@ -6,7 +6,7 @@
   background: linear-gradient(176deg, #eee2ae 0%, #d4b5db 80%, #b2b2b2 100%);
 }
 .mainContainer .header-container {
-  padding-top: 30px;
+  padding: 50px 10px 10px 10px;
 }
 .mainContainer .application-list-container {
   height: max-content;
@@ -36,5 +36,13 @@
 }
 .mainContainer .item-container .link-container {
   padding: 0 10px;
+}
+.add-item-container input {
+  padding: 0 0 0 10px;
+  width: -webkit-fill-available;
+  height: 100%;
+}
+.add-item-container .full-width {
+  width: -webkit-fill-available;
 }
 /*# sourceMappingURL=App.css.map */

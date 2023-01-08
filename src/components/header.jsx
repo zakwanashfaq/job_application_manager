@@ -1,3 +1,5 @@
+
+
 function Header(params) {
     return(<div className="header-container">
         <h3>Job Application Manager</h3>

@@ -1,0 +1,51 @@
+import { addItem, deleteItem, updateItem } from "../redux/items";
+import { useSelector, useDispatch } from 'react-redux'
+import ApplicationList from "./applicationsList";
+import { useState } from "react";
+
+function AddItem(props) {
+    const items = useSelector((state) => state.items.value);
+    const dispatch = useDispatch();
+    const [name, setName] = useState("");
+    const [link, setLink] = useState("");
+
+    const handleNameChange = (event) => {
+        setName(event.target.value);
+    }
+
+    const handleLinkChange = (event) => {
+        setLink(event.target.value);
+    }
+
+    const onButtonCLick = (event) => {
+        const today = new Date();
+        dispatch(addItem({
+            id: crypto.randomUUID(),
+            applied: true,
+            name: name,
+            link: link,
+            timeAdded: today.getTime()
+        }));
+        setName("");
+        setLink("");
+    }
+
+    return <ApplicationList>
+        <div className="add-item-container">
+        <div className="m-2"> Add an application or job post </div>
+        <div className="row m-1">
+            <div className="col-12 col-md-6 col-lg-5 p-1">
+                <input className="" placeholder="Name" value={name} onChange={handleNameChange}></input>
+            </div>
+            <div className="col-12 col-md-6 col-lg-5 p-1">
+                <input className="" placeholder="Link" value={link} onChange={handleLinkChange}></input>
+            </div>
+            <div className="col-12 col-md-12 col-lg-2 p-1">
+                <button className="full-width btn btn-primary" onClick={onButtonCLick}>Add</button>
+            </div>
+        </div>
+        </div>
+    </ApplicationList>
+}
+
+export default AddItem;
