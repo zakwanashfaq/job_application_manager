@@ -18,7 +18,7 @@ export const itemsSlice = createSlice({
   },
   reducers: {
     addItem: (state, action) => {
-      state.value.push(action.payload);
+      state.value.unshift(action.payload);
       try {
         (async () => {
           await db.items.add(action.payload);
@@ -42,11 +42,12 @@ export const itemsSlice = createSlice({
       state.error = null;
     },
     [fetchData.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.value = action.payload;
+      return {
+        ...state,
+        value: action.payload
+      }
     },
     [fetchData.rejected]: (state, action) => {
-      debugger;
       state.isLoading = false;
       state.error = action.error;
     },

@@ -12,13 +12,13 @@ import { fetchData } from "./redux/items";
 
 
 function App() {
-  const items = useSelector((state) => state.items.value);
+  const data = useSelector((state) => [...state.items.value]);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchData());
-    console.log(items);
   }, []) 
+
   
   return (
     <div className="mainContainer">
@@ -26,8 +26,8 @@ function App() {
         <Header />
         <AddItem />
         <ApplicationList>
-          {items.map(item => {
-            return <Item applied={item.applied} name={item.name} link={item.link} timeAdded={item.timeAdded}/>
+          {data.map(item => {
+            return <Item key={item.id} applied={item.applied} name={item.name} link={item.link} timeAdded={item.timeAdded}/>
           })}
         </ApplicationList>
         <br />

@@ -1,6 +1,5 @@
 
 function Item(props){
-
     return (<div className="item-container">
         <div className="col-11 col-sm-11 col-md-7">
             <input className="checkbox" type="checkbox" title="checkbox" placeholder="checkbox" value={props.applied}/>
