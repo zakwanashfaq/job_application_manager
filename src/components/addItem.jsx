@@ -21,7 +21,7 @@ function AddItem(props) {
         const today = new Date();
         dispatch(addItem({
             id: crypto.randomUUID(),
-            applied: true,
+            applied: false,
             name: name,
             link: link,
             timeAdded: today.getTime()

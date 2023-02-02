@@ -9,7 +9,7 @@ function Item(props){
         <span className="col-12 col-sm-12 col-md-4 link-container">
             <a rel="noreferrer" href={props.link} target="_blank"> {props.link}</a>
         </span>
-        <span className="col-12 col-sm-12 col-md-1">{props.timeAdded}</span>
+        <span className="col-12 col-sm-12 col-md-1">{(new Date(props.timeAdded)).toLocaleString()}</span>
     </div>);
 }
 
