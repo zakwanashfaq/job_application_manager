@@ -1,41 +1,31 @@
-import { createSlice } from '@reduxjs/toolkit'
-import Dexie from 'dexie';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { db } from '../db';
 
-
-const fetchFromDB = () => {
-  const request = window.indexedDB.open("items", 1);
-  request.onupgradeneeded = (event) => {
-    const db = event.target.result;
-    db.createObjectStore("items", { keyPath: "itemsKey" });
-    
-  };
-  let db;
-  request.onerror = (event) => {
-    console.error("Need Access to IndexedSb Api to work properly");
-  };
-  request.onsuccess = (event) => {
-    db = event.target.result;
-  };
-  return {
-    db,
-    value:[
-     {id: 'f6ec73d9-991a-4a0a-aa73-aa13c2f4dac4', applied: false, name: 'This Application is an aplha build. Backend and Database is not yet fully functional.', link: 'zakwanashfaq.com', timeAdded: 1673866489241}
-    ]
+export const fetchData = createAsyncThunk(
+  'mySlice/fetchData',
+  async () => {
+    const data = await db.items.toArray();
+    return data;
   }
-}
-
-const initialState = fetchFromDB() // todo: fetch from indexedDB
-
+);
 
 export const itemsSlice = createSlice({
   name: 'itemStore',
-  initialState,
+  initialState: {
+    value: [],
+    isLoading: false,
+    error: null
+  },
   reducers: {
     addItem: (state, action) => {
       state.value.push(action.payload);
-      // todo: save to indexedDB
-
-      
+      try {
+        (async () => {
+          await db.items.add(action.payload);
+        })();
+      } catch (error) {
+        throw(error);
+      }
     },
     deleteItem: (state, item) => {
       throw("Delete is not implemented yet!");
@@ -46,6 +36,21 @@ export const itemsSlice = createSlice({
       // state.value += action.payload
     },
   },
+  extraReducers: {
+    [fetchData.pending]: (state) => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [fetchData.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.value = action.payload;
+    },
+    [fetchData.rejected]: (state, action) => {
+      debugger;
+      state.isLoading = false;
+      state.error = action.error;
+    },
+  }
 })
 
 
