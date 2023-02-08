@@ -4,7 +4,6 @@ import ApplicationList from "./applicationsList";
 import { useState } from "react";
 
 function AddItem(props) {
-    const items = useSelector((state) => state.items.value);
     const dispatch = useDispatch();
     const [name, setName] = useState("");
     const [link, setLink] = useState("");

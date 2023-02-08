@@ -4,7 +4,7 @@ import ApplicationList from "./components/applicationsList";
 import Item from "./components/item";
 import { useSelector, useDispatch } from 'react-redux'
 import AddItem from "./components/addItem";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { fetchData } from "./redux/items";
 
 
@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchData());
-  }, []) 
+  }, [dispatch]) 
 
   
   return (
@@ -30,8 +30,7 @@ function App() {
             return <Item key={item.id} applied={item.applied} name={item.name} link={item.link} timeAdded={item.timeAdded}/>
           })}
         </ApplicationList>
-        <br />
-        
+        <br />      
       </div>
     </div>
   );

@@ -8,6 +8,14 @@
 .mainContainer .header-container {
   padding: 50px 10px 10px 10px;
 }
+.mainContainer .header-container .header-container-first-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
 .mainContainer .application-list-container {
   height: max-content;
   margin-top: 30px;
