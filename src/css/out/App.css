@@ -44,6 +44,7 @@
 }
 .mainContainer .item-container .link-container {
   padding: 0 10px;
+  overflow-wrap: anywhere;
 }
 .add-item-container input {
   padding: 0 0 0 10px;
