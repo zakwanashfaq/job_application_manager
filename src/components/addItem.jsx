@@ -1,10 +1,11 @@
-import { addItem, deleteItem, updateItem } from "../redux/items";
-import { useSelector, useDispatch } from 'react-redux'
+import { addItem, selectAllItems } from "../redux/items";
+import { useDispatch, useSelector } from 'react-redux'
 import ApplicationList from "./applicationsList";
 import { useState } from "react";
 
 function AddItem(props) {
     const dispatch = useDispatch();
+    const all_items = useSelector(selectAllItems);
     const [name, setName] = useState("");
     const [link, setLink] = useState("");
 
@@ -23,7 +24,8 @@ function AddItem(props) {
             applied: false,
             name: name,
             link: link,
-            timeAdded: today.getTime()
+            timeAdded: today.getTime(),
+            index: all_items.length
         }));
         setName("");
         setLink("");

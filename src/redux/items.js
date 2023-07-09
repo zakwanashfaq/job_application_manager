@@ -9,6 +9,8 @@ export const fetchData = createAsyncThunk(
   }
 );
 
+export const selectAllItems = (state) => [...state.items.value]
+
 export const itemsSlice = createSlice({
   name: 'itemStore',
   initialState: {
@@ -27,14 +29,42 @@ export const itemsSlice = createSlice({
         throw(error);
       }
     },
-    deleteItem: (state, item) => {
-      throw("Delete is not implemented yet!");
-      //state.value -= 1
+    deleteItem: (state, action) => {
+      state.value = state.value.filter(item => item.id !== action.payload);
+      try {
+        (async () => {
+          await db.items.delete(action.payload);
+        })();
+      } catch (error) {
+        throw(error);
+      }
     },
-    updateItem: (state, item) => {
-      throw("Update is not implemented yet!");
-      // state.value += action.payload
-    },
+    updateItem: (state, action) => {
+      const { id, ...fieldsToUpdate } = action.payload;
+    
+      if (!id) {
+        console.error('No "id" provided for update function.');
+        return;
+      }
+    
+      // Find the item in the state and update it
+      const item = state.value.find(item => item.id === id);
+      if (item) {
+        Object.assign(item, fieldsToUpdate);
+      } else {
+        console.error(`No item found with id ${id}`);
+      }
+    
+      // Update the item in the database
+      try {
+        (async () => {
+          await db.items.update(id, fieldsToUpdate);
+        })();
+      } catch (error) {
+        console.error('Failed to update item: ', error);
+      }
+    }
+    ,
   },
   extraReducers: {
     [fetchData.pending]: (state) => {
