@@ -2,7 +2,7 @@
 function Item(props){
     return (<div className="item-container" id={props.id}>
         <div className="col-11 col-sm-11 col-md-7">
-            {/* <input className="checkbox" type="checkbox" title="checkbox" placeholder="checkbox" value={props.applied}/> */}
+            <input className="checkbox" type="checkbox" title="checkbox" placeholder="checkbox" value={props.applied}/>
             <span className="job-name">{props.name}</span>
         </div>
         <span className="col-12 col-sm-12 col-md-4 link-container">

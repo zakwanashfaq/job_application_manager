@@ -19,7 +19,6 @@ function AddItem(props) {
 
     const onButtonCLick = (event) => {
         const today = new Date();
-        console.log(all_items);
         dispatch(addItem({
             id: crypto.randomUUID(),
             applied: false,

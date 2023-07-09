@@ -4,18 +4,22 @@ import ApplicationList from "./components/applicationsList";
 import Item from "./components/item";
 import { useSelector, useDispatch } from 'react-redux'
 import AddItem from "./components/addItem";
-import { useEffect } from "react";
-import { fetchData } from "./redux/items";
+import { useEffect, useState } from "react";
+import { fetchData, selectAllItems } from "./redux/items";
 
 
 function App() {
-  const data = useSelector((state) => [...state.items.value]);
+  const data = useSelector(selectAllItems);
   const dispatch = useDispatch();
-
+  const [loading, setLoading] = useState(true);
+  
   useEffect(() => {
-    dispatch(fetchData());
-  }, [dispatch]) 
+    dispatch(fetchData()).then(() => setLoading(false));
+  }, [dispatch]);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   
   return (
     <div className="mainContainer">
@@ -23,7 +27,7 @@ function App() {
         <Header />
         <AddItem />
         <ApplicationList>
-          {data.sort((a, b) => a.index - b.index).reverse().map(item => {
+          {data.sort((a, b) => b.index - a.index).map(item => {
             return <Item key={item.id} id={item.id} applied={item.applied} name={item.name} link={item.link} timeAdded={item.timeAdded}/>
           })}
         </ApplicationList>
@@ -34,3 +38,4 @@ function App() {
 }
 
 export default App;
+

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import Sortable from 'sortablejs';
 import { db } from '../db';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem, deleteItem, getAllItems, selectAllItems } from "../redux/items";
+import { addItem, deleteItem, getAllItems, selectAllItems, fetchData } from "../redux/items";
 
 
 // Config variables
@@ -37,8 +37,10 @@ function getTextFromHtmlElement(element, depth = 0) {
 function ApplicationList(props) {
     const listContainerRef = useRef(null);
     const dispatch = useDispatch();
-    let all_items = useSelector(selectAllItems);
+    let all_items = useSelector(state => state.items.value);// not working here but works elsewhere in other components
     
+    
+    // console.log(props.list_items);
     const onSwapFunction = async (event) => {
         let itemsArray = [];
         for (const item of event.from.children) {
@@ -82,6 +84,9 @@ function ApplicationList(props) {
         return () => sortable.destroy();
     }, []); // Empty dependency array means this effect runs once on mount and clean up on unmount
 
+    useEffect(() => {
+
+    }, [props.list_items]);
     return (
         <div className="application-list-container" ref={listContainerRef}>
             {props.children}
