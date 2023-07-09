@@ -20,8 +20,8 @@ function OffCanvasBar(props) {
                     <li>Sort by column</li>
                     <li>Search for a particular record</li>
                     <li>Pagination/Lazy load for a large list</li>
-                    <li>Ability to reorder list (put at certain index)</li>
-                    <li>Ability to reorder list by drag and drop</li>
+                    <li style={{"textDecoration": "line-through"}}>Ability to reorder list (put at certain index)</li>
+                    <li style={{"textDecoration": "line-through"}}>Ability to reorder list by drag and drop</li>
                     <li>More meta data for each item</li>
                 </ul>
                 <div className="">

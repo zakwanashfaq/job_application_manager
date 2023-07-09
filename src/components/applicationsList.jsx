@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import Sortable from 'sortablejs';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateItem } from '../redux/items';
 
 function ApplicationList(props) {
     const listContainerRef = useRef(null);
-    const all_items = useSelector(state => state.items.value);
     const dispatch = useDispatch();
 
     const onSwapFunction = useCallback(async (event) => {
@@ -21,7 +20,7 @@ function ApplicationList(props) {
             dispatch(updateItem({id: item.id, index: count}));
             count++;
         });
-    }, [all_items]);
+    }, [dispatch]);
 
     useEffect(() => {
         let sortable = Sortable.create(listContainerRef.current, {
