@@ -8,9 +8,6 @@ import { useEffect } from "react";
 import { fetchData } from "./redux/items";
 
 
-
-
-
 function App() {
   const data = useSelector((state) => [...state.items.value]);
   const dispatch = useDispatch();
@@ -27,7 +24,7 @@ function App() {
         <AddItem />
         <ApplicationList>
           {data.map(item => {
-            return <Item key={item.id} applied={item.applied} name={item.name} link={item.link} timeAdded={item.timeAdded}/>
+            return <Item key={item.id} id={item.id} applied={item.applied} name={item.name} link={item.link} timeAdded={item.timeAdded}/>
           })}
         </ApplicationList>
         <br />      

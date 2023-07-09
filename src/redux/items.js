@@ -27,9 +27,15 @@ export const itemsSlice = createSlice({
         throw(error);
       }
     },
-    deleteItem: (state, item) => {
-      throw("Delete is not implemented yet!");
-      //state.value -= 1
+    deleteItem: (state, action) => {
+      state.value = state.value.filter(item => item.id !== action.payload);
+      try {
+        (async () => {
+          await db.items.delete(action.payload);
+        })();
+      } catch (error) {
+        throw(error);
+      }
     },
     updateItem: (state, item) => {
       throw("Update is not implemented yet!");
