@@ -53,7 +53,7 @@ function ModalPopover(props) {
                     <div className="modal-body">
                         <span>
                             Job Application Manager
-                            An application I built (roughly in a day) to keep track of all the jobs I applied to.
+                            An application I built to keep track of all the jobs I applied to.
                             <br />
                             <br />
                             Tech Stack: Javascript, AWS, Bootstrap, NodeJS, ReactJS, Redux, IndexedDB, DexieJS & GIT

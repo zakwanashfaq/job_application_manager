@@ -9,6 +9,8 @@ export const fetchData = createAsyncThunk(
   }
 );
 
+export const selectAllItems = (state) => [...state.items.value]
+
 export const itemsSlice = createSlice({
   name: 'itemStore',
   initialState: {
@@ -41,6 +43,9 @@ export const itemsSlice = createSlice({
       throw("Update is not implemented yet!");
       // state.value += action.payload
     },
+    getAllItems: (state, action) => {
+      return state.value;
+    },
   },
   extraReducers: {
     [fetchData.pending]: (state) => {
@@ -61,5 +66,5 @@ export const itemsSlice = createSlice({
 })
 
 
-export const { addItem, deleteItem, updateItem } = itemsSlice.actions
+export const { addItem, deleteItem, updateItem, getAllItems } = itemsSlice.actions
 export default itemsSlice.reducer

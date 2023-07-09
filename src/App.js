@@ -23,7 +23,7 @@ function App() {
         <Header />
         <AddItem />
         <ApplicationList>
-          {data.map(item => {
+          {data.sort((a, b) => a.index - b.index).reverse().map(item => {
             return <Item key={item.id} id={item.id} applied={item.applied} name={item.name} link={item.link} timeAdded={item.timeAdded}/>
           })}
         </ApplicationList>

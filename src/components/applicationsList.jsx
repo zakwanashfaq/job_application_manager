@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import Sortable from 'sortablejs';
 import { db } from '../db';
-import { useDispatch } from 'react-redux';
-import { addItem, deleteItem, updateItem } from "../redux/items";
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem, deleteItem, getAllItems, selectAllItems } from "../redux/items";
 
 
 // Config variables
@@ -15,12 +15,12 @@ function getTextFromHtmlElement(element, depth = 0) {
     }
 
     // If this is a text node and it's not empty or just whitespace, return its text
-    if (element.nodeType === Node.TEXT_NODE && element.textContent.trim() !== '') {
+    if (element?.nodeType === Node.TEXT_NODE && element.textContent.trim() !== '') {
         return element.textContent.trim();
     }
 
     // Recursive case: if this element has child nodes, iterate over each one
-    if (element.hasChildNodes()) {
+    if (element?.hasChildNodes()) {
         for (let child of element.childNodes) {
             let childText = getTextFromHtmlElement(child, depth + 1, MAX_SEARCH_DEPTH);
             if (childText !== null) {
@@ -37,7 +37,8 @@ function getTextFromHtmlElement(element, depth = 0) {
 function ApplicationList(props) {
     const listContainerRef = useRef(null);
     const dispatch = useDispatch();
-
+    let all_items = useSelector(selectAllItems);
+    
     const onSwapFunction = async (event) => {
         let itemsArray = [];
         for (const item of event.from.children) {
@@ -56,13 +57,17 @@ function ApplicationList(props) {
             });
         }
         
-        itemsArray.forEach(item => {
-            dispatch(deleteItem(item.id));
-        })
-
-        itemsArray.forEach(item => {
-            dispatch(addItem(item));
-        })
+        itemsArray.reverse();
+        console.log(all_items);
+        // await Promise.all(itemsArray.map(item => dispatch(deleteItem(item.id))));
+        // db.items.clear().then(() => {
+        //     itemsArray.forEach(item => {
+        //         dispatch(addItem(item));
+        //     })
+        // }).catch(err => {
+        //     console.error("Failed to delete all items on swap: " + err);
+        // });
+        
         
     }
 
