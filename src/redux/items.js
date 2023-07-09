@@ -39,13 +39,32 @@ export const itemsSlice = createSlice({
         throw(error);
       }
     },
-    updateItem: (state, item) => {
-      throw("Update is not implemented yet!");
-      // state.value += action.payload
-    },
-    getAllItems: (state, action) => {
-      return state.value;
-    },
+    updateItem: (state, action) => {
+      const { id, ...fieldsToUpdate } = action.payload;
+    
+      if (!id) {
+        console.error('No "id" provided for update function.');
+        return;
+      }
+    
+      // Find the item in the state and update it
+      const item = state.value.find(item => item.id === id);
+      if (item) {
+        Object.assign(item, fieldsToUpdate);
+      } else {
+        console.error(`No item found with id ${id}`);
+      }
+    
+      // Update the item in the database
+      try {
+        (async () => {
+          await db.items.update(id, fieldsToUpdate);
+        })();
+      } catch (error) {
+        console.error('Failed to update item: ', error);
+      }
+    }
+    ,
   },
   extraReducers: {
     [fetchData.pending]: (state) => {
@@ -66,5 +85,5 @@ export const itemsSlice = createSlice({
 })
 
 
-export const { addItem, deleteItem, updateItem, getAllItems } = itemsSlice.actions
+export const { addItem, deleteItem, updateItem } = itemsSlice.actions
 export default itemsSlice.reducer

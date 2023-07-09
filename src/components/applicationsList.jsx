@@ -1,45 +1,48 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import Sortable from 'sortablejs';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateItem } from '../redux/items';
 
 function ApplicationList(props) {
-  const listContainerRef = useRef(null);
-  const all_items = useSelector(state => state.items.value);
+    const listContainerRef = useRef(null);
+    const all_items = useSelector(state => state.items.value);
+    const dispatch = useDispatch();
 
-  const onSwapFunction = useCallback(async (event) => {
-    let itemsArray = [];
-    let count = 0;
-    for (const item of event.from.children) {
-      itemsArray.push({
-        id: item.id,
-        new_index: count
-      });
-      count++;
-    }
-    
-    console.log(itemsArray);        
-  }, [all_items]); 
+    const onSwapFunction = useCallback(async (event) => {
+        let itemsArray = [];
+        let count = 0;
+        for (const item of event.from.children) {
+            itemsArray.push({
+                id: item.id
+            });
+        }
+        
+        itemsArray.reverse().forEach(item => {
+            dispatch(updateItem({id: item.id, index: count}));
+            count++;
+        });
+    }, [all_items]);
 
-  useEffect(() => {
-    let sortable = Sortable.create(listContainerRef.current, {
-      animation: 150,
-      onEnd: onSwapFunction
-      // Add other SortableJS options as needed
-    });
+    useEffect(() => {
+        let sortable = Sortable.create(listContainerRef.current, {
+            animation: 150,
+            onEnd: onSwapFunction
+            // Add other SortableJS options as needed
+        });
 
-    // Clean up function
-    return () => sortable.destroy();
-  }, [onSwapFunction]);
+        // Clean up function
+        return () => sortable.destroy();
+    }, [onSwapFunction]);
 
-  useEffect(() => {
+    useEffect(() => {
 
-  }, [props.list_items]);
+    }, [props.list_items]);
 
-  return (
-    <div className="application-list-container" ref={listContainerRef}>
-      {props.children}
-    </div>
-  );
+    return (
+        <div className="application-list-container" ref={listContainerRef}>
+            {props.children}
+        </div>
+    );
 }
 
 export default ApplicationList;
