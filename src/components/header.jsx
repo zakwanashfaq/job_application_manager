@@ -2,32 +2,32 @@
 function OffCanvasBar(props) {
     return <div className="">
         <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-            Upcoming features
+            Feature List
         </a>
         <div className="offcanvas offcanvas-start p-2" tabIndex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div className="offcanvas-header">
-                <h5 className="offcanvas-title" id="offcanvasExampleLabel">Upcoming Feature List</h5>
+                <h5 className="offcanvas-title" id="offcanvasExampleLabel">Feature List</h5>
                 <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div className="offcanvas-body">
                 <div className="pb-2">
-                    This is a list of features I plan to add iteratively, as I make this app better over time. 
+                    These are the features that are currently available, also. the upcoming features. 
                 </div>
                 <ul className="">
-                    <li>Ability to delete records</li>
-                    <li>Ability to modify records</li>
-                    <li>Mass Selection</li>
-                    <li>Sort by column</li>
-                    <li>Search for a particular record</li>
-                    <li>Pagination/Lazy load for a large list</li>
-                    <li style={{"textDecoration": "line-through"}}>Ability to reorder list (put at certain index)</li>
-                    <li style={{"textDecoration": "line-through"}}>Ability to reorder list by drag and drop</li>
-                    <li>More meta data for each item</li>
+                    <li>Ability to reorder list (put at certain index)</li>
+                    <li>Ability to reorder list by drag and drop</li>
+                    <li>Ability to delete records (Upcoming)</li>
+                    <li>Ability to modify records (Upcoming)</li>
+                    <li>Mass Selection (Upcoming)</li>
+                    <li>Sort by column (Upcoming)</li>
+                    <li>Search for a particular record (Upcoming)</li>
+                    <li>Pagination/Lazy load for a large list (Upcoming)</li>
+                    <li>More meta data for each item (Upcoming)</li>
                 </ul>
                 <div className="">
                     *This will eventually be a sub-module for an AIO job 
                     serach solution and preparation tool. Everything over here 
-                    is written in a reusable and louse-coupled manner.
+                    is written in a reusable and lousely-coupled architecture.
                 </div>
             </div>
         </div>

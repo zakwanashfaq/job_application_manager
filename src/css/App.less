@@ -66,3 +66,17 @@
     width: -webkit-fill-available;
   }
 }
+
+.truncate-link {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.truncate-link:hover {
+  overflow: visible;
+  white-space: normal;
+  max-width: fit-content;
+}
