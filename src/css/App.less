@@ -43,6 +43,21 @@
     justify-content: flex-start;
     align-items: center;
 
+    // hover behaviour for mass select, edit and delete icon
+    // .checkbox,
+    // .item-hover-toolbar-edit-button,
+    // .item-hover-toolbar-delete-button {
+    //   display: none;
+    // }
+  
+    // .item-hover:hover {
+    //   .checkbox,
+    //   .item-hover-toolbar-edit-button,
+    //   .item-hover-toolbar-delete-button {
+    //     display: block;
+    //   }
+    // }
+    
     .item-hover-container {
       display: flex;
       flex-direction: row;
@@ -50,6 +65,20 @@
       align-content: center;
       justify-content: flex-start;
       align-items: center;
+
+      .item-hover-toolbar-edit-button {
+        color: rgb(5, 97, 147);
+        :hover{
+          cursor: pointer;
+        }
+      }
+
+      .item-hover-toolbar-delete-button {
+        color: rgb(147, 5, 5);
+        :hover{
+          cursor: pointer;
+        }
+      }
 
       .job-name{
         padding: 0 10px;

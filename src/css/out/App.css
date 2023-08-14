@@ -47,6 +47,18 @@
   justify-content: flex-start;
   align-items: center;
 }
+.mainContainer .item-container .item-hover-container .item-hover-toolbar-edit-button {
+  color: #056193;
+}
+.mainContainer .item-container .item-hover-container .item-hover-toolbar-edit-button :hover {
+  cursor: pointer;
+}
+.mainContainer .item-container .item-hover-container .item-hover-toolbar-delete-button {
+  color: #930505;
+}
+.mainContainer .item-container .item-hover-container .item-hover-toolbar-delete-button :hover {
+  cursor: pointer;
+}
 .mainContainer .item-container .item-hover-container .job-name {
   padding: 0 10px;
 }
