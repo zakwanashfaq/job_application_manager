@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import "../css/out/App.css";
+import { useDispatch } from 'react-redux';
+import { deleteItem } from '../redux/items';
 
 function Item(props){
+    const dispatch = useDispatch();
     const shortLink = props.link.length > 50 ? `${props.link.substring(0, 50)}...` : props.link;
     const [isSelected, setIsSelected] = useState(false);
     // props.applied
@@ -10,7 +13,7 @@ function Item(props){
     }
 
     const handleOnDelete = (e) => {
-        // delete with props.id
+        dispatch(deleteItem(props.id));
         console.log("Deleted: " + props.id);
     }
     
