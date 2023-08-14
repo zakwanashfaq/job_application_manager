@@ -39,6 +39,13 @@
   justify-content: flex-start;
   align-items: center;
 }
+.mainContainer .item-container .item-hover-toolbar-delete-button,
+.mainContainer .item-container .item-hover-toolbar-edit-button {
+  display: none;
+}
+.mainContainer .item-container .item-hover:hover .item-hover-toolbar-edit-button {
+  display: block;
+}
 .mainContainer .item-container .item-hover-container {
   display: flex;
   flex-direction: row;
@@ -58,6 +65,12 @@
 }
 .mainContainer .item-container .item-hover-container .item-hover-toolbar-delete-button :hover {
   cursor: pointer;
+}
+.mainContainer .item-container .item-hover-container .item-dragDrop :hover {
+  cursor: grab;
+}
+.mainContainer .item-container .item-hover-container .item-dragDrop :active {
+  cursor: grabbing;
 }
 .mainContainer .item-container .item-hover-container .job-name {
   padding: 0 10px;

@@ -45,18 +45,18 @@
 
     // hover behaviour for mass select, edit and delete icon
     // .checkbox,
-    // .item-hover-toolbar-edit-button,
-    // .item-hover-toolbar-delete-button {
-    //   display: none;
-    // }
+    .item-hover-toolbar-delete-button, 
+    .item-hover-toolbar-edit-button {
+      display: none;
+    }
   
-    // .item-hover:hover {
-    //   .checkbox,
-    //   .item-hover-toolbar-edit-button,
-    //   .item-hover-toolbar-delete-button {
-    //     display: block;
-    //   }
-    // }
+    .item-hover:hover {
+      //.checkbox,
+      //.item-hover-toolbar-delete-button, 
+      .item-hover-toolbar-edit-button {
+        display: block;
+      }
+    }
     
     .item-hover-container {
       display: flex;
@@ -77,6 +77,15 @@
         color: rgb(147, 5, 5);
         :hover{
           cursor: pointer;
+        }
+      }
+
+      .item-dragDrop {
+        :hover{
+          cursor: grab;
+        }
+        :active {
+          cursor: grabbing;
         }
       }
 
