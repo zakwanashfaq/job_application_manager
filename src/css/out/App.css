@@ -39,10 +39,30 @@
   justify-content: flex-start;
   align-items: center;
 }
-.mainContainer .item-container .job-name {
+.mainContainer .item-container .item-hover-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+.mainContainer .item-container .item-hover-container .item-hover-toolbar-edit-button {
+  color: #056193;
+}
+.mainContainer .item-container .item-hover-container .item-hover-toolbar-edit-button :hover {
+  cursor: pointer;
+}
+.mainContainer .item-container .item-hover-container .item-hover-toolbar-delete-button {
+  color: #930505;
+}
+.mainContainer .item-container .item-hover-container .item-hover-toolbar-delete-button :hover {
+  cursor: pointer;
+}
+.mainContainer .item-container .item-hover-container .job-name {
   padding: 0 10px;
 }
-.mainContainer .item-container .link-container {
+.mainContainer .item-container .item-hover-container .link-container {
   padding: 0 10px;
   overflow-wrap: anywhere;
 }
@@ -53,5 +73,17 @@
 }
 .add-item-container .full-width {
   width: -webkit-fill-available;
+}
+.truncate-link {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+.truncate-link:hover {
+  overflow: visible;
+  white-space: normal;
+  max-width: fit-content;
 }
 /*# sourceMappingURL=App.css.map */
