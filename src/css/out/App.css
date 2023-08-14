@@ -39,12 +39,6 @@
   justify-content: flex-start;
   align-items: center;
 }
-.mainContainer .item-container .item-hover-toolbar-edit-button {
-  display: none;
-}
-.mainContainer .item-container .item-hover:hover .item-hover-toolbar-edit-button {
-  display: block;
-}
 .mainContainer .item-container .item-hover-container {
   display: flex;
   flex-direction: row;

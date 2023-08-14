@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { deleteItem } from '../redux/items';
 
 function EditItem(props) {
+    // const target_id = "editModal-" + props.id; 
     return <div className=''>
         {/* eslint-disable-next-line */}
         <a data-bs-toggle="modal" data-bs-target="#editModal">
