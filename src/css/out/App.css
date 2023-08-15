@@ -53,11 +53,11 @@
 .mainContainer .item-container .item-hover-container .item-hover-toolbar-edit-button :hover {
   cursor: pointer;
 }
-.mainContainer .item-container .item-hover-container .item-hover-toolbar-delete-button {
-  color: #930505;
+.mainContainer .item-container .item-hover-container .item-dragDrop :hover {
+  cursor: grab;
 }
-.mainContainer .item-container .item-hover-container .item-hover-toolbar-delete-button :hover {
-  cursor: pointer;
+.mainContainer .item-container .item-hover-container .item-dragDrop :active {
+  cursor: grabbing;
 }
 .mainContainer .item-container .item-hover-container .job-name {
   padding: 0 10px;
@@ -65,6 +65,24 @@
 .mainContainer .item-container .item-hover-container .link-container {
   padding: 0 10px;
   overflow-wrap: anywhere;
+}
+.mainContainer .item-end-column {
+  padding: 6px;
+  display: flex;
+  width: auto;
+  justify-content: space-between;
+  align-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.mainContainer .item-end-column .item-delete-button {
+  color: #930505;
+}
+.mainContainer .item-end-column .item-delete-button :hover {
+  cursor: pointer;
+}
+.mainContainer .item-end-column .date-box {
+  padding: 0px;
 }
 .add-item-container input {
   padding: 0 0 0 10px;

@@ -45,15 +45,15 @@
 
     // hover behaviour for mass select, edit and delete icon
     // .checkbox,
-    // .item-hover-toolbar-edit-button,
-    // .item-hover-toolbar-delete-button {
+    // .item-hover-toolbar-delete-button, 
+    // .item-hover-toolbar-edit-button {
     //   display: none;
     // }
   
     // .item-hover:hover {
-    //   .checkbox,
-    //   .item-hover-toolbar-edit-button,
-    //   .item-hover-toolbar-delete-button {
+    //   //.checkbox,
+    //   //.item-hover-toolbar-delete-button, 
+    //   .item-hover-toolbar-edit-button {
     //     display: block;
     //   }
     // }
@@ -73,10 +73,12 @@
         }
       }
 
-      .item-hover-toolbar-delete-button {
-        color: rgb(147, 5, 5);
+      .item-dragDrop {
         :hover{
-          cursor: pointer;
+          cursor: grab;
+        }
+        :active {
+          cursor: grabbing;
         }
       }
 
@@ -90,7 +92,26 @@
     }
   }
 
-  
+  .item-end-column {
+    padding: 6px;
+    display: flex;
+    width: auto;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    .item-delete-button {
+      color: rgb(147, 5, 5); 
+      :hover{
+        cursor: pointer;
+      }
+    }
+
+    .date-box {
+      padding: 0px;
+    }
+  }
 }
 
 .add-item-container{

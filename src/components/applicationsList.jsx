@@ -25,7 +25,8 @@ function ApplicationList(props) {
     useEffect(() => {
         let sortable = Sortable.create(listContainerRef.current, {
             animation: 150,
-            onEnd: onSwapFunction
+            onEnd: onSwapFunction,
+            handle: ".item-dragDrop"
             // Add other SortableJS options as needed
         });
 
