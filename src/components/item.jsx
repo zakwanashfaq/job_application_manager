@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "../css/out/App.css";
 import { useDispatch } from 'react-redux';
-import { deleteItem } from '../redux/items';
+import { deleteItem, updateItem } from '../redux/items';
 
 function EditItem(props) {
     const target_id = "editModal-" + props.id; 
+    const dispatch = useDispatch();
+    const [companyName, setCompanyName] = useState("");
+    const [jobTitle, setJobTitle] = useState(props.job_title);
+    const [link, setLink] = useState(props.link);
+
+    const handleCompanyNameChange = (e) => {
+        setCompanyName(e.target.value);
+    }
+
+    const handleJobTitleChange = (e) => {
+        setJobTitle(e.target.value)
+    }
+
+    const handleLinkChange = (e) => {
+        setLink(e.target.value);
+    }
+
+    const handleUpdateClick = () => {
+        dispatch(updateItem({
+            id: props.id,
+            name: jobTitle,
+            link: link
+        }));
+    }
+
     return <div className=''>
         {/* eslint-disable-next-line */}
         <a data-bs-toggle="modal" data-bs-target={"#"+target_id}>
@@ -22,19 +47,21 @@ function EditItem(props) {
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
-                        <span>
-                            EDDDITTT
-                            <br />
-                            {props.id}
-                            <br />
-                            Tech Stack: Javascript, AWS, Bootstrap, NodeJS, ReactJS, Redux, IndexedDB, DexieJS & GIT
-                        </span>
-                        <br />
-                        <br />
-                        Made by <a href="https://www.linkedin.com/in/zakwanashfaq/" rel="noreferrer" target="_blank">Zakwan Ashfaq</a>
+                        <div className="mb-3">
+                            <label className="form-label ps-1">Company Name</label>
+                            <input className="form-control" placeholder="Name" value={companyName} onChange={handleCompanyNameChange}/>
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label ps-1">Job Title</label>
+                            <input className="form-control" placeholder="Title" value={jobTitle} onChange={handleJobTitleChange}/>
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label ps-1">Link</label>
+                            <input className="form-control" placeholder="Link" value={link} onChange={handleLinkChange}/>
+                        </div>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-primary">Update</button>
+                        <button type="button" className="btn btn-primary" onClick={handleUpdateClick}>Update</button>
                         <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -78,7 +105,7 @@ function Item(props){
                     
                     <strong className="job-name ps-4">{props.name}</strong>
                     <div className='item-hover-toolbar-edit-button ps-4'>
-                        <EditItem id={props.id}/>
+                        <EditItem id={props.id} job_title={props.name} link={props.link}/>
                     </div>
                 </div>
             </div>
