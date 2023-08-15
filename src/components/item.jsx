@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import "../css/out/App.css";
 import { useDispatch } from 'react-redux';
 import { deleteItem, updateItem } from '../redux/items';
+import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function EditItem(props) {
-    const target_id = "editModal-" + props.id; 
+    const target_id = "editModal-" + props.id;
     const dispatch = useDispatch();
     const [companyName, setCompanyName] = useState("");
     const [jobTitle, setJobTitle] = useState(props.job_title);
@@ -28,18 +29,29 @@ function EditItem(props) {
             name: jobTitle,
             link: link
         }));
+
+        const modalElement = document.getElementById(target_id);
+        modalElement.classList.remove('show');
+        document.body.classList.remove('modal-open');
+
+        const modalBackdrops = document.getElementsByClassName('modal-backdrop');
+        for (let i = 0; i < modalBackdrops.length; i++) {
+            modalBackdrops[i].classList.remove('show');
+        }
     }
+
+
 
     return <div className=''>
         {/* eslint-disable-next-line */}
-        <a data-bs-toggle="modal" data-bs-target={"#"+target_id}>
+        <a data-bs-toggle="modal" data-bs-target={"#" + target_id}>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">
                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                 <path fillRule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
             </svg>
         </a>
 
-        <div className="modal fade" id={target_id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id={target_id} tabIndex="-1" aria-hidden="true">
             <div className="modal-dialog" id="editModalBox">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -49,15 +61,15 @@ function EditItem(props) {
                     <div className="modal-body">
                         <div className="mb-3">
                             <label className="form-label ps-1">Company Name</label>
-                            <input className="form-control" placeholder="Name" value={companyName} onChange={handleCompanyNameChange}/>
+                            <input className="form-control" placeholder="Name" value={companyName} onChange={handleCompanyNameChange} />
                         </div>
                         <div className="mb-3">
                             <label className="form-label ps-1">Job Title</label>
-                            <input className="form-control" placeholder="Title" value={jobTitle} onChange={handleJobTitleChange}/>
+                            <input className="form-control" placeholder="Title" value={jobTitle} onChange={handleJobTitleChange} />
                         </div>
                         <div className="mb-3">
                             <label className="form-label ps-1">Link</label>
-                            <input className="form-control" placeholder="Link" value={link} onChange={handleLinkChange}/>
+                            <input className="form-control" placeholder="Link" value={link} onChange={handleLinkChange} />
                         </div>
                     </div>
                     <div className="modal-footer">
@@ -70,7 +82,7 @@ function EditItem(props) {
     </div>
 }
 
-function Item(props){
+function Item(props) {
     const dispatch = useDispatch();
     const shortLink = props.link.length > 40 ? `${props.link.substring(0, 45)}...` : props.link;
     //const [isSelected, setIsSelected] = useState(false);
@@ -83,7 +95,7 @@ function Item(props){
         dispatch(deleteItem(props.id));
         console.log("Deleted: " + props.id);
     }
-    
+
     // todo: add the following fields
     // company name
     // Job Title
@@ -102,21 +114,21 @@ function Item(props){
                         </svg>
                     </div>
                     {/* <input className="checkbox" type="checkbox" title="checkbox" onChange={handleOnSelect} placeholder="checkbox" value={isSelected} /> */}
-                    
+
                     <strong className="job-name ps-4">{props.name}</strong>
                     <div className='item-hover-toolbar-edit-button ps-4'>
-                        <EditItem id={props.id} job_title={props.name} link={props.link}/>
+                        <EditItem id={props.id} job_title={props.name} link={props.link} />
                     </div>
                 </div>
             </div>
             <span className="col-12 col-sm-12 col-md-4 link-container">
-                <a 
-                    rel="noreferrer" 
-                    href={props.link} 
+                <a
+                    rel="noreferrer"
+                    href={props.link}
                     target="_blank"
-                    className="truncate-link"  
-                    data-full-link={props.link}  
-                > 
+                    className="truncate-link"
+                    data-full-link={props.link}
+                >
                     {shortLink}
                 </a>
             </span>
