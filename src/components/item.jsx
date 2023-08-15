@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import "../css/out/App.css";
 import { useDispatch } from 'react-redux';
 import { deleteItem, updateItem } from '../redux/items';
-import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function EditItem(props) {
     const target_id = "editModal-" + props.id;
@@ -59,10 +58,10 @@ function EditItem(props) {
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
-                        <div className="mb-3">
+                        {/* <div className="mb-3">
                             <label className="form-label ps-1">Company Name</label>
                             <input className="form-control" placeholder="Name" value={companyName} onChange={handleCompanyNameChange} />
-                        </div>
+                        </div> */}
                         <div className="mb-3">
                             <label className="form-label ps-1">Job Title</label>
                             <input className="form-control" placeholder="Title" value={jobTitle} onChange={handleJobTitleChange} />
