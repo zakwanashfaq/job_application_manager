@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../css/out/App.css";
 import { useDispatch } from 'react-redux';
 import { deleteItem, updateItem } from '../redux/items';
@@ -95,13 +95,27 @@ function EditItem(props) {
 
 function Item(props) {
     const dispatch = useDispatch();
-    const shortLink = props.link.length > 40 ? `${props.link.substring(0, 40)}...` : props.link;
-    const shortName = props.name.length > 30 ? `${props.name.substring(0, 30)}...` : props.name;
+    let shortLink = props.link.length > 40 ? `${props.link.substring(0, 40)}...` : props.link;
+    let shortName = props.name.length > 30 ? `${props.name.substring(0, 30)}...` : props.name;
     //const [isSelected, setIsSelected] = useState(false);
     // props.applied
     // const handleOnSelect = (e) => {
     //     setIsSelected(e.target.checked);
     // }
+
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+        
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     const handleOnDelete = (e) => {
         dispatch(deleteItem(props.id));
@@ -130,7 +144,7 @@ function Item(props) {
 
                         <strong className="job-name ps-4">{shortName}</strong>
                     </div>
-                    <div className='item-hover-toolbar-edit-button pe-2'>
+                    <div className={'item-hover-toolbar-edit-button ' + (windowWidth < 770) ? "pe-2" : "pe-4"}>
                         <EditItem id={props.id} job_title={props.name} link={props.link} />
                     </div>
                 </div>
