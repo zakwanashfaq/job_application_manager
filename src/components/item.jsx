@@ -6,13 +6,13 @@ import { deleteItem, updateItem } from '../redux/items';
 function EditItem(props) {
     const target_id = "editModal-" + props.id;
     const dispatch = useDispatch();
-    const [companyName, setCompanyName] = useState("");
+    //const [companyName, setCompanyName] = useState("");
     const [jobTitle, setJobTitle] = useState(props.job_title);
     const [link, setLink] = useState(props.link);
 
-    const handleCompanyNameChange = (e) => {
-        setCompanyName(e.target.value);
-    }
+    // const handleCompanyNameChange = (e) => {
+    //     setCompanyName(e.target.value);
+    // }
 
     const handleJobTitleChange = (e) => {
         setJobTitle(e.target.value)
@@ -81,9 +81,22 @@ function EditItem(props) {
     </div>
 }
 
+// function largeSizeItem (props) {
+
+// } 
+
+// function mediumSizeItem (props) {
+
+// } 
+
+// function smallSizeItem (props) {
+
+// } 
+
 function Item(props) {
     const dispatch = useDispatch();
-    const shortLink = props.link.length > 40 ? `${props.link.substring(0, 45)}...` : props.link;
+    const shortLink = props.link.length > 40 ? `${props.link.substring(0, 40)}...` : props.link;
+    const shortName = props.name.length > 30 ? `${props.name.substring(0, 30)}...` : props.name;
     //const [isSelected, setIsSelected] = useState(false);
     // props.applied
     // const handleOnSelect = (e) => {
@@ -105,22 +118,24 @@ function Item(props) {
 
     return (
         <div className="item-container p-4" id={props.id}>
-            <div className=" item-hover col-11 col-sm-11 col-md-5">
+            <div className=" item-hover col-12 col-sm-12 col-md-5">
                 <div className='item-hover-container'>
-                    <div className="item-dragDrop">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-grip-vertical" viewBox="0 0 16 16">
-                            <path d="M7 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM7 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM7 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-3 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-3 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                        </svg>
-                    </div>
-                    {/* <input className="checkbox" type="checkbox" title="checkbox" onChange={handleOnSelect} placeholder="checkbox" value={isSelected} /> */}
+                    <div className="item-start-block">
+                        <div className="item-dragDrop">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-grip-vertical" viewBox="0 0 16 16">
+                                <path d="M7 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM7 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM7 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-3 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-3 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                            </svg>
+                        </div>
+                        {/* <input className="checkbox" type="checkbox" title="checkbox" onChange={handleOnSelect} placeholder="checkbox" value={isSelected} /> */}
 
-                    <strong className="job-name ps-4">{props.name}</strong>
-                    <div className='item-hover-toolbar-edit-button ps-4'>
+                        <strong className="job-name ps-4">{shortName}</strong>
+                    </div>
+                    <div className='item-hover-toolbar-edit-button pe-2'>
                         <EditItem id={props.id} job_title={props.name} link={props.link} />
                     </div>
                 </div>
             </div>
-            <span className="col-12 col-sm-12 col-md-4 link-container">
+            <span className="col-12 col-sm-12 col-md-4 ps-2 pt-2 link-container">
                 <a
                     rel="noreferrer"
                     href={props.link}
