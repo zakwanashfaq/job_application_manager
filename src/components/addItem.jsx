@@ -9,8 +9,6 @@ function AddItem(props) {
     const [companyName, setCompanyName] = useState("");
     const [jobTitle, setJobTitle] = useState("");
     const [datePosted, setDatePosted] = useState(-1);
-    const [dateAddedToRecord, setDateAddedToRecord] = useState(-1);
-    const [responseDate, setResponseDate] = useState(-1);
     const [link, setLink] = useState("");
     const [jobDescription, setJobDescription] = useState("");
     const [notes, setNotes] = useState("");
@@ -31,14 +29,6 @@ function AddItem(props) {
         setDatePosted(event.target.value); // Assuming this will be a timestamp or number, adjust as needed.
     }
     
-    const handleDateAddedToRecordChange = (event) => {
-        setDateAddedToRecord(event.target.value); // Same assumption as above.
-    }
-    
-    const handleResponseDateChange = (event) => {
-        setResponseDate(event.target.value); // Same assumption as above.
-    }
-    
     const handleJobDescriptionChange = (event) => {
         setJobDescription(event.target.value);
     }
@@ -57,8 +47,7 @@ function AddItem(props) {
             link,
             jobTitle,
             datePosted,
-            dateAddedToRecord,
-            responseDate,
+            responseDate: -1,
             jobDescription,
             notes,
             timeAdded: today.getTime(),
@@ -84,7 +73,7 @@ function AddItem(props) {
                             </div>
                             <div className="p-1 d-flex flex-column">
                                 <label className="form-label">Position</label>
-                                <input className="rounded border py-2" value={companyName} onChange={handleNameChange} type="text" ></input>
+                                <input className="rounded border py-2" value={jobTitle} onChange={handleJobTitleChange} type="text" ></input>
                             </div>
                             <div className="p-1 d-flex flex-column">
                                 <label className="form-label">Link</label>
@@ -92,11 +81,11 @@ function AddItem(props) {
                             </div>
                             <div className="p-1">
                                 <label className="form-label">Description</label>
-                                <textarea className="form-control" rows="5"></textarea>
+                                <textarea className="form-control" rows="5" value={jobDescription} onChange={handleJobDescriptionChange}></textarea>
                             </div>
                             <div className="p-1">
                                 <label className="form-label">Notes</label>
-                                <textarea className="form-control" rows="2"></textarea>
+                                <textarea className="form-control" rows="2" value={notes} onChange={handleNotesChange}></textarea>
                             </div>
                         </div>
                         <div className="m-1 modal-footer">
