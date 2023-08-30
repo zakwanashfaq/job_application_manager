@@ -23,13 +23,44 @@ function AddItem(props) {
         setLink(event.target.value);
     }
 
+    const handleJobTitleChange = (event) => {
+        setJobTitle(event.target.value);
+    }
+    
+    const handleDatePostedChange = (event) => {
+        setDatePosted(event.target.value); // Assuming this will be a timestamp or number, adjust as needed.
+    }
+    
+    const handleDateAddedToRecordChange = (event) => {
+        setDateAddedToRecord(event.target.value); // Same assumption as above.
+    }
+    
+    const handleResponseDateChange = (event) => {
+        setResponseDate(event.target.value); // Same assumption as above.
+    }
+    
+    const handleJobDescriptionChange = (event) => {
+        setJobDescription(event.target.value);
+    }
+    
+    const handleNotesChange = (event) => {
+        setNotes(event.target.value);
+    }
+    
+
     const onButtonCLick = (event) => {
         const today = new Date();
         dispatch(addItem({
             id: crypto.randomUUID(),
             applied: false,
-            companyName: companyName,
-            link: link,
+            companyName,
+            link,
+            jobTitle,
+            datePosted,
+            dateAddedToRecord,
+            responseDate,
+            jobDescription,
+            notes,
             timeAdded: today.getTime(),
             index: all_items.length
         }));

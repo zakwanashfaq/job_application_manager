@@ -17,13 +17,12 @@ function OffCanvasBar(props) {
                 <ul className="">
                     <li>Ability to reorder list (put at certain index)</li>
                     <li>Ability to reorder list by drag and drop</li>
-                    <li>Ability to delete records (Upcoming)</li>
-                    <li>Ability to modify records (Upcoming)</li>
+                    <li>Ability to delete records</li>
+                    <li>Ability to modify records</li>
+                    <li>Search for a particular record </li>
                     <li>Mass Selection (Upcoming)</li>
                     <li>Sort by column (Upcoming)</li>
-                    <li>Search for a particular record (Upcoming)</li>
                     <li>Pagination/Lazy load for a large list (Upcoming)</li>
-                    <li>More meta data for each item (Upcoming)</li>
                 </ul>
                 <div className="">
                     *This will eventually be a sub-module for an AIO job 
