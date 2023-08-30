@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import AddItem from "./components/addItem";
 import { useEffect, useState } from "react";
 import { fetchData, selectAllItems } from "./redux/items";
+import { AddAndSearchBar } from "./components/addAndSearchBar";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
     <div className="mainContainer">
       <div className="container-xl">
         <Header />
+        <AddAndSearchBar />
         <AddItem />
         <ApplicationList>
           {data.sort((a, b) => b.index - a.index).map(item => {

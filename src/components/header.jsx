@@ -1,4 +1,5 @@
 
+
 function OffCanvasBar(props) {
     return <div className="">
         <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
@@ -70,6 +71,8 @@ function ModalPopover(props) {
         </div>
     </div>
 }
+
+
 
 function Header(params) {
     return(<div className="header-container">

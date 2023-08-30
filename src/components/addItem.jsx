@@ -39,10 +39,7 @@ function AddItem(props) {
 
     return (
         <>
-            <button type="button" class="ms-2 btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItemModal">
-                Add a new job posting
-            </button>
-            <div className="modal fade" id="addItemModal" tabindex="-1" aria-labelledby="addItemModalLabel" aria-hidden="true">
+            <div className="modal fade" id="addItemModal" tabIndex="-1" aria-labelledby="addItemModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-scrollable">
                     <div className="modal-content p-2">
                         <div className="modal-header">
