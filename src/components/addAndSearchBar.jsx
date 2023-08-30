@@ -1,7 +1,7 @@
 export function AddAndSearchBar(){
     return (
         <div className="addAndSearchBar-container sticky-top ">
-            <div className="p-1 px-3 container-xl">
+            <div className="p-1 px-3 px-xl-0 container-xl">
                 <div className="my-3 d-flex flex-row">
                     <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItemModal">
                         Add a new job posting
