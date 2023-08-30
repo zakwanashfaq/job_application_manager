@@ -92,14 +92,6 @@
 .mainContainer .item-end-column .date-box {
   padding: 0px;
 }
-.add-item-container input {
-  padding: 0 0 0 10px;
-  width: -webkit-fill-available;
-  height: 100%;
-}
-.add-item-container .full-width {
-  width: -webkit-fill-available;
-}
 .truncate-link {
   display: inline-block;
   overflow: hidden;
