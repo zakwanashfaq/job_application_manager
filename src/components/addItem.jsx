@@ -64,11 +64,11 @@ function AddItem(props) {
                             </div>
                             <div className="p-1">
                                 <label className="form-label">Description</label>
-                                <textarea className="form-control" rows="6"></textarea>
+                                <textarea className="form-control" rows="5"></textarea>
                             </div>
                             <div className="p-1">
                                 <label className="form-label">Notes</label>
-                                <textarea className="form-control" rows="12"></textarea>
+                                <textarea className="form-control" rows="2"></textarea>
                             </div>
                         </div>
                         <div className="m-1 modal-footer">
