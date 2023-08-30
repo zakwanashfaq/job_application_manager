@@ -24,7 +24,7 @@ function App() {
   
   return (
     <div className="mainContainer">
-      <div className="container-xl">
+      <div className="">
         <Header />
         <AddAndSearchBar />
         <AddItem />

@@ -3,11 +3,12 @@
   padding: 0;
   margin: 0;
   min-height: 100vh;
-  background: rgb(238,226,174);
-  background: linear-gradient(176deg, rgba(238,226,174,1) 40%, rgba(212,181,219,1) 80%, rgba(178,178,178,1) 100%);
+  background: rgb(220, 230, 230);
+  // background: linear-gradient(176deg, rgba(238,226,174,1) 40%, rgba(212,181,219,1) 80%, rgba(178,178,178,1) 100%);
   
   .header-container{
-    padding: 50px 10px 10px 10px;
+    background-color: rgb(43, 109, 139);
+
     .header-container-first-row{
       display: flex;
       flex-direction: row;
@@ -16,6 +17,18 @@
       justify-content: space-between;
       align-items: center;
     }
+
+    .header-container-info {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .addAndSearchBar-container {
+    background-color: rgb(3, 42, 70);
   }
 
   .application-list-container{
@@ -23,7 +36,7 @@
     margin-top: 30px;
     padding: 10px;
     border-radius: 10px;
-    background-color: rgba(233, 231, 199, 0.692);
+    background-color: rgba(240, 250, 250, 0.692);
   }
 
   .checkbox{
@@ -35,7 +48,7 @@
     margin: 15px 5px;
     padding: 10px;
     border-radius: 10px;
-    background-color: rgb(255, 254, 245);
+    background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: row;
     align-content: center;
