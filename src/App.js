@@ -30,11 +30,12 @@ function App() {
         <AddItem />
         <ApplicationList>
           {data.sort((a, b) => b.index - a.index).map(item => {
-            if (item.name) {
+            if (!item.jobTitle && item.name) {
               const modifiedItem = {
                 ...item, 
                 jobTitle: item.name
               }
+              delete modifiedItem.name;
               return <Item key={item.id} {...modifiedItem}/>
             } else {
               return <Item key={item.id} {...item}/>

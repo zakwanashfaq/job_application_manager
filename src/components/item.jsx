@@ -32,6 +32,8 @@ function EditItem(props) {
     const [notes, setNotes] = useState(props.notes);
     const [responseDate, setResponseDate] = useState(props.responseDate);
     const [applied, setApplied] = useState(props.applied);
+    const [isReadOnly, setIsReadOnly] = useState(true);
+    const [showUpdateAlert, setShowAlert] = useState(false);
 
     const handleCompanyNameChange = (e) => {
         setCompanyName(e.target.value);
@@ -40,7 +42,10 @@ function EditItem(props) {
     const handleDatePostedChange = (e) => {
         setDatePosted(e.target.value);
     }
-
+    
+    const handleResponseDateChange = (e) => {
+        setResponseDate(e.target.value);
+    }
 
     const handleJobTitleChange = (e) => {
         setJobTitle(e.target.value)
@@ -48,10 +53,6 @@ function EditItem(props) {
 
     const handleNotesChange = (e) => {
         setNotes(e.target.value);
-    }
-
-    const handleResponseDateChange = (e) => {
-        setResponseDate(e.target.value);
     }
 
     const handleJobDescriptionChange = (e) => {
@@ -63,20 +64,32 @@ function EditItem(props) {
     }
 
     const handleUpdateClick = () => {
+
+        if (isReadOnly) {
+            setIsReadOnly(false);
+            return;
+        }
+
         dispatch(updateItem({
             id: props.id,
-            name: jobTitle,
-            link: link
+            jobTitle,
+            link,
+            companyName,
+            jobDescription,
+            notes
         }));
 
-        const modalElement = document.getElementById(target_id);
-        modalElement.classList.remove('show');
-        document.body.classList.remove('modal-open');
+        setShowAlert(true);
 
-        const modalBackdrops = document.getElementsByClassName('modal-backdrop');
-        for (let i = 0; i < modalBackdrops.length; i++) {
-            modalBackdrops[i].classList.remove('show');
-        }
+        // infinite loop caused here
+        // const modalElement = document.getElementById(target_id);
+        // modalElement.classList.remove('show');
+        // document.body.classList.remove('modal-open');
+
+        // const modalBackdrops = document.getElementsByClassName('modal-backdrop');
+        // for (let i = 0; i < modalBackdrops.length; i++) {
+        //     modalBackdrops[i].classList.remove('show');
+        // }
     }
 
     const handleAppliedButtonClick = (e) => {
@@ -88,6 +101,16 @@ function EditItem(props) {
         setApplied(newAppliedState);
     }
 
+
+    useEffect(() => {
+        if (showUpdateAlert) {
+            const timer = setTimeout(() => {
+                setShowAlert(false);
+            }, 3000);
+            
+            return () => clearTimeout(timer); // Clear the timer if the component is unmounted
+        }
+    }, [showUpdateAlert]);
 
 
     return <div className='ps-2'>
@@ -103,43 +126,51 @@ function EditItem(props) {
             <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" id="editModalBox">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h1 className="modal-title fs-5" id="exampleModalLabel">Edit item</h1>
+                        <h1 className="modal-title fs-5 d-flex flex-row">
+                            Job post details
+                        </h1>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
                         <div className="row">
-                            <div className='p-1 px-lg-3 col-12 col-lg-6'>
+                            <div className='p-1 px-lg-3 col-12 col-lg-4'>
                                 <div className="mb-3">
                                     <label className="form-label ps-1">Job Title</label>
-                                    <input className="form-control" placeholder="" value={jobTitle} onChange={handleJobTitleChange} />
+                                    <input className="form-control" placeholder="" value={jobTitle} onChange={handleJobTitleChange} readOnly={isReadOnly} />
                                 </div>
                                 <div className="mb-3">
                                     <label className="form-label ps-1">Company Name</label>
-                                    <input className="form-control" placeholder="" value={jobTitle} onChange={handleCompanyNameChange} />
+                                    <input className="form-control" placeholder="" value={companyName} onChange={handleCompanyNameChange} readOnly={isReadOnly} />
                                 </div>
                                 <div className="mb-3">
                                     <label className="form-label ps-1">Link</label>
-                                    <input className="form-control" placeholder="https//lineToPost.com/postID" value={link} onChange={handleLinkChange} />
+                                    <input className="form-control" placeholder="https//lineToPost.com/postID" value={link} onChange={handleLinkChange} readOnly={isReadOnly} />
                                 </div>
                             </div>
-                            <div className="p-1 px-lg-3 col-12 col-lg-6">
+                            <div className="p-1 px-lg-3 col-12 col-lg-8">
                                 <div className="textarea-container">
                                     <div className="mb-3">
                                         <label className="form-label">Description</label>
-                                        <textarea className="form-control description-textarea" value={jobDescription} onChange={handleJobDescriptionChange}></textarea>
+                                        <textarea className="form-control description-textarea" value={jobDescription} onChange={handleJobDescriptionChange} readOnly={isReadOnly} ></textarea>
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label">Notes</label>
-                                        <textarea className="form-control notes-textarea" value={notes} onChange={handleNotesChange}></textarea>
+                                        <textarea className="form-control notes-textarea" value={notes} onChange={handleNotesChange} readOnly={isReadOnly} ></textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="modal-footer d-flex justify-content-between">
-                        <div>
+                        <div className="d-flex flex-row">
                             <button type="button" className="btn btn-success" onClick={handleAppliedButtonClick}>{props.applied ? "Unmark as applied" : "Mark as applied"}</button>
-                            <button type="button" className="btn btn-primary ms-2" onClick={handleUpdateClick}>Update</button>
+                            <button type="button" className="btn btn-primary ms-2" onClick={handleUpdateClick}>{isReadOnly ? "Edit" : "Update"}</button>
+                            {
+                                showUpdateAlert && 
+                                <div class="alert alert-success ms-2 py-1 m-0 fs-6" role="alert">
+                                    Updated successfully!
+                                </div>
+                            }
                         </div>
                         <div>
                             <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
