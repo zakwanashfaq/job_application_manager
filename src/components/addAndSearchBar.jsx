@@ -1,4 +1,12 @@
-export function AddAndSearchBar(){
+/**
+@param {Object} props - The properties for the item.
+ * @param {function } searchText
+ * @param {string} setSearchText
+ * */
+export function AddAndSearchBar(props){
+    const onSearchTextChange = (e) => {
+        props.setSearchText(e.target.value);
+    }
     return (
         <div className="addAndSearchBar-container sticky-top ">
             <div className="p-1 px-3 px-xl-0 container-xl">
@@ -8,7 +16,7 @@ export function AddAndSearchBar(){
                     </button>
                     <div className="input-group ps-2">
                         <span className="input-group-text">Search</span>
-                        <input type="text" className="form-control" placeholder="Search by company name or job title..." aria-label="Username" />
+                        <input type="text" className="form-control" value={props.searchText} onChange={onSearchTextChange} placeholder="Search by company name or job title..." aria-label="Username" />
                     </div>
                 </div>
             </div>

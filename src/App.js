@@ -13,7 +13,8 @@ function App() {
   const data = useSelector(selectAllItems);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-  
+  const [searchText, setSearchText] = useState("");
+
   useEffect(() => {
     dispatch(fetchData()).then(() => setLoading(false));
   }, [dispatch]);
@@ -21,28 +22,36 @@ function App() {
   if (loading) {
     return <div>Loading...</div>;
   }
-  
+
   return (
     <div className="mainContainer">
       <div className="">
         <Header />
-        <AddAndSearchBar />
-        <AddItem />
+        <AddAndSearchBar searchText={searchText} setSearchText={setSearchText}/>
+        <AddItem/>
         <ApplicationList>
-          {data.sort((a, b) => b.index - a.index).map(item => {
-            if (!item.jobTitle && item.name) {
-              const modifiedItem = {
-                ...item, 
-                jobTitle: item.name
+          {data
+            .filter(item => {
+              // Check if either jobTitle or companyName contains the searchText
+              const title = item.jobTitle || item.name;  // Considering 'name' might be used as a fallback for jobTitle
+              return (title && title.includes(searchText)) || (item.companyName && item.companyName.includes(searchText));
+            })
+            .sort((a, b) => b.index - a.index)
+            .map(item => {
+              if (!item.jobTitle && item.name) {
+                const modifiedItem = {
+                  ...item,
+                  jobTitle: item.name
+                }
+                delete modifiedItem.name;
+                return <Item key={item.id} {...modifiedItem} />
+              } else {
+                return <Item key={item.id} {...item} />
               }
-              delete modifiedItem.name;
-              return <Item key={item.id} {...modifiedItem}/>
-            } else {
-              return <Item key={item.id} {...item}/>
-            }
-          })}
+            })}
         </ApplicationList>
-        <br />      
+
+        <br />
       </div>
     </div>
   );
