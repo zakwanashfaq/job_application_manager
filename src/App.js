@@ -7,6 +7,7 @@ import AddItem from "./components/addItem";
 import { useEffect, useState } from "react";
 import { fetchData, selectAllItems } from "./redux/items";
 import { AddAndSearchBar } from "./components/addAndSearchBar";
+import OldItem from "./components/old_item_v1";
 
 
 function App() {
@@ -30,7 +31,15 @@ function App() {
         <AddItem />
         <ApplicationList>
           {data.sort((a, b) => b.index - a.index).map(item => {
-            return <Item key={item.id} id={item.id} applied={item.applied} name={item.name} link={item.link} timeAdded={item.timeAdded}/>
+            if (item.name) {
+              const modifiedItem = {
+                ...item, 
+                jobTitle: item.name
+              }
+              return <Item key={item.id} {...modifiedItem}/>
+            } else {
+              return <Item key={item.id} {...item}/>
+            }
           })}
         </ApplicationList>
         <br />      

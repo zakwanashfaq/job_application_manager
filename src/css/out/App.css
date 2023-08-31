@@ -43,6 +43,15 @@ html ::-webkit-scrollbar-thumb:hover {
 .mainContainer .addAndSearchBar-container {
   background-color: #032a46;
 }
+.mainContainer .addAndSearchBar-container .add-new-record-btn {
+  background-color: #2b6d8b;
+}
+.mainContainer .addAndSearchBar-container .add-new-record-btn:hover {
+  background-color: #3382a7;
+}
+.mainContainer .addAndSearchBar-container .add-new-record-btn:active {
+  background-color: #1e5a78;
+}
 .mainContainer .application-list-container {
   height: max-content;
   margin-top: 30px;
@@ -88,7 +97,7 @@ html ::-webkit-scrollbar-thumb:hover {
   align-items: center;
 }
 .mainContainer .item-container .item-hover-container .item-hover-toolbar-edit-button {
-  color: #056193;
+  color: #0489d0;
 }
 .mainContainer .item-container .item-hover-container .item-hover-toolbar-edit-button :hover {
   cursor: pointer;
@@ -107,7 +116,6 @@ html ::-webkit-scrollbar-thumb:hover {
   overflow-wrap: anywhere;
 }
 .mainContainer .item-end-column {
-  padding: 6px;
   display: flex;
   width: auto;
   justify-content: space-between;
