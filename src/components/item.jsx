@@ -101,6 +101,10 @@ function EditItem(props) {
         setApplied(newAppliedState);
     }
 
+    const onCloseButtonClick = (e) => {
+        setIsReadOnly(true);
+    }
+
 
     useEffect(() => {
         if (showUpdateAlert) {
@@ -127,9 +131,9 @@ function EditItem(props) {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h1 className="modal-title fs-5 d-flex flex-row">
-                            Job post details
+                            {isReadOnly ? "Job post details" : "Edit job post details"}
                         </h1>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={onCloseButtonClick}></button>
                     </div>
                     <div className="modal-body">
                         <div className="row">
@@ -173,7 +177,7 @@ function EditItem(props) {
                             }
                         </div>
                         <div>
-                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal"  onClick={onCloseButtonClick}>Close</button>
                         </div>
                     </div>
                 </div>
