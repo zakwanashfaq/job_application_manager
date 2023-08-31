@@ -7,7 +7,6 @@ import AddItem from "./components/addItem";
 import { useEffect, useState } from "react";
 import { fetchData, selectAllItems } from "./redux/items";
 import { AddAndSearchBar } from "./components/addAndSearchBar";
-import OldItem from "./components/old_item_v1";
 
 
 function App() {
