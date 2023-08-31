@@ -1,4 +1,5 @@
 html {
+  background-color: #dce6e6;
   /* width */
   /* Track */
   /* Handle */
@@ -67,6 +68,9 @@ html ::-webkit-scrollbar-thumb:hover {
 .mainContainer .checkbox {
   margin: 0 10px;
 }
+.mainContainer .item-applied {
+  background-color: #a4a4a4 !important;
+}
 .mainContainer .item-container {
   height: max-content;
   margin: 15px 5px;
@@ -97,7 +101,7 @@ html ::-webkit-scrollbar-thumb:hover {
   align-items: center;
 }
 .mainContainer .item-container .item-hover-container .item-hover-toolbar-edit-button {
-  color: #0489d0;
+  color: #00121c;
 }
 .mainContainer .item-container .item-hover-container .item-hover-toolbar-edit-button :hover {
   cursor: pointer;

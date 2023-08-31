@@ -26,6 +26,7 @@ function EditItem(props) {
     //const [companyName, setCompanyName] = useState("");
     const [jobTitle, setJobTitle] = useState(props.jobTitle);
     const [link, setLink] = useState(props.link);
+    const [applied, setApplied] = useState(props.applied);
 
     // const handleCompanyNameChange = (e) => {
     //     setCompanyName(e.target.value);
@@ -54,6 +55,15 @@ function EditItem(props) {
         for (let i = 0; i < modalBackdrops.length; i++) {
             modalBackdrops[i].classList.remove('show');
         }
+    }
+
+    const handleAppliedButtonClick = (e) => {
+        let newAppliedState = !applied;
+        dispatch(updateItem({
+            id: props.id,
+            applied: newAppliedState
+        }));
+        setApplied(newAppliedState);
     }
 
 
@@ -88,9 +98,14 @@ function EditItem(props) {
                             <input className="form-control" placeholder="Link" value={link} onChange={handleLinkChange} />
                         </div>
                     </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-primary" onClick={handleUpdateClick}>Update</button>
-                        <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <div className="modal-footer d-flex justify-content-between">
+                        <div>
+                            <button type="button" className="btn btn-success" onClick={handleAppliedButtonClick}>{props.applied? "Unmark as applied" : "Mark as applied"}</button>
+                            <button type="button" className="btn btn-primary ms-2" onClick={handleUpdateClick}>Update</button>
+                        </div>
+                        <div>
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -129,6 +144,7 @@ function Item(props) {
     let shortLink = getShortString(props.link, 40);
     let shortJobTitle = getShortString(props.jobTitle, 30);
     let shortCompanyName = getShortString(props.companyName, 30);
+    const target_id = "editModal-" + props.id;
     //const [isSelected, setIsSelected] = useState(false);
     // props.applied
     // const handleOnSelect = (e) => {
@@ -156,7 +172,7 @@ function Item(props) {
     }
 
     return (
-        <div className="item-container p-4" id={props.id}>
+        <div className={"item-container p-3 " + (props.applied? "item-applied" : "")} id={props.id}>
             <div className=" item-hover col-12 col-sm-12 col-md-5">
                 <div className='item-hover-container'>
                     <div className="item-start-block">
@@ -168,7 +184,7 @@ function Item(props) {
                         {/* <input className="checkbox" type="checkbox" title="checkbox" onChange={handleOnSelect} placeholder="checkbox" value={isSelected} /> */}
                         <div className='d-flex flex-column ps-4'>
                             <div className="d-flex flex-row">
-                                <strong className='pt-1'>
+                                <strong className={"pt-1 " + (props.applied? "text-decoration-line-through" : "")} data-bs-toggle="modal" data-bs-target={"#" + target_id}>
                                     {shortJobTitle}
                                 </strong>
                                 <EditItem {...props} />
@@ -185,7 +201,7 @@ function Item(props) {
                     rel="noreferrer"
                     href={props.link}
                     target="_blank"
-                    className="truncate-link"
+                    className="truncate-link text-dark"
                     data-full-link={props.link}
                 >
                     {shortLink}
