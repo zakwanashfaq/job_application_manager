@@ -195,3 +195,23 @@ html {
   white-space: normal;
   max-width: fit-content;
 }
+
+.viewRecordModal{
+  .textarea-container {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .description-textarea {
+      flex: 7; /* 70% of the height */
+      height: 50vh; /* You can adjust this value based on your layout needs */
+      overflow: auto; /* To make sure content doesn't overflow the container */
+  }
+
+  .notes-textarea {
+      flex: 3; /* 30% of the height */
+      overflow: auto;
+      
+  }
+
+}

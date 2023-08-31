@@ -23,17 +23,39 @@ import { deleteItem, updateItem } from '../redux/items';
 function EditItem(props) {
     const target_id = "editModal-" + props.id;
     const dispatch = useDispatch();
-    //const [companyName, setCompanyName] = useState("");
+
+    const [companyName, setCompanyName] = useState(props.companyName);
+    const [datePosted, setDatePosted] = useState(props.datePosted);
+    const [jobDescription, setJobDescription] = useState(props.jobDescription);
     const [jobTitle, setJobTitle] = useState(props.jobTitle);
     const [link, setLink] = useState(props.link);
+    const [notes, setNotes] = useState(props.notes);
+    const [responseDate, setResponseDate] = useState(props.responseDate);
     const [applied, setApplied] = useState(props.applied);
 
-    // const handleCompanyNameChange = (e) => {
-    //     setCompanyName(e.target.value);
-    // }
+    const handleCompanyNameChange = (e) => {
+        setCompanyName(e.target.value);
+    }
+
+    const handleDatePostedChange = (e) => {
+        setDatePosted(e.target.value);
+    }
+
 
     const handleJobTitleChange = (e) => {
         setJobTitle(e.target.value)
+    }
+
+    const handleNotesChange = (e) => {
+        setNotes(e.target.value);
+    }
+
+    const handleResponseDateChange = (e) => {
+        setResponseDate(e.target.value);
+    }
+
+    const handleJobDescriptionChange = (e) => {
+        setJobDescription(e.target.value);
     }
 
     const handleLinkChange = (e) => {
@@ -72,35 +94,51 @@ function EditItem(props) {
         {/* eslint-disable-next-line */}
         <a data-bs-toggle="modal" data-bs-target={"#" + target_id}>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-arrow-up-right item-hover-toolbar-edit-button" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
-                <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z" />
+                <path fillRule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
+                <path fillRule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z" />
             </svg>
         </a>
 
-        <div className="modal fade" id={target_id} tabIndex="-1" aria-hidden="true">
-            <div className="modal-dialog" id="editModalBox">
+        <div className="viewRecordModal modal fade" id={target_id} tabIndex="-1" aria-hidden="true">
+            <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" id="editModalBox">
                 <div className="modal-content">
                     <div className="modal-header">
                         <h1 className="modal-title fs-5" id="exampleModalLabel">Edit item</h1>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
-                        {/* <div className="mb-3">
-                            <label className="form-label ps-1">Company Name</label>
-                            <input className="form-control" placeholder="Name" value={companyName} onChange={handleCompanyNameChange} />
-                        </div> */}
-                        <div className="mb-3">
-                            <label className="form-label ps-1">Job Title</label>
-                            <input className="form-control" placeholder="Title" value={jobTitle} onChange={handleJobTitleChange} />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label ps-1">Link</label>
-                            <input className="form-control" placeholder="Link" value={link} onChange={handleLinkChange} />
+                        <div className="row">
+                            <div className='p-1 px-lg-3 col-12 col-lg-6'>
+                                <div className="mb-3">
+                                    <label className="form-label ps-1">Job Title</label>
+                                    <input className="form-control" placeholder="" value={jobTitle} onChange={handleJobTitleChange} />
+                                </div>
+                                <div className="mb-3">
+                                    <label className="form-label ps-1">Company Name</label>
+                                    <input className="form-control" placeholder="" value={jobTitle} onChange={handleCompanyNameChange} />
+                                </div>
+                                <div className="mb-3">
+                                    <label className="form-label ps-1">Link</label>
+                                    <input className="form-control" placeholder="https//lineToPost.com/postID" value={link} onChange={handleLinkChange} />
+                                </div>
+                            </div>
+                            <div className="p-1 px-lg-3 col-12 col-lg-6">
+                                <div className="textarea-container">
+                                    <div className="mb-3">
+                                        <label className="form-label">Description</label>
+                                        <textarea className="form-control description-textarea" value={jobDescription} onChange={handleJobDescriptionChange}></textarea>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="form-label">Notes</label>
+                                        <textarea className="form-control notes-textarea" value={notes} onChange={handleNotesChange}></textarea>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="modal-footer d-flex justify-content-between">
                         <div>
-                            <button type="button" className="btn btn-success" onClick={handleAppliedButtonClick}>{props.applied? "Unmark as applied" : "Mark as applied"}</button>
+                            <button type="button" className="btn btn-success" onClick={handleAppliedButtonClick}>{props.applied ? "Unmark as applied" : "Mark as applied"}</button>
                             <button type="button" className="btn btn-primary ms-2" onClick={handleUpdateClick}>Update</button>
                         </div>
                         <div>
@@ -172,7 +210,7 @@ function Item(props) {
     }
 
     return (
-        <div className={"item-container p-3 " + (props.applied? "item-applied" : "")} id={props.id}>
+        <div className={"item-container p-3 " + (props.applied ? "item-applied" : "")} id={props.id}>
             <div className=" item-hover col-12 col-sm-12 col-md-5">
                 <div className='item-hover-container'>
                     <div className="item-start-block">
@@ -184,7 +222,7 @@ function Item(props) {
                         {/* <input className="checkbox" type="checkbox" title="checkbox" onChange={handleOnSelect} placeholder="checkbox" value={isSelected} /> */}
                         <div className='d-flex flex-column ps-4'>
                             <div className="d-flex flex-row">
-                                <strong className={"pt-1 " + (props.applied? "text-decoration-line-through" : "")} data-bs-toggle="modal" data-bs-target={"#" + target_id}>
+                                <strong className={"pt-1 " + (props.applied ? "text-decoration-line-through" : "")} data-bs-toggle="modal" data-bs-target={"#" + target_id}>
                                     {shortJobTitle}
                                 </strong>
                                 <EditItem {...props} />

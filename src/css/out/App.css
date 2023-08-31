@@ -148,4 +148,21 @@ html ::-webkit-scrollbar-thumb:hover {
   white-space: normal;
   max-width: fit-content;
 }
+.viewRecordModal .textarea-container {
+  display: flex;
+  flex-direction: column;
+}
+.viewRecordModal .description-textarea {
+  flex: 7;
+  /* 70% of the height */
+  height: 50vh;
+  /* You can adjust this value based on your layout needs */
+  overflow: auto;
+  /* To make sure content doesn't overflow the container */
+}
+.viewRecordModal .notes-textarea {
+  flex: 3;
+  /* 30% of the height */
+  overflow: auto;
+}
 /*# sourceMappingURL=App.css.map */
