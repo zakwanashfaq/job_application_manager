@@ -106,14 +106,14 @@ function Footer(props) {
     return (
         <div class="container">
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top">
-                <div class="col-md-4 d-flex align-items-center">
+                <div class="col-md-6 d-flex align-items-center">
                     <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
                         <svg class="bi" width="30" height="24"><use href="#bootstrap"></use></svg>
                     </a>
-                    <span class="mb-3 mb-md-0 text-body-secondary">© 2023 Job Application Manager</span>
+                    <span class="mb-3 mb-md-0 text-body-secondary">© 2023 Job Application Manager. Built by Zakwan Ashfaq.</span>
                 </div>
 
-                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                <ul class="nav col-md-6 justify-content-end list-unstyled d-flex">
                     <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use href="#twitter"></use></svg></a></li>
                     <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use href="#instagram"></use></svg></a></li>
                     <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use href="#facebook"></use></svg></a></li>
@@ -127,7 +127,7 @@ function Features(props) {
     return (
         <div id="features" className="features-main-container">
             <div class="container px-4 py-5" id="featured-3">
-                <h2 class="pb-2 border-bottom">Give yourself the advantage you deserve</h2>
+                <h2 class="pb-2 border-bottom">Give yourself <b>the advantage</b> you deserve</h2>
                 <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
                     <div class="feature col">
                         <div class="feature-icon feature-icon-background rounded-4 text-white d-inline-flex align-items-center justify-content-center bg-gradient p-4 fs-2 mb-3">
@@ -135,7 +135,7 @@ function Features(props) {
                                 <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v4.5h2a.5.5 0 0 1 .354.854l-2.5 2.5a.5.5 0 0 1-.708 0l-2.5-2.5A.5.5 0 0 1 5.5 6.5h2V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z" />
                             </svg>
                         </div>
-                        <h3 class="fs-2 text-body-emphasis">Save posts to view later</h3>
+                        <h3 class="fs-2 text-body-emphasis">Save details to view later</h3>
                         <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
                     </div>
                     <div class="feature col">
@@ -160,10 +160,10 @@ function Features(props) {
                     <div class="feature col">
                         <div class="feature-icon feature-icon-background rounded-4 text-white d-inline-flex align-items-center justify-content-center bg-gradient p-4 fs-2 mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-save2" viewBox="0 0 16 16">
-                                <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v4.5h2a.5.5 0 0 1 .354.854l-2.5 2.5a.5.5 0 0 1-.708 0l-2.5-2.5A.5.5 0 0 1 5.5 6.5h2V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z" />
+                                <path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 15 8.586V2.5A1.5 1.5 0 0 0 13.5 1h-11zM2 2.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5V8H9.5A1.5 1.5 0 0 0 8 9.5V14H2.5a.5.5 0 0 1-.5-.5v-11zm7 11.293V9.5a.5.5 0 0 1 .5-.5h4.293L9 13.793z" />
                             </svg>
                         </div>
-                        <h3 class="fs-2 text-body-emphasis">Save posts to view later</h3>
+                        <h3 class="fs-2 text-body-emphasis">Handy notes</h3>
                         <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
                     </div>
                     <div class="feature col">
@@ -191,12 +191,114 @@ function Features(props) {
     );
 }
 
+function Testemonials(props) {
+    return (
+        <div class="container-xl">
+            <div class="row p-2">
+                <div class="col-sm-12">
+                    <h2>What <b>our users</b> are saying</h2>
+                    <div id="myCarousel" class="carousel slide pointer-event" data-ride="carousel">
+                        {/* <!-- Carousel indicators --> */}
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                            <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+                        </ol>
+                        {/* <!-- Wrapper for carousel items --> */}
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="media">
+                                            <img src="/examples/images/clients/1.jpg" class="mr-3" alt="" />
+                                            <div class="media-body">
+                                                <div class="testimonial">
+                                                    <p>Lorem ipsum dolor sit amet, consec adipiscing elit. Nam eusem scelerisque tempor, varius quam luctus dui. Mauris magna metus nec.</p>
+                                                    <p class="overview"><b>Paula Wilson</b>, Media Analyst</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="media">
+                                            <img src="/examples/images/clients/2.jpg" class="mr-3" alt="" />
+                                            <div class="media-body">
+                                                <div class="testimonial">
+                                                    <p>Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget mi suscipit tincidunt. Utmtc tempus dictum. Pellentesque virra.</p>
+                                                    <p class="overview"><b>Antonio Moreno</b>, Web Developer</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="media">
+                                            <img src="/examples/images/clients/3.jpg" class="mr-3" alt="" />
+                                            <div class="media-body">
+                                                <div class="testimonial">
+                                                    <p>Lorem ipsum dolor sit amet, consec adipiscing elit. Nam eusem scelerisque tempor, varius quam luctus dui. Mauris magna metus nec.</p>
+                                                    <p class="overview"><b>Michael Holz</b>, Seo Analyst</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="media">
+                                            <img src="/examples/images/clients/4.jpg" class="mr-3" alt="" />
+                                            <div class="media-body">
+                                                <div class="testimonial">
+                                                    <p>Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget mi suscipit tincidunt. Utmtc tempus dictum. Pellentesque virra.</p>
+                                                    <p class="overview"><b>Mary Saveley</b>, Web Designer</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="media">
+                                            <img src="/examples/images/clients/5.jpg" class="mr-3" alt="" />
+                                            <div class="media-body">
+                                                <div class="testimonial">
+                                                    <p>Lorem ipsum dolor sit amet, consec adipiscing elit. Nam eusem scelerisque tempor, varius quam luctus dui. Mauris magna metus nec.</p>
+                                                    <p class="overview"><b>Martin Sommer</b>, UX Analyst</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="media">
+                                            <img src="/examples/images/clients/6.jpg" class="mr-3" alt="" />
+                                            <div class="media-body">
+                                                <div class="testimonial">
+                                                    <p>Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget mi suscipit tincidunt. Utmtc tempus dictum. Pellentesque virra.</p>
+                                                    <p class="overview"><b>John Williams</b>, Web Developer</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
 export function LandingPage(props) {
     return (
         <div>
             <Navbar />
             <Hero />
             <Features />
+            <Testemonials />
             <Footer />
         </div>
     );
