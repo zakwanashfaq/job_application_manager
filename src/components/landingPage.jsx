@@ -22,7 +22,7 @@ function Navbar(props) {
                             <li class="nav-item px-3">
                                 <a class="nav-link" href="#features">Features</a>
                             </li>
-                            <li class="nav-item px-3">
+                            {/* <li class="nav-item px-3">
                                 <a class="nav-link" href="#">Instructions</a>
                             </li>
                             <li class="nav-item px-3">
@@ -30,11 +30,11 @@ function Navbar(props) {
                             </li>
                             <li class="nav-item px-3">
                                 <a class="nav-link">About</a>
-                            </li>
+                            </li> */}
                         </ul>
                         {/* <button className="btn btn-sm btn-outline-dark ms-2 p-2 ms-md-4" type="submit">Log in</button>
                         <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit">Sign up</button> */}
-                        <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit" onClick={() => window.location.href = "/app"}>Go to app</button>
+                        <button className="button-theme-color btn btn-sm btn-primary ms-4 p-2" type="submit" onClick={() => window.location.href = "/app"}>Go to app</button>
                     </div>
                 </form>
                 <button class="d-lg-none navbar-toggler mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +51,7 @@ function Navbar(props) {
                                     <li class="nav-item d-flex justify-content-center pb-2">
                                         <a class="nav-link" href="#features">Features</a>
                                     </li>
-                                    <li class="nav-item d-flex justify-content-center pb-2">
+                                    {/* <li class="nav-item d-flex justify-content-center pb-2">
                                         <a class="nav-link" href="#">Instructions</a>
                                     </li>
                                     <li class="nav-item d-flex justify-content-center pb-2">
@@ -59,13 +59,13 @@ function Navbar(props) {
                                     </li>
                                     <li class="nav-item d-flex justify-content-center pb-4">
                                         <a class="nav-link">About</a>
-                                    </li>
+                                    </li> */}
                                 </ul>
 
                                 <div className="d-flex flex-row">
                                     {/* <button className="btn btn-sm btn-outline-dark ms-2 p-2" type="submit">Log in</button>
                                     <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit">Sign up</button> */}
-                                    <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit">Go to app</button>
+                                    <button className="button-theme-color btn btn-sm btn-primary mt-2 p-2" type="submit">Go to app</button>
                                 </div></div>
                         </div>
                     </div>
