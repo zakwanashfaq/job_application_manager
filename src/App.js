@@ -34,7 +34,7 @@ function App() {
             .filter(item => {
               // Check if either jobTitle or companyName contains the searchText
               const title = item.jobTitle || item.name;  // Considering 'name' might be used as a fallback for jobTitle
-              return (title && title.includes(searchText)) || (item.companyName && item.companyName.includes(searchText));
+              return (title?.toLocaleLowerCase() && title?.toLocaleLowerCase().includes(searchText?.toLocaleLowerCase())) || (item.companyName?.toLocaleLowerCase() && item.companyName?.toLocaleLowerCase().includes(searchText?.toLocaleLowerCase()));
             })
             .sort((a, b) => b.index - a.index)
             .map(item => {
