@@ -31,8 +31,9 @@ function Navbar(props) {
                                 <a class="nav-link">About</a>
                             </li>
                         </ul>
-                        <button className="btn btn-sm btn-outline-dark ms-2 p-2 ms-md-4" type="submit">Log in</button>
-                        <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit">Sign up</button>
+                        {/* <button className="btn btn-sm btn-outline-dark ms-2 p-2 ms-md-4" type="submit">Log in</button>
+                        <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit">Sign up</button> */}
+                        <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit" onClick={() => window.location.href="/app"}>Go to app</button>
                     </div>
                 </form>
                 <button class="d-lg-none navbar-toggler mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,8 +62,9 @@ function Navbar(props) {
                                 </ul>
 
                                 <div className="d-flex flex-row">
-                                    <button className="btn btn-sm btn-outline-dark ms-2 p-2" type="submit">Log in</button>
-                                    <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit">Sign up</button>
+                                    {/* <button className="btn btn-sm btn-outline-dark ms-2 p-2" type="submit">Log in</button>
+                                    <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit">Sign up</button> */}
+                                    <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit">Go to app</button>
                                 </div></div>
                         </div>
                     </div>
@@ -86,7 +88,8 @@ function Hero(props) {
                     It helps you to organize, save, track, filter and much much more!
                 </p>
                 <div className="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-                    <button type="button" className="button-theme-color btn btn-primary btn-lg px-4 my-sm-3 py-3">Sign up! It's free...</button>
+                    <button type="button" className="button-theme-color btn btn-primary btn-lg px-4 my-sm-3 py-3">Try the app and be amazed!</button>
+                    {/* <button type="button" className="button-theme-color btn btn-primary btn-lg px-4 my-sm-3 py-3">Sign up! It's free...</button> */}
                 </div>
             </div>
             <div className="overflow-hidden landing-hero-image">
