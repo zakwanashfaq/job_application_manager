@@ -1,0 +1,33 @@
+@primary-color: rgb(43, 109, 139);
+
+.landing-nav-container {
+    .nav-icon-color {
+        color: @primary-color !important;
+    }
+}
+
+.button-theme-color {
+    background-color: @primary-color;
+    &:hover {
+        background-color: rgb(51, 130, 167);
+    }
+
+    &:active {
+        background-color: rgb(30, 90, 120);
+    }
+}
+
+.landing-hero-container {
+    .landing-hero-image {
+        max-height: 300px;
+    }
+
+    .hero-main-text-container{
+        display: flex;
+        justify-content: center;
+
+        .hero-main-text{
+            max-width: 600px;
+        }
+    }
+}

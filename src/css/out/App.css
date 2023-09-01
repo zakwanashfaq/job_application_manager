@@ -1,3 +1,25 @@
+.landing-nav-container .nav-icon-color {
+  color: #2b6d8b !important;
+}
+.button-theme-color {
+  background-color: #2b6d8b;
+}
+.button-theme-color:hover {
+  background-color: #3382a7;
+}
+.button-theme-color:active {
+  background-color: #1e5a78;
+}
+.landing-hero-container .landing-hero-image {
+  max-height: 300px;
+}
+.landing-hero-container .hero-main-text-container {
+  display: flex;
+  justify-content: center;
+}
+.landing-hero-container .hero-main-text-container .hero-main-text {
+  max-width: 600px;
+}
 html {
   background-color: #dce6e6;
   /* width */
