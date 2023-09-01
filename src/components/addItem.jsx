@@ -1,6 +1,5 @@
 import { addItem, selectAllItems } from "../redux/items";
 import { useDispatch, useSelector } from 'react-redux'
-import ApplicationList from "./applicationsList";
 import { useState } from "react";
 
 function AddItem(props) {
