@@ -16,7 +16,7 @@ root.render(
     <Provider store={store}>
       <Router>
         <Routes>
-          <Route path="/apphome" element={<App />} />
+          <Route path="/app" element={<App />} />
           <Route path="/login" element={<div>LoginPage</div>} />
           <Route path="/" element={<div>Landing Page</div>} />
           <Route path="/how_to" element={<div>How To</div>} />
