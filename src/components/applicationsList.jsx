@@ -39,7 +39,7 @@ function ApplicationList(props) {
     }, [props.list_items]);
 
     return (
-        <div className="application-list-container" ref={listContainerRef}>
+        <div className="application-list-container container-xl" ref={listContainerRef}>
             {props.children}
         </div>
     );

@@ -3,19 +3,60 @@ import "../css/out/App.css";
 import { useDispatch } from 'react-redux';
 import { deleteItem, updateItem } from '../redux/items';
 
+/**
+ * Represents an item component that displays job application details.
+ * 
+ * @param {Object} props - The properties for the item.
+ * @param {boolean} props.applied - Indicates if the job has been applied for.
+ * @param {string} props.companyName - The name of the company.
+ * @param {number} props.datePosted - The date the job was posted.
+ * @param {string} props.id - The unique identifier for the job application.
+ * @param {number} props.index - The index number.
+ * @param {string} props.jobDescription - The description of the job.
+ * @param {string} props.jobTitle - The title of the job.
+ * @param {string} props.link - The link to the job application.
+ * @param {string} props.notes - Any additional notes.
+ * @param {number} props.responseDate - The date of response.
+ * @param {number} props.timeAdded - The timestamp when the job was added.
+ * @returns {JSX.Element} The item component.
+ */
 function EditItem(props) {
     const target_id = "editModal-" + props.id;
     const dispatch = useDispatch();
-    //const [companyName, setCompanyName] = useState("");
-    const [jobTitle, setJobTitle] = useState(props.job_title);
-    const [link, setLink] = useState(props.link);
 
-    // const handleCompanyNameChange = (e) => {
-    //     setCompanyName(e.target.value);
-    // }
+    const [companyName, setCompanyName] = useState(props.companyName);
+    const [datePosted, setDatePosted] = useState(props.datePosted);
+    const [jobDescription, setJobDescription] = useState(props.jobDescription);
+    const [jobTitle, setJobTitle] = useState(props.jobTitle);
+    const [link, setLink] = useState(props.link);
+    const [notes, setNotes] = useState(props.notes);
+    const [responseDate, setResponseDate] = useState(props.responseDate);
+    const [applied, setApplied] = useState(props.applied);
+    const [isReadOnly, setIsReadOnly] = useState(true);
+    const [showUpdateAlert, setShowAlert] = useState(false);
+
+    const handleCompanyNameChange = (e) => {
+        setCompanyName(e.target.value);
+    }
+
+    const handleDatePostedChange = (e) => {
+        setDatePosted(e.target.value);
+    }
+    
+    const handleResponseDateChange = (e) => {
+        setResponseDate(e.target.value);
+    }
 
     const handleJobTitleChange = (e) => {
         setJobTitle(e.target.value)
+    }
+
+    const handleNotesChange = (e) => {
+        setNotes(e.target.value);
+    }
+
+    const handleJobDescriptionChange = (e) => {
+        setJobDescription(e.target.value);
     }
 
     const handleLinkChange = (e) => {
@@ -23,57 +64,121 @@ function EditItem(props) {
     }
 
     const handleUpdateClick = () => {
+
+        if (isReadOnly) {
+            setIsReadOnly(false);
+            return;
+        }
+
         dispatch(updateItem({
             id: props.id,
-            name: jobTitle,
-            link: link
+            jobTitle,
+            link,
+            companyName,
+            jobDescription,
+            notes
         }));
 
-        const modalElement = document.getElementById(target_id);
-        modalElement.classList.remove('show');
-        document.body.classList.remove('modal-open');
+        setShowAlert(true);
 
-        const modalBackdrops = document.getElementsByClassName('modal-backdrop');
-        for (let i = 0; i < modalBackdrops.length; i++) {
-            modalBackdrops[i].classList.remove('show');
-        }
+        // infinite loop caused here
+        // const modalElement = document.getElementById(target_id);
+        // modalElement.classList.remove('show');
+        // document.body.classList.remove('modal-open');
+
+        // const modalBackdrops = document.getElementsByClassName('modal-backdrop');
+        // for (let i = 0; i < modalBackdrops.length; i++) {
+        //     modalBackdrops[i].classList.remove('show');
+        // }
+    }
+
+    const handleAppliedButtonClick = (e) => {
+        let newAppliedState = !applied;
+        dispatch(updateItem({
+            id: props.id,
+            applied: newAppliedState
+        }));
+        setApplied(newAppliedState);
+    }
+
+    const onCloseButtonClick = (e) => {
+        setIsReadOnly(true);
     }
 
 
+    useEffect(() => {
+        if (showUpdateAlert) {
+            const timer = setTimeout(() => {
+                setShowAlert(false);
+            }, 3000);
+            
+            return () => clearTimeout(timer); // Clear the timer if the component is unmounted
+        }
+    }, [showUpdateAlert]);
 
-    return <div className=''>
+
+    return <div className='ps-2'>
         {/* eslint-disable-next-line */}
         <a data-bs-toggle="modal" data-bs-target={"#" + target_id}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">
-                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                <path fillRule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-arrow-up-right item-hover-toolbar-edit-button" viewBox="0 0 16 16">
+                <path fillRule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
+                <path fillRule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z" />
             </svg>
         </a>
 
-        <div className="modal fade" id={target_id} tabIndex="-1" aria-hidden="true">
-            <div className="modal-dialog" id="editModalBox">
+        <div className="viewRecordModal modal fade" id={target_id} tabIndex="-1" aria-hidden="true">
+            <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" id="editModalBox">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h1 className="modal-title fs-5" id="exampleModalLabel">Edit item</h1>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h1 className="modal-title fs-5 d-flex flex-row">
+                            {isReadOnly ? "Job post details" : "Edit job post details"}
+                        </h1>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={onCloseButtonClick}></button>
                     </div>
                     <div className="modal-body">
-                        {/* <div className="mb-3">
-                            <label className="form-label ps-1">Company Name</label>
-                            <input className="form-control" placeholder="Name" value={companyName} onChange={handleCompanyNameChange} />
-                        </div> */}
-                        <div className="mb-3">
-                            <label className="form-label ps-1">Job Title</label>
-                            <input className="form-control" placeholder="Title" value={jobTitle} onChange={handleJobTitleChange} />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label ps-1">Link</label>
-                            <input className="form-control" placeholder="Link" value={link} onChange={handleLinkChange} />
+                        <div className="row">
+                            <div className='p-1 px-lg-3 col-12 col-lg-4'>
+                                <div className="mb-3">
+                                    <label className="form-label ps-1">Job Title</label>
+                                    <input className="form-control" placeholder="" value={jobTitle} onChange={handleJobTitleChange} readOnly={isReadOnly} />
+                                </div>
+                                <div className="mb-3">
+                                    <label className="form-label ps-1">Company Name</label>
+                                    <input className="form-control" placeholder="" value={companyName} onChange={handleCompanyNameChange} readOnly={isReadOnly} />
+                                </div>
+                                <div className="mb-3">
+                                    <label className="form-label ps-1">Link</label>
+                                    <input className="form-control" placeholder="https//lineToPost.com/postID" value={link} onChange={handleLinkChange} readOnly={isReadOnly} />
+                                </div>
+                            </div>
+                            <div className="p-1 px-lg-3 col-12 col-lg-8">
+                                <div className="textarea-container">
+                                    <div className="mb-3">
+                                        <label className="form-label">Description</label>
+                                        <textarea className="form-control description-textarea" value={jobDescription} onChange={handleJobDescriptionChange} readOnly={isReadOnly} ></textarea>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="form-label">Notes</label>
+                                        <textarea className="form-control notes-textarea" value={notes} onChange={handleNotesChange} readOnly={isReadOnly} ></textarea>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-primary" onClick={handleUpdateClick}>Update</button>
-                        <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <div className="modal-footer d-flex justify-content-between">
+                        <div className="d-flex flex-row">
+                            <button type="button" className="btn btn-success" onClick={handleAppliedButtonClick}>{props.applied ? "Unmark as applied" : "Mark as applied"}</button>
+                            <button type="button" className="btn btn-primary ms-2" onClick={handleUpdateClick}>{isReadOnly ? "Edit" : "Update"}</button>
+                            {
+                                showUpdateAlert && 
+                                <div class="alert alert-success ms-2 py-1 m-0 fs-6" role="alert">
+                                    Updated successfully!
+                                </div>
+                            }
+                        </div>
+                        <div>
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal"  onClick={onCloseButtonClick}>Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,27 +186,44 @@ function EditItem(props) {
     </div>
 }
 
-// function largeSizeItem (props) {
 
-// } 
+function getShortString(string, lenght) {
+    if (!string) {
+        return "";
+    }
+    return string.length > lenght ? `${string.substring(0, lenght)}...` : string;
+}
 
-// function mediumSizeItem (props) {
 
-// } 
-
-// function smallSizeItem (props) {
-
-// } 
-
+/**
+ * Represents an item component that displays job application details.
+ * 
+ * @param {Object} props - The properties for the item.
+ * @param {boolean} props.applied - Indicates if the job has been applied for.
+ * @param {string} props.companyName - The name of the company.
+ * @param {number} props.datePosted - The date the job was posted.
+ * @param {string} props.id - The unique identifier for the job application.
+ * @param {number} props.index - The index number.
+ * @param {string} props.jobDescription - The description of the job.
+ * @param {string} props.jobTitle - The title of the job.
+ * @param {string} props.link - The link to the job application.
+ * @param {string} props.notes - Any additional notes.
+ * @param {number} props.responseDate - The date of response.
+ * @param {number} props.timeAdded - The timestamp when the job was added.
+ * @returns {JSX.Element} The item component.
+ */
 function Item(props) {
     const dispatch = useDispatch();
-    let shortLink = props.link.length > 40 ? `${props.link.substring(0, 40)}...` : props.link;
-    let shortName = props.name.length > 30 ? `${props.name.substring(0, 30)}...` : props.name;
+    let shortLink = getShortString(props.link, 40);
+    let shortJobTitle = getShortString(props.jobTitle, 30);
+    let shortCompanyName = getShortString(props.companyName, 30);
+    const target_id = "editModal-" + props.id;
     //const [isSelected, setIsSelected] = useState(false);
     // props.applied
     // const handleOnSelect = (e) => {
     //     setIsSelected(e.target.checked);
     // }
+
 
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -111,7 +233,7 @@ function Item(props) {
         };
 
         window.addEventListener('resize', handleResize);
-        
+
         return () => {
             window.removeEventListener('resize', handleResize);
         };
@@ -122,16 +244,8 @@ function Item(props) {
         console.log("Deleted: " + props.id);
     }
 
-    // todo: add the following fields
-    // company name
-    // Job Title
-    // date posted
-    // response
-    // response date
-    // job description
-
     return (
-        <div className="item-container p-4" id={props.id}>
+        <div className={"item-container p-3 " + (props.applied ? "item-applied" : "")} id={props.id}>
             <div className=" item-hover col-12 col-sm-12 col-md-5">
                 <div className='item-hover-container'>
                     <div className="item-start-block">
@@ -141,28 +255,34 @@ function Item(props) {
                             </svg>
                         </div>
                         {/* <input className="checkbox" type="checkbox" title="checkbox" onChange={handleOnSelect} placeholder="checkbox" value={isSelected} /> */}
-
-                        <strong className="job-name ps-4">{shortName}</strong>
+                        <div className='d-flex flex-column ps-4'>
+                            <div className="d-flex flex-row">
+                                <strong className={"pt-1 " + (props.applied ? "text-decoration-line-through" : "")} data-bs-toggle="modal" data-bs-target={"#" + target_id}>
+                                    {shortJobTitle}
+                                </strong>
+                                <EditItem {...props} />
+                            </div>
+                            <span>{shortCompanyName}</span>
+                        </div>
                     </div>
-                    <div className={'item-hover-toolbar-edit-button ' + (windowWidth < 770) ? "pe-2" : "pe-4"}>
-                        <EditItem id={props.id} job_title={props.name} link={props.link} />
+                    <div className={' ' + (windowWidth < 770) ? "pe-2" : "pe-4"}>
                     </div>
                 </div>
             </div>
-            <span className="col-12 col-sm-12 col-md-4 ps-2 pt-2 link-container">
+            <span className="col-12 col-sm-12 col-md-4 ps-5 ps-md-2 pt-2 link-container">
                 <a
                     rel="noreferrer"
                     href={props.link}
                     target="_blank"
-                    className="truncate-link"
+                    className="truncate-link text-dark"
                     data-full-link={props.link}
                 >
                     {shortLink}
                 </a>
             </span>
             <span className="col-12 col-sm-12 col-md-3">
-                <div className="div item-end-column">
-                    <div className="div date-box">
+                <div className="item-end-column">
+                    <div className="ps-5 ps-md-2 date-box ">
                         {(new Date(props.timeAdded)).toUTCString().toLocaleString()}
                     </div>
                     <div className='item-delete-button ps-2' onClick={handleOnDelete}>

@@ -1,12 +1,30 @@
+html {
+  background-color: #dce6e6;
+  /* width */
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+}
+html ::-webkit-scrollbar {
+  width: 10px;
+}
+html ::-webkit-scrollbar-track {
+  background: #3f3f3f;
+}
+html ::-webkit-scrollbar-thumb {
+  background: #888;
+}
+html ::-webkit-scrollbar-thumb:hover {
+  background: #6e1f1f;
+}
 .mainContainer {
   padding: 0;
   margin: 0;
   min-height: 100vh;
-  background: #eee2ae;
-  background: linear-gradient(176deg, #eee2ae 40%, #d4b5db 80%, #b2b2b2 100%);
+  background: #dce6e6;
 }
 .mainContainer .header-container {
-  padding: 50px 10px 10px 10px;
+  background: linear-gradient(180deg, #2b6d8b 40%, #1a516a 80%, #032a46 150%);
 }
 .mainContainer .header-container .header-container-first-row {
   display: flex;
@@ -16,22 +34,49 @@
   justify-content: space-between;
   align-items: center;
 }
+.mainContainer .header-container .header-container-info {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.mainContainer .addAndSearchBar-container {
+  background-color: #032a46;
+}
+.mainContainer .addAndSearchBar-container .add-new-record-btn {
+  background-color: #2b6d8b;
+}
+.mainContainer .addAndSearchBar-container .add-new-record-btn:hover {
+  background-color: #3382a7;
+}
+.mainContainer .addAndSearchBar-container .add-new-record-btn:active {
+  background-color: #1e5a78;
+}
 .mainContainer .application-list-container {
   height: max-content;
   margin-top: 30px;
   padding: 10px;
   border-radius: 10px;
-  background-color: rgba(233, 231, 199, 0.692);
+  background-color: rgba(240, 250, 250, 0.692);
+}
+@media screen and (max-width: 1200px) {
+  .mainContainer .application-list-container {
+    border-radius: 0;
+  }
 }
 .mainContainer .checkbox {
   margin: 0 10px;
+}
+.mainContainer .item-applied {
+  background-color: #a4a4a4 !important;
 }
 .mainContainer .item-container {
   height: max-content;
   margin: 15px 5px;
   padding: 10px;
   border-radius: 10px;
-  background-color: #fffef5;
+  background-color: #ffffff;
   display: flex;
   flex-direction: row;
   align-content: center;
@@ -56,7 +101,7 @@
   align-items: center;
 }
 .mainContainer .item-container .item-hover-container .item-hover-toolbar-edit-button {
-  color: #056193;
+  color: #00121c;
 }
 .mainContainer .item-container .item-hover-container .item-hover-toolbar-edit-button :hover {
   cursor: pointer;
@@ -75,7 +120,6 @@
   overflow-wrap: anywhere;
 }
 .mainContainer .item-end-column {
-  padding: 6px;
   display: flex;
   width: auto;
   justify-content: space-between;
@@ -92,14 +136,6 @@
 .mainContainer .item-end-column .date-box {
   padding: 0px;
 }
-.add-item-container input {
-  padding: 0 0 0 10px;
-  width: -webkit-fill-available;
-  height: 100%;
-}
-.add-item-container .full-width {
-  width: -webkit-fill-available;
-}
 .truncate-link {
   display: inline-block;
   overflow: hidden;
@@ -111,5 +147,22 @@
   overflow: visible;
   white-space: normal;
   max-width: fit-content;
+}
+.viewRecordModal .textarea-container {
+  display: flex;
+  flex-direction: column;
+}
+.viewRecordModal .description-textarea {
+  flex: 7;
+  /* 70% of the height */
+  height: 50vh;
+  /* You can adjust this value based on your layout needs */
+  overflow: auto;
+  /* To make sure content doesn't overflow the container */
+}
+.viewRecordModal .notes-textarea {
+  flex: 3;
+  /* 30% of the height */
+  overflow: auto;
 }
 /*# sourceMappingURL=App.css.map */

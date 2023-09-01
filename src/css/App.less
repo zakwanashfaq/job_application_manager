@@ -1,13 +1,38 @@
+html {
+
+  background-color: rgb(220, 230, 230);
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #3f3f3f;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6e1f1f;
+  }
+}
 
 .mainContainer{
   padding: 0;
   margin: 0;
   min-height: 100vh;
-  background: rgb(238,226,174);
-  background: linear-gradient(176deg, rgba(238,226,174,1) 40%, rgba(212,181,219,1) 80%, rgba(178,178,178,1) 100%);
+  background: rgb(220, 230, 230);
+  // background: linear-gradient(176deg, rgba(238,226,174,1) 40%, rgba(212,181,219,1) 80%, rgba(178,178,178,1) 100%);
   
   .header-container{
-    padding: 50px 10px 10px 10px;
+    // background-color: rgb(43, 109, 139);
+    background: linear-gradient(180deg, rgba(43, 109, 139,1) 40%, rgb(26, 81, 106) 80%, rgba(3, 42, 70,1) 150%);
     .header-container-first-row{
       display: flex;
       flex-direction: row;
@@ -16,18 +41,52 @@
       justify-content: space-between;
       align-items: center;
     }
+
+    .header-container-info {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
-  .application-list-container{
+  .addAndSearchBar-container {
+    background-color: rgb(3, 42, 70);
+
+    .add-new-record-btn {
+      background-color: rgb(43, 109, 139);
+      
+      &:hover {
+          background-color: rgb(51, 130, 167);
+      }
+
+      &:active {
+          background-color: rgb(30, 90, 120);
+      }
+
+    }
+  }
+
+  .application-list-container {
     height: max-content;
     margin-top: 30px;
     padding: 10px;
     border-radius: 10px;
-    background-color: rgba(233, 231, 199, 0.692);
-  }
+    background-color: rgba(240, 250, 250, 0.692);
+    
+    @media screen and (max-width: 1200px) {
+        border-radius: 0;
+    }
+}
+
 
   .checkbox{
     margin: 0 10px;
+  }
+
+  .item-applied{
+    background-color: rgb(164, 164, 164) !important;
   }
 
   .item-container{
@@ -35,7 +94,7 @@
     margin: 15px 5px;
     padding: 10px;
     border-radius: 10px;
-    background-color: rgb(255, 254, 245);
+    background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: row;
     align-content: center;
@@ -76,7 +135,7 @@
       }
 
       .item-hover-toolbar-edit-button {
-        color: rgb(5, 97, 147);
+        color: rgb(0, 18, 28);
         :hover{
           cursor: pointer;
         }
@@ -102,7 +161,7 @@
   }
 
   .item-end-column {
-    padding: 6px;
+    //padding: 6px;
     display: flex;
     width: auto;
     justify-content: space-between;
@@ -123,18 +182,6 @@
   }
 }
 
-.add-item-container{
-  input{
-    padding: 0 0 0 10px;
-    width: -webkit-fill-available;
-    height: 100%;
-  }
-
-  .full-width{
-    width: -webkit-fill-available;
-  }
-}
-
 .truncate-link {
   display: inline-block;
   overflow: hidden;
@@ -147,4 +194,24 @@
   overflow: visible;
   white-space: normal;
   max-width: fit-content;
+}
+
+.viewRecordModal{
+  .textarea-container {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .description-textarea {
+      flex: 7; /* 70% of the height */
+      height: 50vh; /* You can adjust this value based on your layout needs */
+      overflow: auto; /* To make sure content doesn't overflow the container */
+  }
+
+  .notes-textarea {
+      flex: 3; /* 30% of the height */
+      overflow: auto;
+      
+  }
+
 }

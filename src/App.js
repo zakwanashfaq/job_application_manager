@@ -6,13 +6,15 @@ import { useSelector, useDispatch } from 'react-redux'
 import AddItem from "./components/addItem";
 import { useEffect, useState } from "react";
 import { fetchData, selectAllItems } from "./redux/items";
+import { AddAndSearchBar } from "./components/addAndSearchBar";
 
 
 function App() {
   const data = useSelector(selectAllItems);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-  
+  const [searchText, setSearchText] = useState("");
+
   useEffect(() => {
     dispatch(fetchData()).then(() => setLoading(false));
   }, [dispatch]);
@@ -20,18 +22,36 @@ function App() {
   if (loading) {
     return <div>Loading...</div>;
   }
-  
+
   return (
     <div className="mainContainer">
-      <div className="container-xl">
+      <div className="">
         <Header />
-        <AddItem />
+        <AddAndSearchBar searchText={searchText} setSearchText={setSearchText}/>
+        <AddItem/>
         <ApplicationList>
-          {data.sort((a, b) => b.index - a.index).map(item => {
-            return <Item key={item.id} id={item.id} applied={item.applied} name={item.name} link={item.link} timeAdded={item.timeAdded}/>
-          })}
+          {data
+            .filter(item => {
+              // Check if either jobTitle or companyName contains the searchText
+              const title = item.jobTitle || item.name;  // Considering 'name' might be used as a fallback for jobTitle
+              return (title?.toLocaleLowerCase() && title?.toLocaleLowerCase().includes(searchText?.toLocaleLowerCase())) || (item.companyName?.toLocaleLowerCase() && item.companyName?.toLocaleLowerCase().includes(searchText?.toLocaleLowerCase()));
+            })
+            .sort((a, b) => b.index - a.index)
+            .map(item => {
+              if (!item.jobTitle && item.name) {
+                const modifiedItem = {
+                  ...item,
+                  jobTitle: item.name
+                }
+                delete modifiedItem.name;
+                return <Item key={item.id} {...modifiedItem} />
+              } else {
+                return <Item key={item.id} {...item} />
+              }
+            })}
         </ApplicationList>
-        <br />      
+
+        <br />
       </div>
     </div>
   );
