@@ -1,8 +1,14 @@
 @primary-color: rgb(43, 109, 139);
+@primary-color-light: rgb(51, 130, 167);
+@primary-color-dark: rgb(3, 42, 70);
 
 .landing-nav-container {
     .nav-icon-color {
-        color: @primary-color !important;
+        color: @primary-color-light !important;
+    }
+    
+    .nav-brand-text{
+        color: @primary-color-dark !important;
     }
 }
 
@@ -27,7 +33,8 @@
         justify-content: center;
 
         .hero-main-text{
-            max-width: 600px;
+            max-width: 800px;
+            color: @primary-color-dark;
         }
     }
 }

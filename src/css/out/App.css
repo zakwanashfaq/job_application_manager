@@ -1,5 +1,8 @@
 .landing-nav-container .nav-icon-color {
-  color: #2b6d8b !important;
+  color: #3382a7 !important;
+}
+.landing-nav-container .nav-brand-text {
+  color: #032a46 !important;
 }
 .button-theme-color {
   background-color: #2b6d8b;
@@ -18,7 +21,8 @@
   justify-content: center;
 }
 .landing-hero-container .hero-main-text-container .hero-main-text {
-  max-width: 600px;
+  max-width: 800px;
+  color: #032a46;
 }
 html {
   background-color: #dce6e6;
