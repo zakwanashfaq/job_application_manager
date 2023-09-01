@@ -21,11 +21,11 @@
 .button-theme-color {
     background-color: @primary-color;
     &:hover {
-        background-color: rgb(51, 130, 167);
+        background-color: @primary-color-light;
     }
 
     &:active {
-        background-color: rgb(30, 90, 120);
+        background-color: rgb(30, 90, 120) !important;
     }
 }
 
@@ -42,5 +42,11 @@
             max-width: 800px;
             color: @primary-color-dark;
         }
+    }
+}
+
+.features-main-container{
+    .feature-icon-background{
+        background-color: @primary-color;
     }
 }

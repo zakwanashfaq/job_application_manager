@@ -15,7 +15,7 @@
   background-color: #3382a7;
 }
 .button-theme-color:active {
-  background-color: #1e5a78;
+  background-color: #1e5a78 !important;
 }
 .landing-hero-container .landing-hero-image {
   max-height: 300px;
@@ -27,6 +27,9 @@
 .landing-hero-container .hero-main-text-container .hero-main-text {
   max-width: 800px;
   color: #032a46;
+}
+.features-main-container .feature-icon-background {
+  background-color: #2b6d8b;
 }
 html {
   background-color: #dce6e6;
