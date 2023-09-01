@@ -4,6 +4,10 @@
 .landing-nav-container .nav-brand-text {
   color: #032a46 !important;
 }
+.landing-nav-container .mini-collpase-nav-container {
+  background-color: #dce6e6;
+  border-radius: 5px;
+}
 .button-theme-color {
   background-color: #2b6d8b;
 }

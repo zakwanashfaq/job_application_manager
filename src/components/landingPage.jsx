@@ -2,7 +2,7 @@ import "../css/out/App.css";
 
 function Navbar(props) {
     return (
-        <nav className="navbar navbar-expand-md landing-nav-container">
+        <nav className="navbar landing-nav-container">
             <div className="container-fluid">
                 <a className="navbar-brand d-flex flex-row align-items-center" href="/">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" className="bi bi-file-text-fill text-dark nav-icon-color" viewBox="0 0 16 16">
@@ -12,29 +12,61 @@ function Navbar(props) {
                         JAM
                     </div>
                 </a>
-                <form className="d-flex" role="search">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
+                <form className="d-none d-lg-block" role="search">
+                    <div class="d-flex flex-row ">
+                        <ul class="navbar-nav flex-row">
+                            <li class="nav-item px-3">
                                 <a class="nav-link active" aria-current="page" href="#">Home</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item px-3">
                                 <a class="nav-link" href="#">Features</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item px-3">
+                                <a class="nav-link" href="#">Instructions</a>
+                            </li>
+                            <li class="nav-item px-3">
                                 <a class="nav-link" href="#">FAQ</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item px-3">
                                 <a class="nav-link">About</a>
                             </li>
                         </ul>
+                        <button className="btn btn-sm btn-outline-dark ms-2 p-2 ms-md-4" type="submit">Log in</button>
+                        <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit">Sign up</button>
                     </div>
-                    <button className="btn btn-sm btn-outline-dark ms-2" type="submit">Log in</button>
-                    <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit">Sign up</button>
                 </form>
+                <button class="d-lg-none navbar-toggler mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse mx-2 py-3" id="navbarNav">
+                    <div className="d-lg-none">
+                        <div className="d-flex justify-content-center mini-collpase-nav-container pt-3 pb-4">
+                            <div className="d-flex flex-column">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item d-flex justify-content-center pb-2">
+                                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                    </li>
+                                    <li class="nav-item d-flex justify-content-center pb-2">
+                                        <a class="nav-link" href="#">Features</a>
+                                    </li>
+                                    <li class="nav-item d-flex justify-content-center pb-2">
+                                        <a class="nav-link" href="#">Instructions</a>
+                                    </li>
+                                    <li class="nav-item d-flex justify-content-center pb-2">
+                                        <a class="nav-link" href="#">FAQ</a>
+                                    </li>
+                                    <li class="nav-item d-flex justify-content-center pb-4">
+                                        <a class="nav-link">About</a>
+                                    </li>
+                                </ul>
+
+                                <div className="d-flex flex-row">
+                                    <button className="btn btn-sm btn-outline-dark ms-2 p-2" type="submit">Log in</button>
+                                    <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit">Sign up</button>
+                                </div></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </nav>
     );
@@ -50,7 +82,7 @@ function Hero(props) {
             </div>
             <div className="col-lg-6 py-3 mx-auto">
                 <p className="lead mb-4">
-                    Job Application Manager (JAM) is a tool built to manage all your job applications in one place. 
+                    Job Application Manager (JAM) is a tool built to manage all your job applications in one place.
                     It helps you to organize, save, track, filter and much much more!
                 </p>
                 <div className="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
@@ -66,12 +98,34 @@ function Hero(props) {
     );
 }
 
+function Footer(props) {
+    return (
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top">
+                <div class="col-md-4 d-flex align-items-center">
+                    <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                        <svg class="bi" width="30" height="24"><use href="#bootstrap"></use></svg>
+                    </a>
+                    <span class="mb-3 mb-md-0 text-body-secondary">© 2023 Job Application Manager</span>
+                </div>
+
+                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                    <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use href="#twitter"></use></svg></a></li>
+                    <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use href="#instagram"></use></svg></a></li>
+                    <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use href="#facebook"></use></svg></a></li>
+                </ul>
+            </footer>
+        </div>
+    );
+}
+
 export function LandingPage(props) {
     return (
         <div>
             <Navbar />
             <Hero />
             LandingPage
+            <Footer />
         </div>
     );
 }
