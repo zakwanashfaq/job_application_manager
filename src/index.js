@@ -4,12 +4,26 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { store } from './redux/store.js'
 import { Provider } from 'react-redux'
+import {
+  BrowserRouter as Router,
+  Route, 
+  Routes
+} from "react-router-dom";
+import { LandingPage } from './components/landingPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Router>
+        <Routes>
+          <Route path="/app" element={<App />} />
+          <Route path="/login" element={<div>LoginPage</div>} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/how_to" element={<div>How To</div>} />
+          <Route path="/faq" element={<div>Frequently asked questions</div>} />
+        </Routes>
+      </Router>
     </Provider>
   </React.StrictMode>
 );

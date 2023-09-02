@@ -1,0 +1,59 @@
+@primary-color: rgb(43, 109, 139);
+@primary-color-light: rgb(51, 130, 167);
+@primary-color-dark: rgb(3, 42, 70);
+@page-secondary-bg-color: rgb(220, 230, 230);
+
+.landing-nav-container {
+    .nav-icon-color {
+        color: @primary-color-light !important;
+    }
+    
+    .nav-brand-text{
+        color: @primary-color !important;
+        font-family: Pacifico;
+        font-size: 2em;
+    }
+
+    .mini-collpase-nav-container{
+        background-color: @page-secondary-bg-color;
+        border-radius: 5px;
+    }
+}
+
+.button-theme-color {
+    background-color: @primary-color;
+    &:hover {
+        background-color: @primary-color-light;
+    }
+
+    &:active {
+        background-color: rgb(30, 90, 120) !important;
+    }
+}
+
+.landing-hero-container {
+
+    .text-color-highlight{
+        color: @primary-color !important;
+    }
+
+    .landing-hero-image {
+        max-height: 300px;
+    }
+
+    .hero-main-text-container{
+        display: flex;
+        justify-content: center;
+
+        .hero-main-text{
+            max-width: 800px;
+            color: @primary-color-dark;
+        }
+    }
+}
+
+.features-main-container{
+    .feature-icon-background{
+        background-color: @primary-color;
+    }
+}

@@ -1,6 +1,14 @@
-{
-    "watchFolder": "src/css",
-    "outputFolder": "src/css/out",
-    "mainFile": "App.less",
-    "sourceMap": true
-}
+[
+    {
+        "watchFolder": "src/css",
+        "outputFolder": "src/css/out",
+        "mainFile": "App.less",
+        "sourceMap": true
+    },
+    {
+        "watchFolder": "src/css",
+        "outputFolder": "src/css/out",
+        "mainFile": "LandingPage.less",
+        "sourceMap": true
+    }
+]

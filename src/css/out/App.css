@@ -38,8 +38,8 @@ html ::-webkit-scrollbar-thumb:hover {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  align-items: start;
 }
 .mainContainer .addAndSearchBar-container {
   background-color: #032a46;
@@ -165,4 +165,3 @@ html ::-webkit-scrollbar-thumb:hover {
   /* 30% of the height */
   overflow: auto;
 }
-/*# sourceMappingURL=App.css.map */
