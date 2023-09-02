@@ -2,7 +2,9 @@
   color: #3382a7 !important;
 }
 .landing-nav-container .nav-brand-text {
-  color: #032a46 !important;
+  color: #2b6d8b !important;
+  font-family: Pacifico;
+  font-size: 2em;
 }
 .landing-nav-container .mini-collpase-nav-container {
   background-color: #dce6e6;

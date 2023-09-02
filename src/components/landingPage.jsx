@@ -8,13 +8,13 @@ function Navbar(props) {
         <nav className="navbar landing-nav-container">
             <div className="container-fluid mx-2">
                 <a className="navbar-brand d-flex flex-row align-items-center p-0 m-0" href="/">
-                    <img src="logo-word-art.png" width="100" height="60" />
-                    {/* <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" className="bi bi-file-text-fill text-dark nav-icon-color" viewBox="0 0 16 16">
+                    {/* <img src="logo-word-art.png" width="100" height="60" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" className="bi bi-file-text-fill text-dark nav-icon-color" viewBox="0 0 16 16">
                         <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z" />
-                    </svg>
-                    <div className="ps-2 pb-1 fs-1 fw-bolder nav-brand-text">
-                        JAM
-                    </div> */}
+                    </svg> */}
+                    <div className="ps-2 pb-1 fw-bolder nav-brand-text">
+                        jam
+                    </div>
                 </a>
                 <form className="d-none d-lg-block" role="search">
                     <div class="d-flex flex-row">
@@ -131,7 +131,7 @@ function Features(props) {
     return (
         <div id="features" className="features-main-container">
             <div class="container px-4 py-5" id="featured-3">
-                <h2 class="pb-2 border-bottom">Give yourself <b>the advantage</b> you deserve</h2>
+                <h2 class="pb-2 border-bottom">Unleash your <b>job search</b> superpowers!</h2>
                 <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
                     <div class="feature col">
                         <div class="feature-icon feature-icon-background rounded-4 text-white d-inline-flex align-items-center justify-content-center bg-gradient p-4 fs-2 mb-3">
@@ -139,8 +139,8 @@ function Features(props) {
                                 <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v4.5h2a.5.5 0 0 1 .354.854l-2.5 2.5a.5.5 0 0 1-.708 0l-2.5-2.5A.5.5 0 0 1 5.5 6.5h2V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z" />
                             </svg>
                         </div>
-                        <h3 class="fs-2 text-body-emphasis">Save details to view later</h3>
-                        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                        <h3 class="fs-2 text-body-emphasis">Capture Every Detail!</h3>
+                        <p>Save the entire content of job descriptions. No more guessing during recruitment or worries if the original link disappears.</p>
                     </div>
                     <div class="feature col">
                         <div class="feature-icon feature-icon-background rounded-4 text-white d-inline-flex align-items-center justify-content-center bg-gradient p-4 fs-2 mb-3">
@@ -148,8 +148,8 @@ function Features(props) {
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                             </svg>
                         </div>
-                        <h3 class="fs-2 text-body-emphasis">Search your records</h3>
-                        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                        <h3 class="fs-2 text-body-emphasis">Find in a Flash!</h3>
+                        <p>Dive deep into your records with our quick search and spot the entry you desire in seconds.</p>
                     </div>
                     <div class="feature col">
                         <div class="feature-icon feature-icon-background rounded-4 text-white d-inline-flex align-items-center justify-content-center bg-gradient p-4 fs-2 mb-3">
@@ -158,8 +158,8 @@ function Features(props) {
                                 <path d="M12.438 8.668V14H11.39V9.684h-.051l-1.211.859v-.969l1.262-.906h1.046zM4.5 13.5a.5.5 0 0 1-1 0V3.707L2.354 4.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.498.498 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L4.5 3.707V13.5z" />
                             </svg>
                         </div>
-                        <h3 class="fs-2 text-body-emphasis">Organize by priority</h3>
-                        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                        <h3 class="fs-2 text-body-emphasis">Prioritize with Pizzazz!</h3>
+                        <p>Simply drag and drop to arrange your posts in the perfect sequence tailored just for you.</p>
                     </div>
                     <div class="feature col">
                         <div class="feature-icon feature-icon-background rounded-4 text-white d-inline-flex align-items-center justify-content-center bg-gradient p-4 fs-2 mb-3">
@@ -167,27 +167,27 @@ function Features(props) {
                                 <path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 15 8.586V2.5A1.5 1.5 0 0 0 13.5 1h-11zM2 2.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5V8H9.5A1.5 1.5 0 0 0 8 9.5V14H2.5a.5.5 0 0 1-.5-.5v-11zm7 11.293V9.5a.5.5 0 0 1 .5-.5h4.293L9 13.793z" />
                             </svg>
                         </div>
-                        <h3 class="fs-2 text-body-emphasis">Handy notes</h3>
-                        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                        <h3 class="fs-2 text-body-emphasis">Jot Down Job Journals!</h3>
+                        <p>Preserve your insights and game plan for each job post. Dive right back into your strategy whenever you wish.</p>
                     </div>
                     <div class="feature col">
                         <div class="feature-icon feature-icon-background rounded-4 text-white d-inline-flex align-items-center justify-content-center bg-gradient p-4 fs-2 mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                            <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
-                            <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                                <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
+                                <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
                             </svg>
                         </div>
-                        <h3 class="fs-2 text-body-emphasis">Mark records</h3>
-                        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                        <h3 class="fs-2 text-body-emphasis">Application Status: Sorted!</h3>
+                        <p>With a simple mark, easily differentiate between jobs you've applied for and those still on your radar.</p>
                     </div>
                     <div class="feature col">
                         <div class="feature-icon feature-icon-background rounded-4 text-white d-inline-flex align-items-center justify-content-center bg-gradient p-4 fs-2 mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-sort-numeric-up-alt" viewBox="0 0 16 16">
-                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
                             </svg>
                         </div>
-                        <h3 class="fs-2 text-body-emphasis">Edit and modify</h3>
-                        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                        <h3 class="fs-2 text-body-emphasis">Oops-Proof Editing!</h3>
+                        <p>Made an error? Fret not! Seamlessly edit or update any post whenever you need.</p>
                     </div>
                 </div>
             </div>
@@ -217,7 +217,9 @@ function Testemonials(props) {
                                             <img src="/examples/images/clients/1.jpg" class="mr-3" alt="" />
                                             <div class="media-body">
                                                 <div class="testimonial">
-                                                    <p>Lorem ipsum dolor sit amet, consec adipiscing elit. Nam eusem scelerisque tempor, varius quam luctus dui. Mauris magna metus nec.</p>
+                                                    <p>
+                                                        Before using this platform, I felt like my job search was a never-ending maze. Now, every detail is at my fingertips, and I'm more organized than ever. The 'Capture Every Detail' feature is a game changer. Highly recommend to anyone serious about their career!
+                                                    </p>
                                                     <p class="overview"><b>Paula Wilson</b>, Media Analyst</p>
                                                 </div>
                                             </div>
@@ -228,7 +230,9 @@ function Testemonials(props) {
                                             <img src="/examples/images/clients/2.jpg" class="mr-3" alt="" />
                                             <div class="media-body">
                                                 <div class="testimonial">
-                                                    <p>Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget mi suscipit tincidunt. Utmtc tempus dictum. Pellentesque virra.</p>
+                                                    <p>
+                                                        Navigating the job market has never been this seamless! The ability to prioritize and keep track of applications, all while jotting down my thoughts, has transformed my approach. This platform isn't just a tool—it's my job search companion.
+                                                    </p>
                                                     <p class="overview"><b>Antonio Moreno</b>, Web Developer</p>
                                                 </div>
                                             </div>
