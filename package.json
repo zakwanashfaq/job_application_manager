@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "concurrently --kill-others \"less-watch-compiler\" \"react-scripts start\"",
+    "dev": "concurrently --kill-others \"less-watch-compiler src/css src/css/out\" \"less-watch-compiler src/css src/css/out\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -1,6 +1,9 @@
-import "../css/out/App.css";
+import "../css/out/LandingPage.css";
+import { useNavigate } from 'react-router-dom';
+
 
 function Navbar(props) {
+    const navigate = useNavigate();
     return (
         <nav className="navbar landing-nav-container">
             <div className="container-fluid mx-2">
@@ -34,7 +37,7 @@ function Navbar(props) {
                         </ul>
                         {/* <button className="btn btn-sm btn-outline-dark ms-2 p-2 ms-md-4" type="submit">Log in</button>
                         <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit">Sign up</button> */}
-                        <button className="button-theme-color btn btn-sm btn-primary ms-4 p-2" type="submit" onClick={() => window.location.href = "/app"}>Go to app</button>
+                        <button className="button-theme-color btn btn-sm btn-primary ms-4 p-2" type="submit" onClick={() => navigate("/app")}>Go to app</button>
                     </div>
                 </form>
                 <button class="d-lg-none navbar-toggler mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +68,7 @@ function Navbar(props) {
                                 <div className="d-flex flex-row">
                                     {/* <button className="btn btn-sm btn-outline-dark ms-2 p-2" type="submit">Log in</button>
                                     <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit">Sign up</button> */}
-                                    <button className="button-theme-color btn btn-sm btn-primary mt-2 p-2" type="submit">Go to app</button>
+                                    <button className="button-theme-color btn btn-sm btn-primary mt-2 p-2" type="submit" onClick={() => navigate("/app")}>Go to app</button>
                                 </div></div>
                         </div>
                     </div>
@@ -76,11 +79,12 @@ function Navbar(props) {
 }
 
 function Hero(props) {
+    const navigate = useNavigate();
     return (
         <div className="px-4 pt-5 my-5 text-center border-bottom landing-hero-container">
             <div className="display-4 fw-bold text-body-emphasis hero-main-text-container">
                 <span className="hero-main-text">
-                    Manage all your job applications simply in one app
+                    Manage all your <span className="text-color-highlight">job applications</span> simply in one app
                 </span>
             </div>
             <div className="col-lg-6 py-3 mx-auto">
@@ -89,7 +93,7 @@ function Hero(props) {
                     It helps you to organize, save, track, filter and much much more!
                 </p>
                 <div className="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-                    <button type="button" className="button-theme-color btn btn-primary btn-lg px-4 my-sm-3 py-3">Try the app and be amazed!</button>
+                    <button type="button" className="button-theme-color btn btn-primary btn-lg px-4 my-sm-3 py-3" onClick={() => navigate("/app")}>Try the app and be amazed!</button>
                     {/* <button type="button" className="button-theme-color btn btn-primary btn-lg px-4 my-sm-3 py-3">Sign up! It's free...</button> */}
                 </div>
             </div>
@@ -169,20 +173,20 @@ function Features(props) {
                     <div class="feature col">
                         <div class="feature-icon feature-icon-background rounded-4 text-white d-inline-flex align-items-center justify-content-center bg-gradient p-4 fs-2 mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                            <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
                             </svg>
                         </div>
-                        <h3 class="fs-2 text-body-emphasis">Search your records</h3>
+                        <h3 class="fs-2 text-body-emphasis">Mark records</h3>
                         <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
                     </div>
                     <div class="feature col">
                         <div class="feature-icon feature-icon-background rounded-4 text-white d-inline-flex align-items-center justify-content-center bg-gradient p-4 fs-2 mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-sort-numeric-up-alt" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M11.36 7.098c-1.137 0-1.708-.657-1.762-1.278h1.004c.058.223.343.45.773.45.824 0 1.164-.829 1.133-1.856h-.059c-.148.39-.57.742-1.261.742-.91 0-1.72-.613-1.72-1.758 0-1.148.848-1.836 1.973-1.836 1.09 0 2.063.637 2.063 2.688 0 1.867-.723 2.848-2.145 2.848zm.062-2.735c.504 0 .933-.336.933-.972 0-.633-.398-1.008-.94-1.008-.52 0-.927.375-.927 1 0 .64.418.98.934.98z" />
-                                <path d="M12.438 8.668V14H11.39V9.684h-.051l-1.211.859v-.969l1.262-.906h1.046zM4.5 13.5a.5.5 0 0 1-1 0V3.707L2.354 4.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.498.498 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L4.5 3.707V13.5z" />
+                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
                             </svg>
                         </div>
-                        <h3 class="fs-2 text-body-emphasis">Organize by priority</h3>
+                        <h3 class="fs-2 text-body-emphasis">Edit and modify</h3>
                         <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
                     </div>
                 </div>
@@ -193,7 +197,7 @@ function Features(props) {
 
 function Testemonials(props) {
     return (
-        <div class="container-xl">
+        <div class="container-xl pb-3 pb-md-5">
             <div class="row p-2">
                 <div class="col-sm-12">
                     <h2>What <b>our users</b> are saying</h2>
