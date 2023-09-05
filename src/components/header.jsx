@@ -80,7 +80,7 @@ function Header(params) {
                 {/* <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-file-text-fill" viewBox="0 0 16 16" data-bs-toggle="offcanvas" href="#offcanvasExample">
                     <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z" />
                 </svg> */}
-                <h3 className="display-6 ps-1">Job Application Manager</h3>
+                <h3 className="display-6 ps-1">JAM Dashboard</h3>
                 <ModalPopover />
             </div>
             <div className="text-light header-container-info pt-4">
@@ -88,6 +88,32 @@ function Header(params) {
                 to in one place. Everything is stored on your local computers browser(IndexedDB).
                 This list is private to you.
                 <OffCanvasBar />
+            </div>
+            <div className="row text-light d-flex px-2">
+                <div className="col-6 col-md-4 col-lg-3 p-2">
+                    Total number of items
+                    <div className="display-1">
+                        57
+                    </div>
+                </div>
+                <div className="col-6 col-md-4 col-lg-3 p-2">
+                    Total Applied Today
+                    <div className="display-1">
+                        10
+                    </div>
+                </div>
+                <div className="col-6 col-md-4 col-lg-3 p-2">
+                    Total Rejected
+                    <div className="display-1">
+                        18
+                    </div>
+                </div>
+                <div className="col-6 col-md-4 col-lg-3 p-2">
+                    Total Interview Calls
+                    <div className="display-1">
+                        2
+                    </div>
+                </div>
             </div>
         </div>
     </div>);

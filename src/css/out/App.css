@@ -21,7 +21,7 @@ html ::-webkit-scrollbar-thumb:hover {
   padding: 0;
   margin: 0;
   min-height: 100vh;
-  background: #dce6e6;
+  background: #ffffff;
 }
 .mainContainer .header-container {
   background: linear-gradient(180deg, #2b6d8b 40%, #1a516a 80%, #032a46 150%);
@@ -58,7 +58,7 @@ html ::-webkit-scrollbar-thumb:hover {
   margin-top: 30px;
   padding: 10px;
   border-radius: 10px;
-  background-color: rgba(240, 250, 250, 0.692);
+  background-color: rgba(230, 230, 230, 0.692);
 }
 @media screen and (max-width: 1200px) {
   .mainContainer .application-list-container {
