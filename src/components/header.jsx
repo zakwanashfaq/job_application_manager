@@ -74,13 +74,13 @@ function ModalPopover(props) {
 
 
 function Header(params) {
-    return (<div className="header-container py-5">
+    return (<div className="header-container pt-5 pb-1 my-0">
         <div className="container-xl">
             <div className="header-container-first-row text-light">
                 {/* <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-file-text-fill" viewBox="0 0 16 16" data-bs-toggle="offcanvas" href="#offcanvasExample">
                     <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z" />
                 </svg> */}
-                <h3 className="display-6 ps-1">JAM Dashboard</h3>
+                <h3 className="display-6 ps-1"><span className="logo-font-header">jam</span> Dashboard</h3>
                 <ModalPopover />
             </div>
             <div className="text-light header-container-info pt-4">
@@ -89,7 +89,9 @@ function Header(params) {
                 This list is private to you.
                 <OffCanvasBar />
             </div>
+            <hr class="thick-border border-white my-4" />
             <div className="row text-light d-flex px-2">
+                <div className="px-2 fs-5 fw-bold">Overview</div>
                 <div className="col-6 col-md-4 col-lg-3 p-2">
                     Total number of items
                     <div className="display-1">
@@ -114,7 +116,9 @@ function Header(params) {
                         2
                     </div>
                 </div>
+
             </div>
+        <hr class="thick-border border-white mt-4" />
         </div>
     </div>);
 }

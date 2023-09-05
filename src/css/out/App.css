@@ -24,7 +24,7 @@ html ::-webkit-scrollbar-thumb:hover {
   background: #ffffff;
 }
 .mainContainer .header-container {
-  background: linear-gradient(180deg, #2b6d8b 40%, #1a516a 80%, #032a46 150%);
+  background: linear-gradient(180deg, #2b6d8b 1%, #1a516a 40%, #032a46 100%);
 }
 .mainContainer .header-container .header-container-first-row {
   display: flex;
@@ -33,6 +33,10 @@ html ::-webkit-scrollbar-thumb:hover {
   align-content: center;
   justify-content: space-between;
   align-items: center;
+}
+.mainContainer .header-container .logo-font-header {
+  font-family: Pacifico;
+  font-size: 1em;
 }
 .mainContainer .header-container .header-container-info {
   display: flex;
