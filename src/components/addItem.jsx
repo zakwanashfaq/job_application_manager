@@ -68,11 +68,11 @@ function AddItem(props) {
                         <div className="m-1 modal-body ">
                             <div className="p-1 d-flex flex-column">
                                 <label className="form-label">Company Name</label>
-                                <input className="rounded border py-2" value={companyName} onChange={handleNameChange} type="text" ></input>
+                                <input required  className="rounded border py-2" value={companyName} onChange={handleNameChange} type="text" ></input>
                             </div>
                             <div className="p-1 d-flex flex-column">
                                 <label className="form-label">Position</label>
-                                <input className="rounded border py-2" value={jobTitle} onChange={handleJobTitleChange} type="text" ></input>
+                                <input required  className="rounded border py-2" value={jobTitle} onChange={handleJobTitleChange} type="text" ></input>
                             </div>
                             <div className="p-1 d-flex flex-column">
                                 <label className="form-label">Link</label>

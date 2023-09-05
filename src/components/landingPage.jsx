@@ -202,13 +202,6 @@ function Testemonials(props) {
                 <div className="col-sm-12">
                     <h2>What <b>our users</b> are saying</h2>
                     <div id="myCarousel" className="carousel slide pointer-event" data-ride="carousel">
-                        {/* <!-- Carousel indicators --> */}
-                        <ol clclassNameass="carousel-indicators">
-                            <li data-target="#myCarousel" data-slide-to="0" className="active"></li>
-                            <li data-target="#myCarousel" data-slide-to="1" className=""></li>
-                            <li data-target="#myCarousel" data-slide-to="2" className=""></li>
-                        </ol>
-                        {/* <!-- Wrapper for carousel items --> */}
                         <div className="carousel-inner">
                             <div className="carousel-item active">
                                 <div className="row">

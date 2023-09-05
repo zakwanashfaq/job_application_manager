@@ -1,4 +1,7 @@
-
+import { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData, selectAllItems } from "../redux/items";
 
 function OffCanvasBar(props) {
     return <div className="pb-2">
@@ -71,6 +74,76 @@ function ModalPopover(props) {
     </div>
 }
 
+/**
+ interface JobItem {
+    id: string;
+    applied: boolean;
+    companyName?: string;  // the '?' denotes that the property is optional
+    link: string;
+    jobTitle?: string;
+    datePosted?: number;
+    responseDate?: number;
+    jobDescription?: string;
+    notes?: string;
+    timeAdded: number;
+    index: number;
+    name?: string;
+}
+ */
+
+
+function OverviewWidget(props) {
+    const dispatch = useDispatch();
+    const data = useSelector(selectAllItems);
+    useEffect(() => {
+        dispatch(fetchData());
+    }, []);
+
+    const tottalItems = data.length;
+    let totalApplied = 0;
+    let totalRejected = 0;
+    let totalInterviewCalls = 0;
+
+    // set all variables here in one pass
+    data.forEach(item => {
+        if (item.applied) {
+            totalApplied++;
+        }
+    })
+
+    return (
+        <>
+            <div className="row text-light d-flex px-2">
+                <div className="px-2 fs-5 fw-bold">Overview</div>
+                <div className="col-6 col-md-4 col-lg-3 p-2">
+                    Total number of items
+                    <div className="display-1">
+                        {tottalItems}
+                    </div>
+                </div>
+                <div className="col-6 col-md-4 col-lg-3 p-2">
+                    Total Applied
+                    <div className="display-1">
+                        {totalApplied}
+                    </div>
+                </div>
+                <div className="col-6 col-md-4 col-lg-3 p-2">
+                    Total Rejected
+                    <div className="display-1">
+                        N/A
+                    </div>
+                </div>
+                <div className="col-6 col-md-4 col-lg-3 p-2">
+                    Total Interview Calls
+                    <div className="display-1">
+                        N/A
+                    </div>
+                </div>
+
+            </div>
+        </>
+    );
+}
 
 
 function Header(params) {
@@ -90,35 +163,8 @@ function Header(params) {
                 <OffCanvasBar />
             </div>
             <hr className="thick-border border-white my-4" />
-            <div className="row text-light d-flex px-2">
-                <div className="px-2 fs-5 fw-bold">Overview</div>
-                <div className="col-6 col-md-4 col-lg-3 p-2">
-                    Total number of items
-                    <div className="display-1">
-                        57
-                    </div>
-                </div>
-                <div className="col-6 col-md-4 col-lg-3 p-2">
-                    Total Applied Today
-                    <div className="display-1">
-                        10
-                    </div>
-                </div>
-                <div className="col-6 col-md-4 col-lg-3 p-2">
-                    Total Rejected
-                    <div className="display-1">
-                        18
-                    </div>
-                </div>
-                <div className="col-6 col-md-4 col-lg-3 p-2">
-                    Total Interview Calls
-                    <div className="display-1">
-                        2
-                    </div>
-                </div>
-
-            </div>
-        <hr className="thick-border border-white mt-4" />
+            <OverviewWidget />
+            <hr className="thick-border border-white mt-4" />
         </div>
     </div>);
 }
