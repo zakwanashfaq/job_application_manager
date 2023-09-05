@@ -50,7 +50,7 @@ export default function EditItemPage(props) {
                         </div>
                     </div>
                     <div className="fs-4">
-                        {item.companyName + " " + item.jobTitle}
+                        {item?.companyName + " " + item?.jobTitle}
                     </div>
                     <div className="row py-4">
                         <div className="col-8">
