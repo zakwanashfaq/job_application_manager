@@ -74,22 +74,6 @@ function ModalPopover(props) {
     </div>
 }
 
-/**
- interface JobItem {
-    id: string;
-    applied: boolean;
-    companyName?: string;  // the '?' denotes that the property is optional
-    link: string;
-    jobTitle?: string;
-    datePosted?: number;
-    responseDate?: number;
-    jobDescription?: string;
-    notes?: string;
-    timeAdded: number;
-    index: number;
-    name?: string;
-}
- */
 
 
 function OverviewWidget(props) {
