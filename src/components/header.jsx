@@ -89,7 +89,7 @@ function Header(params) {
                 This list is private to you.
                 <OffCanvasBar />
             </div>
-            <hr class="thick-border border-white my-4" />
+            <hr className="thick-border border-white my-4" />
             <div className="row text-light d-flex px-2">
                 <div className="px-2 fs-5 fw-bold">Overview</div>
                 <div className="col-6 col-md-4 col-lg-3 p-2">
@@ -118,7 +118,7 @@ function Header(params) {
                 </div>
 
             </div>
-        <hr class="thick-border border-white mt-4" />
+        <hr className="thick-border border-white mt-4" />
         </div>
     </div>);
 }
