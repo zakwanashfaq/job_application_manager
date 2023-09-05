@@ -171,7 +171,7 @@ function EditItem(props) {
                             <button type="button" className="btn btn-primary ms-2" onClick={handleUpdateClick}>{isReadOnly ? "Edit" : "Update"}</button>
                             {
                                 showUpdateAlert && 
-                                <div class="alert alert-success ms-2 py-1 m-0 fs-6" role="alert">
+                                <div className="alert alert-success ms-2 py-1 m-0 fs-6" role="alert">
                                     Updated successfully!
                                 </div>
                             }

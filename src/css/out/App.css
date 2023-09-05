@@ -21,10 +21,10 @@ html ::-webkit-scrollbar-thumb:hover {
   padding: 0;
   margin: 0;
   min-height: 100vh;
-  background: #dce6e6;
+  background: #ffffff;
 }
 .mainContainer .header-container {
-  background: linear-gradient(180deg, #2b6d8b 40%, #1a516a 80%, #032a46 150%);
+  background: linear-gradient(180deg, #2b6d8b 1%, #1a516a 40%, #032a46 100%);
 }
 .mainContainer .header-container .header-container-first-row {
   display: flex;
@@ -33,6 +33,10 @@ html ::-webkit-scrollbar-thumb:hover {
   align-content: center;
   justify-content: space-between;
   align-items: center;
+}
+.mainContainer .header-container .logo-font-header {
+  font-family: Pacifico;
+  font-size: 1em;
 }
 .mainContainer .header-container .header-container-info {
   display: flex;
@@ -58,7 +62,7 @@ html ::-webkit-scrollbar-thumb:hover {
   margin-top: 30px;
   padding: 10px;
   border-radius: 10px;
-  background-color: rgba(240, 250, 250, 0.692);
+  background-color: rgba(230, 230, 230, 0.692);
 }
 @media screen and (max-width: 1200px) {
   .mainContainer .application-list-container {

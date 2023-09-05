@@ -10,6 +10,10 @@ export const fetchData = createAsyncThunk(
 );
 
 export const selectAllItems = (state) => [...state.items.value]
+export const selectItemById = (state, itemId) => {
+  return state.items.value.find(item => item.id === itemId)
+};
+
 
 export const itemsSlice = createSlice({
   name: 'itemStore',
@@ -38,6 +42,9 @@ export const itemsSlice = createSlice({
       } catch (error) {
         throw(error);
       }
+    },
+    getItem: (state, action) => {
+      return state.value.find(item => item.id === action.payload);
     },
     updateItem: (state, action) => {
       const { id, ...fieldsToUpdate } = action.payload;
@@ -85,5 +92,5 @@ export const itemsSlice = createSlice({
 })
 
 
-export const { addItem, deleteItem, updateItem } = itemsSlice.actions
+export const { getItem, addItem, deleteItem, updateItem } = itemsSlice.actions
 export default itemsSlice.reducer

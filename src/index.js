@@ -10,6 +10,7 @@ import {
   Routes
 } from "react-router-dom";
 import { LandingPage } from './components/landingPage';
+import ItemPage from './components/editItemPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,9 +18,11 @@ root.render(
     <Provider store={store}>
       <Router>
         <Routes>
-          <Route path="/app" element={<App />} />
-          <Route path="/login" element={<div>LoginPage</div>} />
           <Route path="/" element={<LandingPage />} />
+          <Route path="/app" element={<App />} />
+          <Route path="/app/item/:id" element={<ItemPage />} />
+          <Route path="/app/item/edit/:id" element={<ItemPage />} />
+          <Route path="/login" element={<div>LoginPage</div>} />
           <Route path="/how_to" element={<div>How To</div>} />
           <Route path="/faq" element={<div>Frequently asked questions</div>} />
         </Routes>

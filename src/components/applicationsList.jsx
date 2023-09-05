@@ -40,7 +40,13 @@ function ApplicationList(props) {
 
     return (
         <div className="application-list-container container-xl" ref={listContainerRef}>
-            {props.children}
+            {props.children.length > 0 ? props.children : <>
+                <div className="container-lg">
+                    <div className="py-4 d-flex justify-content-center">
+                        <div className="fw-bold text-secondary">Add a job posting with the "Add a new job posting" button above.</div>
+                    </div>
+                </div>
+            </>}
         </div>
     );
 }
