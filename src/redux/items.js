@@ -10,7 +10,9 @@ export const fetchData = createAsyncThunk(
 );
 
 export const selectAllItems = (state) => [...state.items.value]
-export const selectItemById = (state, itemId) => state.items.value.find(item => item.id === itemId);
+export const selectItemById = (state, itemId) => {
+  return state.items.value.find(item => item.id === itemId)
+};
 
 
 export const itemsSlice = createSlice({
