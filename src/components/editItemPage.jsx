@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useParams, useLocation } from "react-router-dom";
-import { fetchData, selectItemById } from "../redux/items";
+import { useDispatch } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
+import { fetchData, deleteItem, updateItem } from "../redux/items";
 import "../css/out/EditPage.css"
 
 /**
@@ -25,15 +25,110 @@ import "../css/out/EditPage.css"
 // find a way to get data from initial fetch
 
 export default function EditItemPage(props) {
-    const { id } = useParams();
     const location = useLocation();
-    // const data = location.state?.data;
     const dispatch = useDispatch();
-    let item = location.state?.data;; // useSelector(state => selectItemById(state, '6824a9a9-8c4b-4677-9dcb-92de37082b0a'));
-
+    const navigate = useNavigate();
+    let item = location.state?.data;
     useEffect(() => {
         dispatch(fetchData());
     }, []);
+
+    const [companyName, setCompanyName] = useState(item.companyName);
+    const [datePosted, setDatePosted] = useState(item.datePosted);
+    const [jobDescription, setJobDescription] = useState(item.jobDescription);
+    const [jobTitle, setJobTitle] = useState(item.jobTitle);
+    const [link, setLink] = useState(item.link);
+    const [notes, setNotes] = useState(item.notes);
+    const [responseDate, setResponseDate] = useState(item.responseDate);
+    const [applied, setApplied] = useState(item.applied);
+    const [isReadOnly, setIsReadOnly] = useState(true);
+    const [showUpdateAlert, setShowAlert] = useState(false);
+
+    const handleCompanyNameChange = (e) => {
+        setCompanyName(e.target.value);
+    }
+
+    const handleDatePostedChange = (e) => {
+        setDatePosted(e.target.value);
+    }
+
+    const handleResponseDateChange = (e) => {
+        setResponseDate(e.target.value);
+    }
+
+    const handleJobTitleChange = (e) => {
+        setJobTitle(e.target.value)
+    }
+
+    const handleNotesChange = (e) => {
+        setNotes(e.target.value);
+    }
+
+    const handleJobDescriptionChange = (e) => {
+        setJobDescription(e.target.value);
+    }
+
+    const handleLinkChange = (e) => {
+        setLink(e.target.value);
+    }
+
+    const handleUpdateClick = () => {
+
+        if (isReadOnly) {
+            setIsReadOnly(false);
+            return;
+        }
+
+        dispatch(updateItem({
+            id: props.id,
+            jobTitle,
+            link,
+            companyName,
+            jobDescription,
+            notes
+        }));
+
+        setShowAlert(true);
+
+        // infinite loop caused here
+        // const modalElement = document.getElementById(target_id);
+        // modalElement.classList.remove('show');
+        // document.body.classList.remove('modal-open');
+
+        // const modalBackdrops = document.getElementsByClassName('modal-backdrop');
+        // for (let i = 0; i < modalBackdrops.length; i++) {
+        //     modalBackdrops[i].classList.remove('show');
+        // }
+    }
+
+    const handleAppliedButtonClick = (e) => {
+        let newAppliedState = !applied;
+        dispatch(updateItem({
+            id: props.id,
+            applied: newAppliedState
+        }));
+        setApplied(newAppliedState);
+    }
+
+    const onCloseButtonClick = (e) => {
+        setIsReadOnly(true);
+    }
+
+    const handleOnDelete = (e) => {
+        dispatch(deleteItem(item.id));
+        navigate("/app");
+    }
+
+    useEffect(() => {
+        if (showUpdateAlert) {
+            const timer = setTimeout(() => {
+                setShowAlert(false);
+            }, 3000);
+
+            return () => clearTimeout(timer); // Clear the timer if the component is unmounted
+        }
+    }, [showUpdateAlert]);
+
 
     let mainTitle = "";
     if (item?.companyName && item?.jobTitle) {
@@ -56,11 +151,22 @@ export default function EditItemPage(props) {
                             Edit
                         </div>
                         <div className="d-flex align-items-center">
-                            <button className="btn btn-danger">Delete</button>
+                            <button className="btn btn-danger" onClick={handleOnDelete}>Delete</button>
                         </div>
                     </div>
-                    <div className="fs-4">
+                    <div className="fs-4 d-flex flex-row align-items-center">
                         {mainTitle}
+                        {
+                            applied &&
+                            <div className="ms-2 px-2 py-1 bg-success rounded-3 d-flex align-items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" className="bi bi-check-circle-fill text-light" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                </svg>
+                                <span className="ps-2 text-light">
+                                    Applied
+                                </span>
+                            </div>
+                        }
                     </div>
                     <div className="row py-4">
                         <div className="col-8">
@@ -87,8 +193,16 @@ export default function EditItemPage(props) {
                                 <input className="rounded border p-2" value={item.link} type="text"></input>
                             </div>
                             <div className="p-1 mt-3 d-flex flex-row">
-                                <button className="me-1 btn btn-success w-100" onClick={() => { console.log("Unimplemented!") }}>Mark as applied</button>
+                                <button className="me-1 btn btn-success w-100" onClick={handleAppliedButtonClick}>Mark as applied</button>
                                 <button className="me-1 btn btn-primary w-100" onClick={() => { console.log("Unimplemented!") }}>Update</button>
+                            </div>
+                            <div className="p-1 mt-3 d-flex flex-row">
+                                {
+                                    showUpdateAlert &&
+                                    <div className="alert alert-success ms-2 py-1 m-0 fs-6" role="alert">
+                                        Updated successfully!
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
