@@ -233,58 +233,6 @@ function Testemonials(props) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="carousel-item">
-                                <div className="row">
-                                    <div className="col-sm-6">
-                                        <div className="media">
-                                            <img src="/examples/images/clients/3.jpg" className="mr-3" alt="" />
-                                            <div className="media-body">
-                                                <div className="testimonial">
-                                                    <p>Lorem ipsum dolor sit amet, consec adipiscing elit. Nam eusem scelerisque tempor, varius quam luctus dui. Mauris magna metus nec.</p>
-                                                    <p className="overview"><b>Michael Holz</b>, Seo Analyst</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <div className="media">
-                                            <img src="/examples/images/clients/4.jpg" className="mr-3" alt="" />
-                                            <div className="media-body">
-                                                <div className="testimonial">
-                                                    <p>Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget mi suscipit tincidunt. Utmtc tempus dictum. Pellentesque virra.</p>
-                                                    <p className="overview"><b>Mary Saveley</b>, Web Designer</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="carousel-item">
-                                <div className="row">
-                                    <div className="col-sm-6">
-                                        <div className="media">
-                                            <img src="/examples/images/clients/5.jpg" className="mr-3" alt="" />
-                                            <div className="media-body">
-                                                <div className="testimonial">
-                                                    <p>Lorem ipsum dolor sit amet, consec adipiscing elit. Nam eusem scelerisque tempor, varius quam luctus dui. Mauris magna metus nec.</p>
-                                                    <p className="overview"><b>Martin Sommer</b>, UX Analyst</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <div className="media">
-                                            <img src="/examples/images/clients/6.jpg" className="mr-3" alt="" />
-                                            <div className="media-body">
-                                                <div className="testimonial">
-                                                    <p>Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget mi suscipit tincidunt. Utmtc tempus dictum. Pellentesque virra.</p>
-                                                    <p className="overview"><b>John Williams</b>, Web Developer</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

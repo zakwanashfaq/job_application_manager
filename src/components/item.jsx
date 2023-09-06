@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "../css/out/App.css";
 import { useDispatch } from 'react-redux';
 import { deleteItem, updateItem } from '../redux/items';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * Represents an item component that displays job application details.
@@ -214,6 +215,7 @@ function getShortString(string, lenght) {
  */
 function Item(props) {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     let shortLink = getShortString(props.link, 40);
     let shortJobTitle = getShortString(props.jobTitle, 30);
     let shortCompanyName = getShortString(props.companyName, 30);
@@ -239,6 +241,10 @@ function Item(props) {
         };
     }, []);
 
+    const handleEditClick = (e) => {
+        navigate('/app/item/edit/', { state: {data : props} });
+      };
+
     const handleOnDelete = (e) => {
         dispatch(deleteItem(props.id));
         console.log("Deleted: " + props.id);
@@ -257,7 +263,7 @@ function Item(props) {
                         {/* <input className="checkbox" type="checkbox" title="checkbox" onChange={handleOnSelect} placeholder="checkbox" value={isSelected} /> */}
                         <div className='d-flex flex-column ps-4'>
                             <div className="d-flex flex-row">
-                                <strong className={"pt-1 " + (props.applied ? "text-decoration-line-through" : "")} data-bs-toggle="modal" data-bs-target={"#" + target_id}>
+                                <strong className={"pt-1 " + (props.applied ? "text-decoration-line-through" : "")} onClick={handleEditClick}>
                                     {shortJobTitle}
                                 </strong>
                                 <EditItem {...props} />
