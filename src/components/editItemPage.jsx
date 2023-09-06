@@ -104,7 +104,7 @@ export default function EditItemPage(props) {
     const handleAppliedButtonClick = (e) => {
         let newAppliedState = !applied;
         dispatch(updateItem({
-            id: props.id,
+            id: item.id,
             applied: newAppliedState
         }));
         setApplied(newAppliedState);
@@ -150,7 +150,7 @@ export default function EditItemPage(props) {
         <>
             <div className="container-lg">
                 <div className="d-flex flex-column px-2 py-4">
-                    <div className="d-flex flex-row align-items-center">
+                    <div className="d-flex flex-row align-items-center mb-2">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="currentColor" onClick={handleOnBackButtonClick} className="bi bi-arrow-left-square text-secondary me-3" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
@@ -178,7 +178,7 @@ export default function EditItemPage(props) {
                         }
                     </div>
                     <div className="row py-4">
-                        <div className="col-8">
+                        <div className="col-12 col-md-8">
                             <div className="fs-5 py-3">
                                 Job Description
                             </div>
@@ -188,7 +188,7 @@ export default function EditItemPage(props) {
                             </div>
                             <textarea disabled className="w-100 p-3 form-control" rows={3} value={item.notes} />
                         </div>
-                        <div className="col-4">
+                        <div className="col-12 col-md-4">
                             <div className="p-1 mt-3 d-flex flex-column">
                                 <label className="form-label fs-5 pt-2">Company Name</label>
                                 <input required className="rounded border p-2" value={item.companyName} type="text" ></input>
@@ -202,7 +202,7 @@ export default function EditItemPage(props) {
                                 <input className="rounded border p-2" value={item.link} type="text"></input>
                             </div>
                             <div className="p-1 mt-3 d-flex flex-row">
-                                <button className="me-1 btn btn-success w-100" onClick={handleAppliedButtonClick}>Mark as applied</button>
+                                <button className="me-1 btn btn-success w-100" onClick={handleAppliedButtonClick}>{applied ? "Unmark as applied" : "Mark as applied"}</button>
                                 <button className="me-1 btn btn-primary w-100" onClick={() => { console.log("Unimplemented!") }}>Update</button>
                             </div>
                             <div className="p-1 mt-3 d-flex flex-row">
