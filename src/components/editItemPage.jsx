@@ -30,8 +30,6 @@ export default function EditItemPage(props) {
     // const data = location.state?.data;
     const dispatch = useDispatch();
     let item = location.state?.data;; // useSelector(state => selectItemById(state, '6824a9a9-8c4b-4677-9dcb-92de37082b0a'));
-    console.log(location);
-
 
     useEffect(() => {
         dispatch(fetchData());
@@ -54,7 +52,7 @@ export default function EditItemPage(props) {
             <div className="container-lg">
                 <div className="d-flex flex-column px-2 py-4">
                     <div className="d-flex flex-row">
-                        <div className="display-3 me-auto">
+                        <div className="display-3 text-secondary me-auto">
                             Edit
                         </div>
                         <div className="d-flex align-items-center">

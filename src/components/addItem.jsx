@@ -39,6 +39,12 @@ function AddItem(props) {
 
     const onButtonCLick = (event) => {
         const today = new Date();
+
+        if (jobTitle.trim() === "") {
+            alert("Job title is required!");
+            return;
+        }
+
         dispatch(addItem({
             id: crypto.randomUUID(),
             applied: false,
