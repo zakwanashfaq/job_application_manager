@@ -13,7 +13,7 @@ export function AddAndSearchBar(props){
     }
 
     return (
-        <div className="addAndSearchBar-container sticky-top">
+        <div className="addAndSearchBar-container sticky-top-custom">
             <div className="p-1 px-3 pb-4 px-xl-0 container-xl py-3">
                 <div className="row">
                     <div className="col-sm-12 col-md-3 ps-md-4">
