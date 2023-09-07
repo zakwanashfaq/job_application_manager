@@ -39,6 +39,13 @@ function AddItem(props) {
 
     const onButtonCLick = (event) => {
         const today = new Date();
+
+        // handling for empty jobTitle
+        if (jobTitle.trim() === "") {
+            alert("Job title is required!");
+            return;
+        }
+
         dispatch(addItem({
             id: crypto.randomUUID(),
             applied: false,
@@ -53,17 +60,23 @@ function AddItem(props) {
             index: all_items.length
         }));
         setCompanyName("");
+        setJobDescription("");
+        setNotes("")
         setLink("");
+        setJobTitle("")
+        props.setShowAddItemModal(false);
     }
 
     return (
         <>
-            <div className="modal fade" id="addItemModal" tabIndex="-1" aria-labelledby="addItemModalLabel" aria-hidden="true">
+            {
+            props.showAddItemModal &&
+            <div className="additem-modal modal" >
                 <div className="modal-dialog modal-dialog-scrollable">
-                    <div className="modal-content p-2">
+                    <div className="modal-content">
                         <div className="modal-header">
                             <h1 className="modal-title fs-5" id="addItemModalLabel">Add an application or job post</h1>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" className="btn-close ms-5" onClick={() => props.setShowAddItemModal(false)}></button>
                         </div>
                         <div className="m-1 modal-body ">
                             <div className="p-1 d-flex flex-column">
@@ -80,7 +93,7 @@ function AddItem(props) {
                             </div>
                             <div className="p-1">
                                 <label className="form-label">Description</label>
-                                <textarea className="form-control" rows="5" value={jobDescription} onChange={handleJobDescriptionChange}></textarea>
+                                <textarea className="form-control" placeholder="Copy and paste the job description here" rows="5" value={jobDescription} onChange={handleJobDescriptionChange}></textarea>
                             </div>
                             <div className="p-1">
                                 <label className="form-label">Notes</label>
@@ -96,6 +109,7 @@ function AddItem(props) {
                     </div>
                 </div>
             </div>
+            }
         </>
     );
 }

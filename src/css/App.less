@@ -70,8 +70,20 @@ html {
       &:active {
           background-color: rgb(30, 90, 120);
       }
-
     }
+  }
+
+  .additem-modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);  /* semi-transparent black background */
+    display: flex;                         /* flexbox to center the modal dialog */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
   }
 
   .application-list-container {

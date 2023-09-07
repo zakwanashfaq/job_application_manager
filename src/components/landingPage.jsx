@@ -13,7 +13,7 @@ function Navbar(props) {
                         <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z" />
                     </svg> */}
                     <div className="ps-2 pb-1 fw-bolder nav-brand-text">
-                        jam
+                        resJam
                     </div>
                 </a>
                 <form className="d-none d-lg-block" role="search">
@@ -182,7 +182,7 @@ function Features(props) {
                     </div>
                     <div className="feature col">
                         <div className="feature-icon feature-icon-background rounded-4 text-white d-inline-flex align-items-center justify-content-center bg-gradient p-4 fs-2 mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" cclassNamelass="bi bi-sort-numeric-up-alt" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" className="bi bi-sort-numeric-up-alt" viewBox="0 0 16 16">
                                 <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
                             </svg>
                         </div>
@@ -227,58 +227,6 @@ function Testemonials(props) {
                                                         Navigating the job market has never been this seamless! The ability to prioritize and keep track of applications, all while jotting down my thoughts, has transformed my approach. This platform isn't just a tool—it's my job search companion.
                                                     </p>
                                                     <p className="overview"><b>Antonio Moreno</b>, Web Developer</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="carousel-item">
-                                <div className="row">
-                                    <div className="col-sm-6">
-                                        <div className="media">
-                                            <img src="/examples/images/clients/3.jpg" className="mr-3" alt="" />
-                                            <div className="media-body">
-                                                <div className="testimonial">
-                                                    <p>Lorem ipsum dolor sit amet, consec adipiscing elit. Nam eusem scelerisque tempor, varius quam luctus dui. Mauris magna metus nec.</p>
-                                                    <p className="overview"><b>Michael Holz</b>, Seo Analyst</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <div className="media">
-                                            <img src="/examples/images/clients/4.jpg" className="mr-3" alt="" />
-                                            <div className="media-body">
-                                                <div className="testimonial">
-                                                    <p>Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget mi suscipit tincidunt. Utmtc tempus dictum. Pellentesque virra.</p>
-                                                    <p className="overview"><b>Mary Saveley</b>, Web Designer</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="carousel-item">
-                                <div className="row">
-                                    <div className="col-sm-6">
-                                        <div className="media">
-                                            <img src="/examples/images/clients/5.jpg" className="mr-3" alt="" />
-                                            <div className="media-body">
-                                                <div className="testimonial">
-                                                    <p>Lorem ipsum dolor sit amet, consec adipiscing elit. Nam eusem scelerisque tempor, varius quam luctus dui. Mauris magna metus nec.</p>
-                                                    <p className="overview"><b>Martin Sommer</b>, UX Analyst</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <div className="media">
-                                            <img src="/examples/images/clients/6.jpg" className="mr-3" alt="" />
-                                            <div className="media-body">
-                                                <div className="testimonial">
-                                                    <p>Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget mi suscipit tincidunt. Utmtc tempus dictum. Pellentesque virra.</p>
-                                                    <p className="overview"><b>John Williams</b>, Web Developer</p>
                                                 </div>
                                             </div>
                                         </div>
