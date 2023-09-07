@@ -83,7 +83,7 @@ function OverviewWidget(props) {
         dispatch(fetchData());
     }, []);
 
-    const tottalItems = data.length;
+    let totalItems = data.length;
     let totalApplied = 0;
     let totalRejected = 0;
     let totalInterviewCalls = 0;
@@ -102,7 +102,7 @@ function OverviewWidget(props) {
                 <div className="col-6 col-md-4 col-lg-3 p-2">
                     Total number of items
                     <div className="display-1">
-                        {tottalItems}
+                        {totalItems}
                     </div>
                 </div>
                 <div className="col-6 col-md-4 col-lg-3 p-2">
