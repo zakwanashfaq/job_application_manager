@@ -134,7 +134,7 @@ function Header(params) {
     return (<div className="header-container pt-5 pb-1 my-0">
         <div className="container-xl">
             <div className="header-container-first-row text-light">
-                <h3 className="display-6 ps-1"><span className="logo-font-header">jam</span> Dashboard</h3>
+                <h3 className="display-6 ps-1"><span className="logo-font-header">rezJam</span> Dashboard</h3>
                 <ModalPopover />
             </div>
             <div className="text-light header-container-info pt-4">

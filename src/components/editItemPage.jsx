@@ -34,27 +34,26 @@ export default function EditItemPage(props) {
     }, []);
 
     const [companyName, setCompanyName] = useState(item.companyName);
-    const [datePosted, setDatePosted] = useState(item.datePosted);
+    // const [datePosted, setDatePosted] = useState(item.datePosted);
     const [jobDescription, setJobDescription] = useState(item.jobDescription);
     const [jobTitle, setJobTitle] = useState(item.jobTitle);
     const [link, setLink] = useState(item.link);
     const [notes, setNotes] = useState(item.notes);
-    const [responseDate, setResponseDate] = useState(item.responseDate);
+    // const [responseDate, setResponseDate] = useState(item.responseDate);
     const [applied, setApplied] = useState(item.applied);
-    const [isReadOnly, setIsReadOnly] = useState(true);
     const [showUpdateAlert, setShowAlert] = useState(false);
 
     const handleCompanyNameChange = (e) => {
         setCompanyName(e.target.value);
     }
 
-    const handleDatePostedChange = (e) => {
-        setDatePosted(e.target.value);
-    }
+    // const handleDatePostedChange = (e) => {
+    //     setDatePosted(e.target.value);
+    // }
 
-    const handleResponseDateChange = (e) => {
-        setResponseDate(e.target.value);
-    }
+    // const handleResponseDateChange = (e) => {
+    //     setResponseDate(e.target.value);
+    // }
 
     const handleJobTitleChange = (e) => {
         setJobTitle(e.target.value)
@@ -74,13 +73,8 @@ export default function EditItemPage(props) {
 
     const handleUpdateClick = () => {
 
-        if (isReadOnly) {
-            setIsReadOnly(false);
-            return;
-        }
-
         dispatch(updateItem({
-            id: props.id,
+            id: item.id,
             jobTitle,
             link,
             companyName,
@@ -108,10 +102,6 @@ export default function EditItemPage(props) {
             applied: newAppliedState
         }));
         setApplied(newAppliedState);
-    }
-
-    const onCloseButtonClick = (e) => {
-        setIsReadOnly(true);
     }
 
     const handleOnDelete = (e) => {
@@ -182,33 +172,33 @@ export default function EditItemPage(props) {
                             <div className="fs-5 py-3">
                                 Job Description
                             </div>
-                            <textarea className="w-100 h-100 p-3 form-control" value={item.jobDescription} />
+                            <textarea className="w-100 h-100 p-3 form-control" value={jobDescription} onChange={handleJobDescriptionChange}/>
                             <div className="fs-5 py-3">
                                 Notes
                             </div>
-                            <textarea disabled className="w-100 p-3 form-control" rows={3} value={item.notes} />
+                            <textarea className="w-100 p-3 form-control" rows={3} value={notes} onChange={handleNotesChange}/>
                         </div>
                         <div className="col-12 col-md-4">
                             <div className="p-1 mt-3 d-flex flex-column">
                                 <label className="form-label fs-5 pt-2">Company Name</label>
-                                <input required className="rounded border p-2" value={item.companyName} type="text" ></input>
+                                <input required className="rounded border p-2" value={companyName} onChange={handleCompanyNameChange} type="text" ></input>
                             </div>
                             <div className="p-1 mt-3 d-flex flex-column">
                                 <label className="form-label fs-5">Position</label>
-                                <input required className="rounded border p-2" value={item.jobTitle} type="text" ></input>
+                                <input required className="rounded border p-2" value={jobTitle} onChange={handleJobTitleChange} type="text" ></input>
                             </div>
                             <div className="p-1 mt-3 d-flex flex-column">
                                 <label className="form-label fs-5">Link</label>
-                                <input className="rounded border p-2" value={item.link} type="text"></input>
+                                <input className="rounded border p-2" value={link} onChange={handleLinkChange} type="text"></input>
                             </div>
                             <div className="p-1 mt-3 d-flex flex-row">
                                 <button className="me-1 btn btn-success w-100" onClick={handleAppliedButtonClick}>{applied ? "Unmark as applied" : "Mark as applied"}</button>
-                                <button className="me-1 btn btn-primary w-100" onClick={() => { console.log("Unimplemented!") }}>Update</button>
+                                <button className="me-1 btn btn-primary w-100" onClick={handleUpdateClick}>Update</button>
                             </div>
                             <div className="p-1 mt-3 d-flex flex-row">
                                 {
                                     showUpdateAlert &&
-                                    <div className="alert alert-success ms-2 py-1 m-0 fs-6" role="alert">
+                                    <div className="alert alert-success w-100 ms-2 py-1 m-0 fs-6 d-flex justify-content-center" role="alert">
                                         Updated successfully!
                                     </div>
                                 }
