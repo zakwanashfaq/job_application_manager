@@ -21,10 +21,7 @@ import "../css/out/EditPage.css"
 }
  */
 
-// todo: optimize this code. We do not want to fetch data here from server
-// find a way to get data from initial fetch
-
-export default function EditItemPage(props) {
+export default function ViewItemPage(props) {
     const location = useLocation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -43,56 +40,12 @@ export default function EditItemPage(props) {
     const [applied, setApplied] = useState(item.applied);
     const [showUpdateAlert, setShowAlert] = useState(false);
 
-    const handleCompanyNameChange = (e) => {
-        setCompanyName(e.target.value);
-    }
 
-    // const handleDatePostedChange = (e) => {
-    //     setDatePosted(e.target.value);
-    // }
+    const handleEditClick = (e) => {
+        navigate('/app/item/edit/', { state: { data: item } });
+    };
 
-    // const handleResponseDateChange = (e) => {
-    //     setResponseDate(e.target.value);
-    // }
-
-    const handleJobTitleChange = (e) => {
-        setJobTitle(e.target.value)
-    }
-
-    const handleNotesChange = (e) => {
-        setNotes(e.target.value);
-    }
-
-    const handleJobDescriptionChange = (e) => {
-        setJobDescription(e.target.value);
-    }
-
-    const handleLinkChange = (e) => {
-        setLink(e.target.value);
-    }
-
-    const handleUpdateClick = () => {
-
-        dispatch(updateItem({
-            id: item.id,
-            jobTitle,
-            link,
-            companyName,
-            jobDescription,
-            notes
-        }));
-
-        setShowAlert(true);
-    }
-
-    const handleAppliedButtonClick = (e) => {
-        let newAppliedState = !applied;
-        dispatch(updateItem({
-            id: item.id,
-            applied: newAppliedState
-        }));
-        setApplied(newAppliedState);
-    }
+   
 
     const handleOnDelete = (e) => {
         dispatch(deleteItem(item.id));
@@ -100,18 +53,8 @@ export default function EditItemPage(props) {
     }
 
     const handleOnBackButtonClick = (e) => {
-        navigate("/app/item", { state: { data: item } });
+        navigate("/app");
     }
-
-    useEffect(() => {
-        if (showUpdateAlert) {
-            const timer = setTimeout(() => {
-                setShowAlert(false);
-            }, 3000);
-
-            return () => clearTimeout(timer); // Clear the timer if the component is unmounted
-        }
-    }, [showUpdateAlert]);
 
 
     let mainTitle = "";
@@ -136,8 +79,8 @@ export default function EditItemPage(props) {
                                 <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
                             </svg>
                         </div>
-                        <div className="display-4 me-auto">
-                            Edit
+                        <div className="display-6 me-auto">
+                            View
                         </div>
                         <div className="d-flex align-items-center">
                             <button className="btn btn-danger" onClick={handleOnDelete}>Delete</button>
@@ -162,37 +105,29 @@ export default function EditItemPage(props) {
                             <div className="fs-5 py-3">
                                 Job Description
                             </div>
-                            <textarea className="w-100 h-100 p-3 form-control" value={jobDescription} onChange={handleJobDescriptionChange}/>
+                            <textarea className="w-100 h-100 p-3 form-control" value={jobDescription}/>
                             <div className="fs-5 py-3">
                                 Notes
                             </div>
-                            <textarea className="w-100 p-3 form-control" rows={3} value={notes} onChange={handleNotesChange}/>
+                            <textarea className="w-100 p-3 form-control" rows={3} value={notes}/>
                         </div>
                         <div className="col-12 col-md-4">
                             <div className="p-1 mt-3 d-flex flex-column">
                                 <label className="form-label fs-5 pt-2">Company Name</label>
-                                <input required className="rounded border p-2" value={companyName} onChange={handleCompanyNameChange} type="text" ></input>
+                                <input required className="rounded border p-2" value={companyName} type="text" ></input>
                             </div>
                             <div className="p-1 mt-3 d-flex flex-column">
                                 <label className="form-label fs-5">Position</label>
-                                <input required className="rounded border p-2" value={jobTitle} onChange={handleJobTitleChange} type="text" ></input>
+                                <input required className="rounded border p-2" value={jobTitle} type="text" ></input>
                             </div>
                             <div className="p-1 mt-3 d-flex flex-column">
                                 <label className="form-label fs-5">Link</label>
-                                <input className="rounded border p-2" value={link} onChange={handleLinkChange} type="text"></input>
+                                <input className="rounded border p-2" value={link} type="text"></input>
                             </div>
                             <div className="p-1 mt-3 d-flex flex-row">
-                                <button className="me-1 btn btn-success w-100" onClick={handleAppliedButtonClick}>{applied ? "Unmark as applied" : "Mark as applied"}</button>
-                                <button className="me-1 btn btn-primary w-100" onClick={handleUpdateClick}>Update</button>
+                                <button className="me-1 py-2 btn btn-primary w-100">Edit post</button>
                             </div>
-                            <div className="p-1 mt-3 d-flex flex-row">
-                                {
-                                    showUpdateAlert &&
-                                    <div className="alert alert-success w-100 ms-2 py-1 m-0 fs-6 d-flex justify-content-center" role="alert">
-                                        Updated successfully!
-                                    </div>
-                                }
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

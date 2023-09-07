@@ -59,7 +59,7 @@ function Item(props) {
     }, []);
 
     const handleEditClick = (e) => {
-        navigate('/app/item/edit/', { state: { data: props } });
+        navigate('/app/item/', { state: { data: props } });
     };
 
     const handleOnDelete = (e) => {
