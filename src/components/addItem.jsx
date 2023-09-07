@@ -73,7 +73,7 @@ function AddItem(props) {
             props.showAddItemModal &&
             <div className="additem-modal modal" >
                 <div className="modal-dialog modal-dialog-scrollable">
-                    <div className="modal-content p-2 mx-auto">
+                    <div className="modal-content">
                         <div className="modal-header">
                             <h1 className="modal-title fs-5" id="addItemModalLabel">Add an application or job post</h1>
                             <button type="button" className="btn-close ms-5" onClick={() => props.setShowAddItemModal(false)}></button>
