@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import { fetchData, deleteItem, updateItem } from "../redux/items";
-import "../css/out/EditPage.css"
+import "../css/out/ViewPage.css"
 
 /**
  interface JobItem {
@@ -83,11 +83,15 @@ export default function ViewItemPage(props) {
                             View
                         </div>
                         <div className="d-flex align-items-center">
+                            <button className="me-2 btn btn-primary w-100" onClick={handleEditClick}>Edit post</button>
                             <button className="btn btn-danger" onClick={handleOnDelete}>Delete</button>
                         </div>
                     </div>
-                    <div className="fs-3 d-flex flex-row align-items-center">
+                    <div className="fs-3 d-flex flex-column align-items-start">
                         {mainTitle}
+                        <div className="fs-6">
+                            <a  href={link}>{link}</a>
+                        </div>
                         {
                             applied &&
                             <div className="ms-2 px-2 py-1 bg-success rounded-3 d-flex align-items-center">
@@ -100,35 +104,18 @@ export default function ViewItemPage(props) {
                             </div>
                         }
                     </div>
-                    <div className="row py-4">
-                        <div className="col-12 col-md-8">
-                            <div className="fs-5 py-3">
+                    <div className="row pt-4">
+                        <div className="col-12">
+                            <div className="fs-5 pb-3">
                                 Job Description
                             </div>
-                            <textarea className="w-100 h-100 p-3 form-control" value={jobDescription}/>
+                            <pre className="p-3 form-control">{jobDescription}</pre>
                             <div className="fs-5 py-3">
                                 Notes
                             </div>
-                            <textarea className="w-100 p-3 form-control" rows={3} value={notes}/>
+                            <pre className="p-3 form-control">{notes}</pre>
                         </div>
-                        <div className="col-12 col-md-4">
-                            <div className="p-1 mt-3 d-flex flex-column">
-                                <label className="form-label fs-5 pt-2">Company Name</label>
-                                <input required className="rounded border p-2" value={companyName} type="text" ></input>
-                            </div>
-                            <div className="p-1 mt-3 d-flex flex-column">
-                                <label className="form-label fs-5">Position</label>
-                                <input required className="rounded border p-2" value={jobTitle} type="text" ></input>
-                            </div>
-                            <div className="p-1 mt-3 d-flex flex-column">
-                                <label className="form-label fs-5">Link</label>
-                                <input className="rounded border p-2" value={link} type="text"></input>
-                            </div>
-                            <div className="p-1 mt-3 d-flex flex-row">
-                                <button className="me-1 py-2 btn btn-primary w-100">Edit post</button>
-                            </div>
-                            
-                        </div>
+                        
                     </div>
                 </div>
             </div>

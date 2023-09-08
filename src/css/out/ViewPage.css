@@ -1,0 +1,9 @@
+pre {
+  width: 300px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  white-space: pre-wrap;
+  /* This will make the text wrap */
+  word-wrap: break-word;
+  /* This ensures words are broken if they are too long for the container */
+}

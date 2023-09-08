@@ -162,7 +162,7 @@ export default function EditItemPage(props) {
                             <div className="fs-5 py-3">
                                 Job Description
                             </div>
-                            <textarea className="w-100 h-100 p-3 form-control" value={jobDescription} onChange={handleJobDescriptionChange}/>
+                            <textarea className="w-100 p-3 form-control" rows={12} value={jobDescription} onChange={handleJobDescriptionChange}/>
                             <div className="fs-5 py-3">
                                 Notes
                             </div>
