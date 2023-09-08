@@ -7,3 +7,6 @@ html {
   left: 0;
   width: 100%;
 }
+textarea {
+  height: 60vh;
+}
