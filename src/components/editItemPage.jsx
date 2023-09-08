@@ -157,42 +157,48 @@ export default function EditItemPage(props) {
                             </div>
                         }
                     </div>
+                    <div className="row mt-4">
+                        <div className="col-12 col-lg-4 p-1 d-flex flex-column">
+                            <label className="form-label fs-5">Company Name</label>
+                            <input required className="rounded border p-2" value={companyName} onChange={handleCompanyNameChange} type="text" ></input>
+                        </div>
+                        <div className="col-12 col-lg-4 p-1 d-flex flex-column">
+                            <label className="form-label fs-5">Position</label>
+                            <input required className="rounded border p-2" value={jobTitle} onChange={handleJobTitleChange} type="text" ></input>
+                        </div>
+                        <div className="col-12 col-lg-4 p-1 d-flex flex-column">
+                            <label className="form-label fs-5">Link</label>
+                            <input className="rounded border p-2" value={link} onChange={handleLinkChange} type="text"></input>
+                        </div>
+                        <div className=" mx-auto d-flex flex-row">
+                            {
+                                showUpdateAlert &&
+                                <div className="alert-pop-over alert alert-success py-5 p-1 fs-6 d-flex justify-content-center" role="alert">
+                                    Updated successfully!
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div className="row mt-3">
+                        <div className="col-12 col-sm-6 col-md-3 col-lg-2 px-1">
+                            <button className="m-1 mx-md-0 btn btn-success w-100" onClick={handleAppliedButtonClick}>{applied ? "Unmark as applied" : "Mark as applied"}</button>
+                        </div>
+                        <div className="col-12 col-sm-6 col-md-3 col-lg-2 px-1">
+                            <button className="m-1 mx-md-0 btn btn-primary w-100" onClick={handleUpdateClick}>Update</button>
+                        </div>
+                    </div>
                     <div className="row py-4">
                         <div className="col-12 col-md-8">
                             <div className="fs-5 py-3">
                                 Job Description
                             </div>
-                            <textarea className="w-100 p-3 form-control" rows={12} value={jobDescription} onChange={handleJobDescriptionChange}/>
+                            <textarea className="w-100 p-3 form-control" rows={15} value={jobDescription} onChange={handleJobDescriptionChange} />
+                        </div>
+                        <div className="col-12 col-md-4">
                             <div className="fs-5 py-3">
                                 Notes
                             </div>
-                            <textarea className="w-100 p-3 form-control" rows={3} value={notes} onChange={handleNotesChange}/>
-                        </div>
-                        <div className="col-12 col-md-4">
-                            <div className="p-1 mt-3 d-flex flex-column">
-                                <label className="form-label fs-5 pt-2">Company Name</label>
-                                <input required className="rounded border p-2" value={companyName} onChange={handleCompanyNameChange} type="text" ></input>
-                            </div>
-                            <div className="p-1 mt-3 d-flex flex-column">
-                                <label className="form-label fs-5">Position</label>
-                                <input required className="rounded border p-2" value={jobTitle} onChange={handleJobTitleChange} type="text" ></input>
-                            </div>
-                            <div className="p-1 mt-3 d-flex flex-column">
-                                <label className="form-label fs-5">Link</label>
-                                <input className="rounded border p-2" value={link} onChange={handleLinkChange} type="text"></input>
-                            </div>
-                            <div className="p-1 mt-3 d-flex flex-row">
-                                <button className="me-1 btn btn-success w-100" onClick={handleAppliedButtonClick}>{applied ? "Unmark as applied" : "Mark as applied"}</button>
-                                <button className="me-1 btn btn-primary w-100" onClick={handleUpdateClick}>Update</button>
-                            </div>
-                            <div className="p-1 mt-3 d-flex flex-row">
-                                {
-                                    showUpdateAlert &&
-                                    <div className="alert alert-success w-100 ms-2 py-1 m-0 fs-6 d-flex justify-content-center" role="alert">
-                                        Updated successfully!
-                                    </div>
-                                }
-                            </div>
+                            <textarea className="w-100 p-3 form-control" rows={4} value={notes} onChange={handleNotesChange} />
                         </div>
                     </div>
                 </div>

@@ -87,7 +87,7 @@ export default function ViewItemPage(props) {
                             <button className="btn btn-danger" onClick={handleOnDelete}>Delete</button>
                         </div>
                     </div>
-                    <div className="fs-3 d-flex flex-column align-items-start">
+                    <div className="fs-3 pt-4 d-flex flex-column align-items-start">
                         {mainTitle}
                         <div className="fs-6">
                             <a  href={link}>{link}</a>
