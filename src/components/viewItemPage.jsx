@@ -103,8 +103,7 @@ export default function ViewItemPage(props) {
                                 Notes
                             </div>
                             <pre className="p-3 form-control">{item.notes}</pre>
-                        </div>
-                        
+                        </div>                     
                     </div>
                 </div>
             </div>
