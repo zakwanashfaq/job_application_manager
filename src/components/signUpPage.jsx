@@ -2,7 +2,21 @@ import React from "react";
 import { useState } from "react";
 import "../css/out/SignUpPage.css"
 
-export default function SignUpPage(props){
+export default function SignUpPage(props) {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [rePassword, setRePassword] = useState('');
+
+    const handleSignUp = () => {
+        console.log('First Name:', firstName);
+        console.log('Last Name:', lastName);
+        console.log('Email:', email);
+        console.log('Password:', password);
+        console.log('Re-entered Password:', rePassword);
+    };
+
     return (
         <>
             <div className="loginPage-container container-fluid p-0 m-0">
@@ -13,23 +27,58 @@ export default function SignUpPage(props){
                             <h4 className="h4 fs-5 mb-3 fw-normal">Sign up for a free account!</h4>
                         </div>
                         <div className="form-floating mb-2">
-                            <input type="firstName" className="form-control" id="floatingInput" placeholder="cheekyBanana1998" />
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="floatingFirstName"
+                                placeholder="John"
+                                value={firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
+                            />
                             <label for="floatingInput">First name</label>
                         </div>
                         <div className="form-floating mb-2">
-                            <input type="lastName" className="form-control" id="floatingInput" placeholder="cheekyBanana1998" />
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="floatingLastName"
+                                placeholder="Doe"
+                                value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
+                            />
                             <label for="floatingInput">Last name</label>
                         </div>
                         <div className="form-floating mb-2">
-                            <input type="email" className="form-control" id="floatingInput" placeholder="cheekyBanana1998" />
+                            <input
+                                type="email"
+                                className="form-control"
+                                id="floatingEmail"
+                                placeholder="johndoe@example.com"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
                             <label for="floatingInput">Email address</label>
                         </div>
                         <div className="form-floating mb-2">
-                            <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
+                            <input
+                                type="password"
+                                className="form-control"
+                                id="floatingPassword"
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
                             <label for="floatingPassword">Password</label>
                         </div>
                         <div className="form-floating">
-                            <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
+                            <input
+                                type="password"
+                                className="form-control"
+                                id="floatingRePassword"
+                                placeholder="Re-enter Password"
+                                value={rePassword}
+                                onChange={(e) => setRePassword(e.target.value)}
+                            />
                             <label for="floatingPassword">Re-enter Password</label>
                         </div>
                         {/* <div class="form-check text-start my-3">
@@ -38,7 +87,7 @@ export default function SignUpPage(props){
                                 Remember me
                             </label>
                         </div> */}
-                        <button className="btn button-theme-color w-100 py-2 mt-4" type="submit">Sign in</button>
+                        <button className="btn button-theme-color w-100 py-2 mt-4" onClick={handleSignUp}>Sign up</button>
                         <hr />
                         <p className="my-3 text-body-secondary d-flex justify-content-center align-items-center">
                             Or sign-up with one of the following
