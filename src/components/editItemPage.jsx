@@ -140,6 +140,11 @@ export default function EditItemPage(props) {
                             Edit
                         </div>
                         <div className="d-flex align-items-center">
+                            <button className="btn btn-success d-none d-md-block" onClick={handleAppliedButtonClick}>{applied ? "Unmark as applied" : "Mark as applied"}</button>
+                            <button className="btn btn-primary ms-2 d-none d-md-block" onClick={handleUpdateClick}>Update</button>
+                            <div className="d-none d-md-block mx-3 fs-4 text-secondary">
+                                |
+                            </div>
                             <button className="btn btn-danger" onClick={handleOnDelete}>Delete</button>
                         </div>
                     </div>
@@ -180,10 +185,10 @@ export default function EditItemPage(props) {
                         </div>
                     </div>
                     <div className="row mt-3">
-                        <div className="col-12 col-sm-6 col-md-3 col-lg-2 px-1">
+                        <div className="col-12 col-sm-6 col-md-3 col-lg-2 px-1 d-md-none">
                             <button className="m-1 mx-md-0 btn btn-success w-100" onClick={handleAppliedButtonClick}>{applied ? "Unmark as applied" : "Mark as applied"}</button>
                         </div>
-                        <div className="col-12 col-sm-6 col-md-3 col-lg-2 px-1">
+                        <div className="col-12 col-sm-6 col-md-3 col-lg-2 px-1  d-md-none">
                             <button className="m-1 mx-md-0 btn btn-primary w-100" onClick={handleUpdateClick}>Update</button>
                         </div>
                     </div>
