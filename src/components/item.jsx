@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "../css/out/App.css";
 import { useDispatch } from 'react-redux';
-import { deleteItem, updateItem } from '../redux/items';
+import { deleteItem } from '../redux/items';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -36,7 +36,6 @@ function Item(props) {
     let shortLink = getShortString(props.link, 40);
     let shortJobTitle = getShortString(props.jobTitle, 30);
     let shortCompanyName = getShortString(props.companyName, 30);
-    const target_id = "editModal-" + props.id;
     //const [isSelected, setIsSelected] = useState(false);
     // props.applied
     // const handleOnSelect = (e) => {

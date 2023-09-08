@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { fetchData, deleteItem, updateItem } from "../redux/items";
+import { fetchData, deleteItem } from "../redux/items";
 import "../css/out/ViewPage.css"
 
 /**
@@ -30,22 +30,9 @@ export default function ViewItemPage(props) {
         dispatch(fetchData());
     }, []);
 
-    const [companyName, setCompanyName] = useState(item.companyName);
-    // const [datePosted, setDatePosted] = useState(item.datePosted);
-    const [jobDescription, setJobDescription] = useState(item.jobDescription);
-    const [jobTitle, setJobTitle] = useState(item.jobTitle);
-    const [link, setLink] = useState(item.link);
-    const [notes, setNotes] = useState(item.notes);
-    // const [responseDate, setResponseDate] = useState(item.responseDate);
-    const [applied, setApplied] = useState(item.applied);
-    const [showUpdateAlert, setShowAlert] = useState(false);
-
-
     const handleEditClick = (e) => {
         navigate('/app/item/edit/', { state: { data: item } });
     };
-
-   
 
     const handleOnDelete = (e) => {
         dispatch(deleteItem(item.id));
@@ -55,7 +42,6 @@ export default function ViewItemPage(props) {
     const handleOnBackButtonClick = (e) => {
         navigate("/app");
     }
-
 
     let mainTitle = "";
     if (item?.companyName && item?.jobTitle) {
@@ -82,7 +68,7 @@ export default function ViewItemPage(props) {
                         <div className="display-6 me-auto d-flex flex-row">
                             View
                             {
-                                applied &&
+                                item.applied &&
                                 <>
                                     <div className="ms-4 p-2 bg-success rounded-3 d-flex align-items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="0.5em" height="0.5em" fill="currentColor" className="bi bi-check-circle-fill text-light" viewBox="0 0 16 16">
@@ -104,7 +90,7 @@ export default function ViewItemPage(props) {
                     <div className="fs-3 pt-4 d-flex flex-column align-items-start">
                         {mainTitle}
                         <div className="fs-6">
-                            <a target="_blank"  href={link}>{link}</a>
+                            <a target="_blank" rel="noreferrer" href={item.link}>{item.link}</a>
                         </div>
                     </div>
                     <div className="row pt-4">
@@ -112,11 +98,11 @@ export default function ViewItemPage(props) {
                             <div className="fs-5 pb-3">
                                 Job Description
                             </div>
-                            <pre className="p-3 form-control">{jobDescription}</pre>
+                            <pre className="p-3 form-control">{item.jobDescription}</pre>
                             <div className="fs-5 py-3">
                                 Notes
                             </div>
-                            <pre className="p-3 form-control">{notes}</pre>
+                            <pre className="p-3 form-control">{item.notes}</pre>
                         </div>
                         
                     </div>
