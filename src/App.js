@@ -7,9 +7,11 @@ import AddItem from "./components/addItem";
 import { useEffect, useState } from "react";
 import { fetchData, selectAllItems } from "./redux/items";
 import { AddAndSearchBar } from "./components/addAndSearchBar";
-
+import { useFirebaseAuth as useFirebaseAuthHook } from "./firebaseAuthHook";
 
 function App() {
+  const user = useFirebaseAuthHook();
+  console.log(user);
   const data = useSelector(selectAllItems);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
