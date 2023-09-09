@@ -1,6 +1,6 @@
 import "../css/out/LandingPage.css";
 import { useNavigate } from 'react-router-dom';
-import { useFirebaseAuth } from "../firebaseAuthHook";
+import { useFirebaseAuth as useFirebaseAuthHook } from "../firebaseAuthHook";
 
 
 function Navbar(props) {
@@ -243,7 +243,7 @@ function Testemonials(props) {
 }
 
 export function LandingPage(props) {
-    const user = useFirebaseAuth();
+    const user = useFirebaseAuthHook();
     console.log(user);
     return (
         <div>
