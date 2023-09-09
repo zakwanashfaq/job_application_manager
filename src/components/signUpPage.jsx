@@ -24,6 +24,7 @@ export default function SignUpPage(props) {
                 // Signed in 
                 const user = userCredential.user;
                 console.log(user);
+                alert("usercreated successfully")
                 // ...
             })
             .catch((error) => {

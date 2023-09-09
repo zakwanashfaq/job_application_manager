@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword  } from "firebase/auth";
 import "../css/out/LoginPage.css"
 
 export default function LoginPage(props) {
+    const auth = getAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -18,6 +19,21 @@ export default function LoginPage(props) {
     const handleSubmit = () => {
         console.log('Email:', email);
         console.log('Password:', password);
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            console.log(user);
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // show error msg and code properly in UI
+            console.log(errorCode);
+            console.log(errorMessage);
+            alert(errorCode + ": " + errorMessage);
+        });
     };
 
     return (
