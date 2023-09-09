@@ -1,8 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 import "../css/out/SignUpPage.css"
 
 export default function SignUpPage(props) {
+    const auth = getAuth();
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -15,6 +18,23 @@ export default function SignUpPage(props) {
         console.log('Email:', email);
         console.log('Password:', password);
         console.log('Re-entered Password:', rePassword);
+
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user);
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode);
+                console.log(errorMessage);
+                alert(errorCode + ": " + errorMessage);
+                // show error msg and code properly in UI
+                // ..
+            });
     };
 
     return (

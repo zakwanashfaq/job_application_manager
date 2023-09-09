@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import "../css/out/LoginPage.css"
 
 export default function LoginPage(props) {

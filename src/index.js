@@ -14,6 +14,26 @@ import EditItemPage from './components/editItemPage';
 import ViewItemPage from './components/viewItemPage';
 import LoginPage from './components/loginPage';
 import SignUpPage from './components/signUpPage';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
+
+// Firebase configuration
+// todo: move to env file
+const firebaseConfig = {
+  apiKey: "AIzaSyB98MsHJa3ffsavBYwfbxnAVoP6b5vYibo",
+  authDomain: "resjam.firebaseapp.com",
+  projectId: "resjam",
+  storageBucket: "resjam.appspot.com",
+  messagingSenderId: "149478649876",
+  appId: "1:149478649876:web:0b6eaccec36896787a7701",
+  measurementId: "G-Y5V1ZM8CQL"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
