@@ -1,4 +1,5 @@
 import { MongoClient, ServerApiVersion } from 'mongodb';
+import { addUser } from './addUser';
 
 const uri = "mongodb+srv://user-prod:DfSMAak9ktBWxeRM@resjam-db-prod.rh4hfgt.mongodb.net/?retryWrites=true&w=majority";
 
@@ -11,30 +12,15 @@ const client = new MongoClient(uri, {
   }
 });
 
-async function run() {
-  try {
-    // Connect the client to the server (optional starting in v4.7)
-    await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    return "Successfully connected to MongoDB!";
-  } catch (err) {
-    console.error("Failed to connect to MongoDB:", err);
-    throw err; // propagate the error
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-
-run();
 
 export const handler = async (event) => {
   let message;
-
+  // Parse the body and extract the data attribute
+  const body = JSON.parse(event.body);
+  const data = body.user;
   try {
-    message = await run();
+    run()
+    message = await addUser(data);
   } catch (err) {
     return {
       statusCode: 500,
