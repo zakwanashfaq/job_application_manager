@@ -13,9 +13,23 @@ const testPostJson = {
         }
     }
 };
+
+const testGetJson = {
+    "httpMethod": "GET",
+    "headers": {
+        "Accept": "*/*",
+        "Content-Type": "application/json"
+    },
+    "body": {
+        "user": {
+            "uid": "123456789abc"
+        }
+    }
+};
+
 async function test(testJson) {
     const res = await handler(testJson)
     console.log(res);
 }
 
-test(testPostJson);
+test(testGetJson);
