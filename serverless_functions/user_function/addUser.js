@@ -8,7 +8,7 @@ export async function addUser(data) {
       const db = client.db("prod");
       const userCollection = db.collection("users");
       // Insert a new yser into the 'users' collection
-      await userCollection.insertOne(...data);
+      await userCollection.insertOne(data);
       return {
         statusCode: 200,
         body: JSON.stringify("Document inserted successfully!"),
