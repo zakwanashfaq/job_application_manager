@@ -1,3 +1,4 @@
+import client from "./mongoClientConnection";
 
 export async function addUser(data) {
     try {
@@ -8,11 +9,16 @@ export async function addUser(data) {
       const userCollection = db.collection("users");
       // Insert a new yser into the 'users' collection
       await userCollection.insertOne(...data);
-      return "Document inserted successfully!";
+      return {
+        statusCode: 200,
+        body: JSON.stringify("Document inserted successfully!"),
+      };
     } catch (err) {
       const errTxt = "Failed to add new user to collection : "+ err;
-      console.error(errTxt);
-      return errTxt; // propagate the error
+      return {
+        statusCode: 400,
+        body: JSON.stringify(errTxt),
+      };
     } finally {
       // Ensures that the client will close when you finish/error
       await client.close();
