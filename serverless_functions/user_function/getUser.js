@@ -1,4 +1,4 @@
-import client from "./mongoClientConnection";
+import client from "./mongoClientConnection.js";
 
 export async function getUserByUid(uid) {
     try {

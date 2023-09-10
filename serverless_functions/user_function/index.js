@@ -1,10 +1,9 @@
-import { addUser } from './addUser';
-import { getUserByUid } from './getUser';
+import { addUser } from './addUser.js';
+import { getUserByUid } from './getUser.js';
 
 export const handler = async (event) => {
   let response;
-  const body = JSON.parse(event.body);
-  const data = body.user;
+  const data = event.body.user;
   try {
     switch (event.httpMethod) {
       case 'POST':
