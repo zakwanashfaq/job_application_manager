@@ -1,3 +1,4 @@
 /node_modules
 *.zip
 resjam-firebase-adminsdk-yva5m-9fa99eae2f.json
+serviceCred.js

@@ -10,20 +10,27 @@ import { fetchData, selectAllItems } from "./redux/items";
 import { AddAndSearchBar } from "./components/addAndSearchBar";
 import { useFirebaseAuth as useFirebaseAuthHook } from "./firebaseAuthHook";
 import { getUser } from "./db/users";
+import axios from "axios";
 
 function App() {
   const user = useFirebaseAuthHook();
   const navigate = useNavigate();
-  
   if (!user) {
     // navigate("/login");
   } else {
-    // user.getIdToken().then((token) => {
-    //   console.log("Bearer " + token);
-    // });
-    getUser(user.accessToken).then(e => {
-      console.log(e);
+    axios.get("https://5mccvb2yva.execute-api.us-east-1.amazonaws.com/PRODUCTION/project").then((response) => {
+      console.log(response);
+      return response;
+    }).catch((error) => {
+      console.error('Error:', error);
     });
+    user.getIdToken().then((token) => {
+      console.log("Bearer " + token);
+      getUser(token).then(e => {
+        console.log(e);
+      });
+    });
+    
   }
   const data = useSelector(selectAllItems);
   const dispatch = useDispatch();
@@ -42,8 +49,8 @@ function App() {
     <div className="mainContainer">
       <div className="">
         <Header />
-        <AddAndSearchBar searchText={searchText} setSearchText={setSearchText}/>
-        <AddItem/>
+        <AddAndSearchBar searchText={searchText} setSearchText={setSearchText} />
+        <AddItem />
         <ApplicationList>
           {data
             .filter(item => {

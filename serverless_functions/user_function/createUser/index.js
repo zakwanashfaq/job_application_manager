@@ -1,10 +1,10 @@
 import { addUser } from './addUser.js';
 import { getUserByUid } from './getUser.js';
 import admin from "firebase-admin";
-import serviceAccount from './resjam-firebase-adminsdk-yva5m-9fa99eae2f.json' assert { type: 'json' };
+import FIREBASE_SERVICE_CRED from './serviceCred.js';
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+  credential: admin.credential.cert(FIREBASE_SERVICE_CRED)
 });
 
 const verifyToken = async (token) => {
@@ -16,22 +16,29 @@ const verifyToken = async (token) => {
   }
 };
 
+const headers = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Credentials": true,
+  "Access-Control-Allow-Headers": "Content-Type,Authorization",
+  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE"
+};
 
 export const handler = async (event) => {
   let response;
-  /**Verify ID tokens using the Firebase Admin SDK here */
-  let token = event.headers.Authorization;
 
-  if (!token || !token.startsWith('Bearer ')) {
-    // Handle the error: respond with an appropriate message or throw an exception
+  // Handle OPTIONS requests (CORS preflight)
+  if (event.httpMethod === 'OPTIONS') {
     return {
-      statusCode: 401,  // Unauthorized
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE"
-      },
+      statusCode: 204,
+      headers
+    };
+  }
+
+  let token = event.headers.Authorization;
+  if (!token || !token.startsWith('Bearer ')) {
+    return {
+      statusCode: 401,
+      headers,
       body: JSON.stringify({ message: 'Authorization header missing or invalid' })
     };
   }
@@ -45,36 +52,33 @@ export const handler = async (event) => {
         response = await addUser(data);
         break;
       case 'GET':
-        // const uid = event.queryStringParameters.uid;
         response = await getUserByUid(uid);
         break;
       case 'PUT':
-        // Implement PUT logic here
-        response = "PUT request handled";
+        response = {
+          statusCode: 200,
+          body: JSON.stringify({ message: "PUT request handled" })
+        };
         break;
       case 'DELETE':
-        // Implement DELETE logic here
-        response = "DELETE request handled";
+        response = {
+          statusCode: 200,
+          body: JSON.stringify({ message: "DELETE request handled" })
+        };
         break;
       default:
-        // Handle other types of HTTP methods or throw an error
-        throw new Error("Unsupported HTTP method: ", event.httpMethod);
+        throw new Error(`Unsupported HTTP method: ${event.httpMethod}`);
     }
-  }
-  catch (err) {
+  } catch (err) {
     return {
       statusCode: 500,
-      body: JSON.stringify(err.message || "Internal Server Error"),
+      headers,
+      body: JSON.stringify({ message: err.message || "Internal Server Error" })
     };
   }
 
   return {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE"
-    },
+    headers,
     ...response
   };
 };

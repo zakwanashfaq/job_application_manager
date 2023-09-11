@@ -30,17 +30,28 @@ export async function createNewUser(uid, firstName, lastName) {
 }
 
 export async function getUser(accessToken) {
-    // setting query params
-    axios.get(`${API_URL}/user`, {
-        headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Authorization": ("Bearer " + accessToken),
-        },
-    }).then((response) => {
+    try {
+        const response = await axios.get(`${API_URL}/user`, {
+            headers: {
+                "Authorization": ("Bearer " + accessToken),
+            },
+        });
         console.log(response.data);
         return response.data;
-    }).catch((error) => {
+    } catch (error) {
         console.error('Error:', error);
-    });
-}
 
+        // You can add user-friendly error messages or other logic here.
+        if (error.response) {
+            console.error('Server responded with status:', error.response.status);
+        } else if (error.request) {
+            console.error('No response received from server.');
+        } else {
+            console.error('Error setting up the request:', error.message);
+        }
+
+        // Optionally, you can return a default value or throw the error to be caught higher up.
+        // For this example, I'm just returning null:
+        return null;
+    }
+}
