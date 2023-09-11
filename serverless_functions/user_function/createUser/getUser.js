@@ -11,13 +11,9 @@ export async function getUserByUid(uid) {
         const user = await userCollection.findOne({ uid: uid });
         // null case
         if (!user) {
-            console.log(`No user found with uid: ${uid}`);
             return {
-                statusCode: 302, // Temporary redirect status code
-                headers: {
-                    "Location": "https://yourdomain.com/setup-user-page" // URL to the setup user page
-                },
-                body: JSON.stringify(`No user found with uid: ${uid}. Redirecting to setup.`)
+                statusCode: 302,
+                body: JSON.stringify(`No user found with uid: ${uid}. Redirecting to account setup for new user.`)
             };
         }
 

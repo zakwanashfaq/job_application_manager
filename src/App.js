@@ -14,11 +14,14 @@ import { getUser } from "./db/users";
 function App() {
   const user = useFirebaseAuthHook();
   const navigate = useNavigate();
-  console.log(user?.uid);
+  
   if (!user) {
     // navigate("/login");
   } else {
-    getUser("CElePCrTrtZVZrcOIpAwDL3UHC52").then(e => {
+    // user.getIdToken().then((token) => {
+    //   console.log("Bearer " + token);
+    // });
+    getUser(user.accessToken).then(e => {
       console.log(e);
     });
   }

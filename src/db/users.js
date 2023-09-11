@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 const API_URL = 'https://5mccvb2yva.execute-api.us-east-1.amazonaws.com/PRODUCTION';
 
 export async function createNewUser(uid, firstName, lastName) {
@@ -30,12 +29,13 @@ export async function createNewUser(uid, firstName, lastName) {
         });
 }
 
-export async function getUser(uid) {
+export async function getUser(accessToken) {
     // setting query params
-    axios.get(`${API_URL}/user?uid=${uid}`, {
-        header: {
-            "Access-Control-Allow-Origin": "*"
-        }
+    axios.get(`${API_URL}/user`, {
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Authorization": ("Bearer " + accessToken),
+        },
     }).then((response) => {
         console.log(response.data);
         return response.data;
