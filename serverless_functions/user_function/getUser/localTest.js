@@ -22,7 +22,7 @@ const testGetJson = {
     },
     "body": {
         "user": {
-            "uid": "123456789abc"
+            "uid": "CElePCrTrtZVZrcOIpAwDL3UHC52"
         }
     }
 };
@@ -32,4 +32,8 @@ async function test(testJson) {
     console.log(res);
 }
 
-test(testGetJson);
+test({
+    queryStringParameters: {
+        uid : "CElePCrTrtZVZrcOIpAwDL3UHC52"
+    }
+});

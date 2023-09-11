@@ -3,14 +3,25 @@ import { getUserByUid } from './getUser.js';
 
 export const handler = async (event) => {
   let response;
-  const data = event.body.user;
   try {
     switch (event.httpMethod) {
       case 'POST':
+        const data = event.body.user;
         response = await addUser(data);
         break;
       case 'GET':
-        response = await getUserByUid(data.uid);
+        const uid = event.queryStringParameters.uid;
+        return {
+          statusCode: 222,
+          headers: {
+            "Access-Control-Allow-Origin": "*", 
+            "Access-Control-Allow-Credentials": true,
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE"
+          },
+          body: JSON.stringify(uid),
+        };
+        response = await getUserByUid(uid);
         break;
       case 'PUT':
         // Implement PUT logic here
@@ -22,7 +33,7 @@ export const handler = async (event) => {
         break;
       default:
         // Handle other types of HTTP methods or throw an error
-        throw new Error("Unsupported HTTP method");
+        throw new Error("Unsupported HTTP method: ", event.httpMethod);
     }
   } 
   catch (err) {
@@ -33,8 +44,4 @@ export const handler = async (event) => {
   }
 
   return response;
-  return {
-    statusCode: 200,
-    body: JSON.stringify(response),
-  };
 };

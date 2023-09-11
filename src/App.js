@@ -3,15 +3,25 @@ import Header from "./components/header";
 import ApplicationList from "./components/applicationsList";
 import Item from "./components/item";
 import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from "react-router-dom";
 import AddItem from "./components/addItem";
 import { useEffect, useState } from "react";
 import { fetchData, selectAllItems } from "./redux/items";
 import { AddAndSearchBar } from "./components/addAndSearchBar";
 import { useFirebaseAuth as useFirebaseAuthHook } from "./firebaseAuthHook";
+import { getUser } from "./db/users";
 
 function App() {
   const user = useFirebaseAuthHook();
-  console.log(user);
+  const navigate = useNavigate();
+  console.log(user?.uid);
+  if (!user) {
+    // navigate("/login");
+  } else {
+    getUser("CElePCrTrtZVZrcOIpAwDL3UHC52").then(e => {
+      console.log(e);
+    });
+  }
   const data = useSelector(selectAllItems);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
