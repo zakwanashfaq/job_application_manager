@@ -36,9 +36,9 @@ function Navbar(props) {
                                 <a className="nav-link">About</a>
                             </li> */}
                         </ul>
-                        <button className="btn btn-sm btn-success ms-2 p-2 ms-md-4" type="submit" onClick={() => navigate("/login")}>Log in</button>
                         <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit" onClick={() => navigate("/signup")}>Sign up</button>
-                        <button className="button-theme-color btn btn-sm btn-primary ms-4 p-2" type="submit" onClick={() => navigate("/app")}>Go to app</button>
+                        <button className="btn btn-sm btn-success p-2 ms-2" type="submit" onClick={() => navigate("/login")}>Log in</button>
+                        {/* <button className="button-theme-color btn btn-sm btn-primary ms-4 p-2" type="submit" onClick={() => navigate("/app")}>Go to app</button> */}
                     </div>
                 </form>
                 <button className="d-lg-none navbar-toggler mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
