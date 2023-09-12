@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { setUser } from './redux/user'; 
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import { setUser } from './redux/user';
+import { useNavigate } from 'react-router-dom';
 
+// auth state observer
 export function useFirebaseAuth() {
   const [firebaseUser, setFirebaseUser] = useState(null);
   const dispatch = useDispatch();
   const auth = getAuth();
+  const nav = useNavigate();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -19,6 +22,7 @@ export function useFirebaseAuth() {
         // User is signed out.
         console.log("No user is signed in.");
         setFirebaseUser(null);
+        nav('/login');
       }
     });
 
@@ -28,3 +32,15 @@ export function useFirebaseAuth() {
 
   return firebaseUser;
 }
+
+// logs out user from firebase
+export const firebaseLogout = () => {
+  const auth = getAuth();
+  signOut(auth)
+    .then(() => {
+      console.log("User signed out successfully!");
+    })
+    .catch((error) => {
+      console.error("Error signing out:", error);
+    });
+};

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData, selectAllItems } from "../redux/items";
+import { firebaseLogout } from "../firebaseAuthHook";
 
 function OffCanvasBar(props) {
     return <div className="pb-2">
@@ -135,7 +136,10 @@ function Header(params) {
         <div className="container-xl">
             <div className="header-container-first-row text-light">
                 <h3 className="display-6 ps-1"><span className="logo-font-header">rezJam</span> Dashboard</h3>
-                <ModalPopover />
+                <div className="d-flex flex-row align-items-center">
+                    <ModalPopover />
+                    <button className="btn btn-danger ms-3" onClick={firebaseLogout}>Logout</button>
+                </div>
             </div>
             <div className="text-light header-container-info pt-4">
                 Keep track of Jobs you have applied to and the ones you want to apply
