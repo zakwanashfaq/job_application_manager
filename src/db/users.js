@@ -2,12 +2,12 @@ import axios from 'axios';
 
 const API_URL = 'https://5mccvb2yva.execute-api.us-east-1.amazonaws.com/PRODUCTION';
 
-export async function createNewUser(accessToken, uid) {
+export function createNewUser(accessToken, uid, firstName, lastName) {
     const firstProjectUUID = crypto.randomUUID();
     const data = {
         user: {
-            firstName: "firstName",
-            lastName: "lastName",
+            firstName: firstName,
+            lastName: lastName,
             uid: uid,
             projects: [firstProjectUUID]
         }
@@ -15,19 +15,13 @@ export async function createNewUser(accessToken, uid) {
 
     // todo: add handling to create the project in the project collection
 
-    axios.post(API_URL + "/user", data, {
+    return axios.post(API_URL + "/user", data, {
         headers: {
             'Accept': '*/*',
             'Content-Type': 'application/json',
             "Authorization": ("Bearer " + accessToken),
         }
-    })
-        .then((response) => {
-            console.log(response.data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+    });
 }
 
 export async function getUser(accessToken) {

@@ -3,23 +3,23 @@ import Header from "./components/header";
 import ApplicationList from "./components/applicationsList";
 import Item from "./components/item";
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from "react-router-dom";
 import AddItem from "./components/addItem";
 import { useEffect, useState } from "react";
 import { fetchData, selectAllItems } from "./redux/items";
 import { AddAndSearchBar } from "./components/addAndSearchBar";
 import { useFirebaseAuth as useFirebaseAuthHook } from "./firebaseAuthHook";
-import { createNewUser, getUser } from "./db/users";
+import { getUser } from "./db/users";
 import axios from "axios";
 import { getUserMetadata, setUserMetaData } from "./redux/user";
+import NewUserCreationModal from "./components/newUserCreationModal";
 
 function App() {
   const user = useFirebaseAuthHook();
-  const navigate = useNavigate();
   const data = useSelector(selectAllItems);
   const user_metadata = useSelector(getUserMetadata);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+  const [showNewAccountCreationModal, setShowNewAccountCreationModal] = useState(false);
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
@@ -27,8 +27,9 @@ function App() {
       user.getIdToken().then((token) => {
         getUser(token).then(res => {
           if (res.redirectToNewUserSetup) {
-            createNewUser(token, user.uid)
+            setShowNewAccountCreationModal(true);
           } else {
+            console.log("User fetch successful!");
             dispatch(setUserMetaData(res.user));
           }
         }).catch(e => {
@@ -51,6 +52,7 @@ function App() {
       <div className="">
         <Header />
         <AddAndSearchBar searchText={searchText} setSearchText={setSearchText} />
+        {showNewAccountCreationModal && <NewUserCreationModal user={user} setShowNewAccountCreationModal={setShowNewAccountCreationModal}/>}
         <AddItem />
         <ApplicationList>
           {data
