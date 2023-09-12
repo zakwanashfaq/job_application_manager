@@ -37,21 +37,16 @@ export async function getUser(accessToken) {
                 "Authorization": ("Bearer " + accessToken),
             },
         });
-        return {user: response.data};
+        return { user: response.data };
     } catch (error) {
         if (error?.response?.status === 302) {
             console.log("setting up user");
             return {
                 redirectToNewUserSetup: true
             };
-        } else { 
-        console.error('Error:', error);
-        console.error('Error:', error);
-
-        // You can add user-friendly error messages or other logic here.
+        } else {
             console.error('Error:', error);
 
-        // You can add user-friendly error messages or other logic here.
             if (error.response) {
                 console.error('Server responded with status:', error.response.status);
             } else if (error.request) {
@@ -61,9 +56,6 @@ export async function getUser(accessToken) {
             }
         }
         
-
-        // Optionally, you can return a default value or throw the error to be caught higher up.
-        // For this example, I'm just returning null:
         return null;
     }
 }
