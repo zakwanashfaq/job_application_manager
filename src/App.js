@@ -11,35 +11,30 @@ import { AddAndSearchBar } from "./components/addAndSearchBar";
 import { useFirebaseAuth as useFirebaseAuthHook } from "./firebaseAuthHook";
 import { getUser } from "./db/users";
 import axios from "axios";
+import { getUserMetadata, setUserMetaData } from "./redux/user";
 
 function App() {
   const user = useFirebaseAuthHook();
   const navigate = useNavigate();
-  if (!user) {
-    // navigate("/login");
-  } else {
-    axios.get("https://5mccvb2yva.execute-api.us-east-1.amazonaws.com/PRODUCTION/project").then((response) => {
-      console.log(response);
-      return response;
-    }).catch((error) => {
-      console.error('Error:', error);
-    });
-    user.getIdToken().then((token) => {
-      console.log("Bearer " + token);
-      getUser(token).then(e => {
-        console.log(e);
-      });
-    });
-    
-  }
   const data = useSelector(selectAllItems);
+  const user_metadata = useSelector(getUserMetadata);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
+    if (user && !user_metadata) {
+      user.getIdToken().then((token) => {
+        getUser(token).then(user => {
+          dispatch(setUserMetaData(user));
+        });
+      });
+    }
+  }, [user, user_metadata, dispatch]);
+
+  useEffect(() => {
     dispatch(fetchData()).then(() => setLoading(false));
-  }, [dispatch]);
+  }, []);
 
   if (loading) {
     return <div>Loading...</div>;
