@@ -36,8 +36,8 @@ function Navbar(props) {
                                 <a className="nav-link">About</a>
                             </li> */}
                         </ul>
-                        {/* <button className="btn btn-sm btn-outline-dark ms-2 p-2 ms-md-4" type="submit">Log in</button>
-                        <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit">Sign up</button> */}
+                        <button className="btn btn-sm btn-success ms-2 p-2 ms-md-4" type="submit" onClick={() => navigate("/login")}>Log in</button>
+                        <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit" onClick={() => navigate("/signup")}>Sign up</button>
                         <button className="button-theme-color btn btn-sm btn-primary ms-4 p-2" type="submit" onClick={() => navigate("/app")}>Go to app</button>
                     </div>
                 </form>
@@ -66,10 +66,9 @@ function Navbar(props) {
                                     </li> */}
                                 </ul>
 
-                                <div className="d-flex flex-row">
-                                    {/* <button className="btn btn-sm btn-outline-dark ms-2 p-2" type="submit">Log in</button>
-                                    <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit">Sign up</button> */}
-                                    <button className="button-theme-color btn btn-sm btn-primary mt-2 p-2" type="submit" onClick={() => navigate("/app")}>Go to app</button>
+                                <div className="d-flex flex-row justify-content-center">
+                                    <button className="btn btn-sm btn-success ms-2 p-2 ms-md-4" type="submit" onClick={() => navigate("/login")}>Log in</button>
+                                    <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit" onClick={() => navigate("/signup")}>Sign up</button>
                                 </div></div>
                         </div>
                     </div>
@@ -94,7 +93,7 @@ function Hero(props) {
                     It helps you to organize, save, track, filter and much much more!
                 </p>
                 <div className="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-                    <button type="button" className="button-theme-color btn btn-primary btn-lg px-4 my-sm-3 py-3" onClick={() => navigate("/app")}>Try the app and be amazed!</button>
+                    <button type="button" className="button-theme-color btn btn-primary btn-lg px-4 my-sm-3 py-3" onClick={() => navigate("/signup")}>Master Your Job Hunt Now - For Free!</button>
                     {/* <button type="button" className="button-theme-color btn btn-primary btn-lg px-4 my-sm-3 py-3">Sign up! It's free...</button> */}
                 </div>
             </div>
@@ -243,7 +242,7 @@ function Testemonials(props) {
 }
 
 export function LandingPage(props) {
-    
+
     return (
         <div>
             <Navbar />
