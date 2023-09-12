@@ -1,0 +1,32 @@
+.loginPage-container {
+  height: 100vh;
+}
+.loginPage-container .nav-brand-text {
+  color: #2b6d8b !important;
+  font-family: Pacifico;
+  font-size: 2em;
+}
+.loginPage-container .loginPage-mainComponent-container {
+  width: 300px;
+}
+.loginPage-container .button-theme-color {
+  background-color: #2b6d8b;
+  color: #fff;
+}
+.loginPage-container .button-theme-color:hover {
+  background-color: #3382a7;
+}
+.loginPage-container .button-theme-color:active {
+  background-color: #1e5a78 !important;
+}
+.loginPage-container .circle-color {
+  background-color: #032a46;
+}
+.loginPage-container .circle-color :hover {
+  cursor: pointer;
+}
+.loginPage-container svg {
+  color: #fff;
+  height: 30px;
+  width: 30px;
+}

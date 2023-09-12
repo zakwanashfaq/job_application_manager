@@ -1,5 +1,6 @@
 import "../css/out/LandingPage.css";
 import { useNavigate } from 'react-router-dom';
+import { useFirebaseAuth as useFirebaseAuthHook } from "../firebaseAuthHook";
 
 
 function Navbar(props) {
@@ -35,9 +36,9 @@ function Navbar(props) {
                                 <a className="nav-link">About</a>
                             </li> */}
                         </ul>
-                        {/* <button className="btn btn-sm btn-outline-dark ms-2 p-2 ms-md-4" type="submit">Log in</button>
-                        <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit">Sign up</button> */}
-                        <button className="button-theme-color btn btn-sm btn-primary ms-4 p-2" type="submit" onClick={() => navigate("/app")}>Go to app</button>
+                        <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit" onClick={() => navigate("/signup")}>Sign up</button>
+                        <button className="btn btn-sm btn-success p-2 ms-2" type="submit" onClick={() => navigate("/login")}>Log in</button>
+                        {/* <button className="button-theme-color btn btn-sm btn-primary ms-4 p-2" type="submit" onClick={() => navigate("/app")}>Go to app</button> */}
                     </div>
                 </form>
                 <button className="d-lg-none navbar-toggler mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,10 +66,9 @@ function Navbar(props) {
                                     </li> */}
                                 </ul>
 
-                                <div className="d-flex flex-row">
-                                    {/* <button className="btn btn-sm btn-outline-dark ms-2 p-2" type="submit">Log in</button>
-                                    <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit">Sign up</button> */}
-                                    <button className="button-theme-color btn btn-sm btn-primary mt-2 p-2" type="submit" onClick={() => navigate("/app")}>Go to app</button>
+                                <div className="d-flex flex-row justify-content-center">
+                                    <button className="btn btn-sm btn-success ms-2 p-2 ms-md-4" type="submit" onClick={() => navigate("/login")}>Log in</button>
+                                    <button className="button-theme-color btn btn-sm btn-primary ms-2 p-2" type="submit" onClick={() => navigate("/signup")}>Sign up</button>
                                 </div></div>
                         </div>
                     </div>
@@ -93,7 +93,7 @@ function Hero(props) {
                     It helps you to organize, save, track, filter and much much more!
                 </p>
                 <div className="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-                    <button type="button" className="button-theme-color btn btn-primary btn-lg px-4 my-sm-3 py-3" onClick={() => navigate("/app")}>Try the app and be amazed!</button>
+                    <button type="button" className="button-theme-color btn btn-primary btn-lg px-4 my-sm-3 py-3" onClick={() => navigate("/signup")}>Master Your Job Hunt Now - For Free!</button>
                     {/* <button type="button" className="button-theme-color btn btn-primary btn-lg px-4 my-sm-3 py-3">Sign up! It's free...</button> */}
                 </div>
             </div>
@@ -154,7 +154,7 @@ function Features(props) {
                     <div className="feature col">
                         <div className="feature-icon feature-icon-background rounded-4 text-white d-inline-flex align-items-center justify-content-center bg-gradient p-4 fs-2 mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" className="bi bi-sort-numeric-up-alt" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M11.36 7.098c-1.137 0-1.708-.657-1.762-1.278h1.004c.058.223.343.45.773.45.824 0 1.164-.829 1.133-1.856h-.059c-.148.39-.57.742-1.261.742-.91 0-1.72-.613-1.72-1.758 0-1.148.848-1.836 1.973-1.836 1.09 0 2.063.637 2.063 2.688 0 1.867-.723 2.848-2.145 2.848zm.062-2.735c.504 0 .933-.336.933-.972 0-.633-.398-1.008-.94-1.008-.52 0-.927.375-.927 1 0 .64.418.98.934.98z" />
+                                <path fillRule="evenodd" d="M11.36 7.098c-1.137 0-1.708-.657-1.762-1.278h1.004c.058.223.343.45.773.45.824 0 1.164-.829 1.133-1.856h-.059c-.148.39-.57.742-1.261.742-.91 0-1.72-.613-1.72-1.758 0-1.148.848-1.836 1.973-1.836 1.09 0 2.063.637 2.063 2.688 0 1.867-.723 2.848-2.145 2.848zm.062-2.735c.504 0 .933-.336.933-.972 0-.633-.398-1.008-.94-1.008-.52 0-.927.375-.927 1 0 .64.418.98.934.98z" />
                                 <path d="M12.438 8.668V14H11.39V9.684h-.051l-1.211.859v-.969l1.262-.906h1.046zM4.5 13.5a.5.5 0 0 1-1 0V3.707L2.354 4.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.498.498 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L4.5 3.707V13.5z" />
                             </svg>
                         </div>
@@ -242,6 +242,7 @@ function Testemonials(props) {
 }
 
 export function LandingPage(props) {
+
     return (
         <div>
             <Navbar />
