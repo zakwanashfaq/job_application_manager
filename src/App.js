@@ -12,6 +12,7 @@ import { getUser } from "./db/users";
 import axios from "axios";
 import { getUserMetadata, setUserMetaData } from "./redux/user";
 import NewUserCreationModal from "./components/newUserCreationModal";
+import LoadingScreen from "./components/loadingScreen";
 
 function App() {
   const user = useFirebaseAuthHook();
@@ -28,9 +29,11 @@ function App() {
         getUser(token).then(res => {
           if (res.redirectToNewUserSetup) {
             setShowNewAccountCreationModal(true);
+            setLoading(false);
           } else {
             console.log("User fetch successful!");
             dispatch(setUserMetaData(res.user));
+            setLoading(false);
           }
         }).catch(e => {
           console.log(e);
@@ -40,44 +43,46 @@ function App() {
   }, [user, user_metadata, dispatch]);
 
   useEffect(() => {
-    dispatch(fetchData()).then(() => setLoading(false));
+    // dispatch(fetchData()).then(() => setLoading(false));
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <LoadingScreen />;
   }
 
   return (
     <div className="mainContainer">
-      <div className="">
-        <Header />
-        <AddAndSearchBar searchText={searchText} setSearchText={setSearchText} />
-        {showNewAccountCreationModal && <NewUserCreationModal user={user} setShowNewAccountCreationModal={setShowNewAccountCreationModal}/>}
-        <AddItem />
-        <ApplicationList>
-          {data
-            .filter(item => {
-              // Check if either jobTitle or companyName contains the searchText
-              const title = item.jobTitle || item.name;  // Considering 'name' might be used as a fallback for jobTitle
-              return (title?.toLocaleLowerCase() && title?.toLocaleLowerCase().includes(searchText?.toLocaleLowerCase())) || (item.companyName?.toLocaleLowerCase() && item.companyName?.toLocaleLowerCase().includes(searchText?.toLocaleLowerCase()));
-            })
-            .sort((a, b) => b.index - a.index)
-            .map(item => {
-              if (!item.jobTitle && item.name) {
-                const modifiedItem = {
-                  ...item,
-                  jobTitle: item.name
+      {showNewAccountCreationModal ?
+        <NewUserCreationModal user={user} setShowNewAccountCreationModal={setShowNewAccountCreationModal} />
+        :
+        <div className="">
+          <Header />
+          <AddAndSearchBar searchText={searchText} setSearchText={setSearchText} />
+          <AddItem />
+          <ApplicationList>
+            {data
+              .filter(item => {
+                // Check if either jobTitle or companyName contains the searchText
+                const title = item.jobTitle || item.name;  // Considering 'name' might be used as a fallback for jobTitle
+                return (title?.toLocaleLowerCase() && title?.toLocaleLowerCase().includes(searchText?.toLocaleLowerCase())) || (item.companyName?.toLocaleLowerCase() && item.companyName?.toLocaleLowerCase().includes(searchText?.toLocaleLowerCase()));
+              })
+              .sort((a, b) => b.index - a.index)
+              .map(item => {
+                if (!item.jobTitle && item.name) {
+                  const modifiedItem = {
+                    ...item,
+                    jobTitle: item.name
+                  }
+                  delete modifiedItem.name;
+                  return <Item key={item.id} {...modifiedItem} />
+                } else {
+                  return <Item key={item.id} {...item} />
                 }
-                delete modifiedItem.name;
-                return <Item key={item.id} {...modifiedItem} />
-              } else {
-                return <Item key={item.id} {...item} />
-              }
-            })}
-        </ApplicationList>
-
-        <br />
-      </div>
+              })}
+          </ApplicationList>
+          <br />
+        </div>
+      }
     </div>
   );
 }
