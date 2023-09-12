@@ -1,8 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 
-export const getUser = (state) => state?.value?.user;
-export const getUserMetadata = (state) => state?.value?.metaData;
+export const getUser = (state) => state?.user?.value?.user;
+export const getUserMetadata = (state) => {
+  const res = state?.user?.value?.metaData;
+  return res;
+}
 
 export const userSlice = createSlice({
   name: 'userStore',

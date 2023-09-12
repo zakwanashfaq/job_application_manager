@@ -14,6 +14,10 @@ import { getUserMetadata, setUserMetaData } from "./redux/user";
 import NewUserCreationModal from "./components/newUserCreationModal";
 import LoadingScreen from "./components/loadingScreen";
 
+const isEmptyObject = (obj) => {
+  return Object.keys(obj).length === 0 && obj.constructor === Object;
+};
+
 function App() {
   const user = useFirebaseAuthHook();
   const data = useSelector(selectAllItems);
@@ -24,7 +28,8 @@ function App() {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
-    if (user && !user_metadata) {
+    if (user && (isEmptyObject(user_metadata) || !user_metadata)) {
+      console.log('User metadata fetch initiated.');
       user.getIdToken().then((token) => {
         getUser(token).then(res => {
           if (res.redirectToNewUserSetup) {
@@ -39,8 +44,11 @@ function App() {
           console.log(e);
         });
       });
+    } else if (!isEmptyObject(user_metadata)) {
+      console.log('Fetched user from redux state.');
+      setLoading(false);
     }
-  }, [user, user_metadata, dispatch]);
+  }, [user, user_metadata]);
 
   useEffect(() => {
     // dispatch(fetchData()).then(() => setLoading(false));
