@@ -1,12 +1,16 @@
 import React from "react";
 import { useState } from "react";
-import { getAuth, signInWithEmailAndPassword  } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import "../css/out/LoginPage.css"
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage(props) {
     const auth = getAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showErrorAlert, setShowErrorAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
+    const nav = useNavigate();
 
     const handleEmailChange = (event) => {
         setEmail(event.target.value);
@@ -16,24 +20,26 @@ export default function LoginPage(props) {
         setPassword(event.target.value);
     };
 
+    const handleEnterPress = (event) => {
+        if (event.key === 'Enter') {
+            handleSubmit();
+        }
+    };
+
     const handleSubmit = () => {
-        console.log('Email:', email);
-        console.log('Password:', password);
         signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-            console.log(user);
-            // ...
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // show error msg and code properly in UI
-            console.log(errorCode);
-            console.log(errorMessage);
-            alert(errorCode + ": " + errorMessage);
-        });
+            .then((userCredential) => {
+                // Signed in 
+                console.log("Sign in successful!");
+                nav('/app');
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                // show error msg and code properly in UI
+                console.error(errorCode);
+                setAlertMessage(errorCode);
+                setShowErrorAlert(true);
+            });
     };
 
     return (
@@ -46,24 +52,26 @@ export default function LoginPage(props) {
                             <h4 className="h4 fs-5 mb-3 fw-normal">Please sign in</h4>
                         </div>
                         <div className="form-floating mb-2">
-                            <input 
-                                type="email" 
-                                className="form-control" 
-                                id="floatingInput" 
-                                placeholder="cheekyBanana1998" 
-                                value={email} 
+                            <input
+                                type="email"
+                                className="form-control"
+                                id="floatingInput"
+                                placeholder="cheekyBanana1998"
+                                value={email}
                                 onChange={handleEmailChange}
+                                onKeyDown={handleEnterPress}
                             />
                             <label htmlFor="floatingInput">Email address</label>
                         </div>
                         <div className="form-floating">
-                            <input 
-                                type="password" 
-                                className="form-control" 
-                                id="floatingPassword" 
-                                placeholder="Password" 
-                                value={password} 
+                            <input
+                                type="password"
+                                className="form-control"
+                                id="floatingPassword"
+                                placeholder="Password"
+                                value={password}
                                 onChange={handlePasswordChange}
+                                onKeyDown={handleEnterPress}
                             />
                             <label htmlFor="floatingPassword">Password</label>
                         </div>
@@ -74,6 +82,12 @@ export default function LoginPage(props) {
                             </label>
                         </div> */}
                         <button className="btn button-theme-color w-100 py-2 mt-4" onClick={handleSubmit}>Sign in</button>
+                        {
+                            showErrorAlert &&
+                            <div className="alert alert-danger d-flex align-items-center my-2">
+                                {alertMessage}
+                            </div>
+                        }
                         {/* <hr />
                         <p className="my-3 text-body-secondary d-flex justify-content-center align-items-center">
                             Or sign-in with one of the following
