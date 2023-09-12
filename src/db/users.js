@@ -9,7 +9,7 @@ export async function createNewUser(accessToken, uid) {
             firstName: "firstName",
             lastName: "lastName",
             uid: uid,
-            project: [firstProjectUUID]
+            projects: [firstProjectUUID]
         }
     };
 
