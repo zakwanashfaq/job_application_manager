@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { fetchData, selectAllItems } from "./redux/items";
 import { AddAndSearchBar } from "./components/addAndSearchBar";
 import { useFirebaseAuth as useFirebaseAuthHook } from "./firebaseAuthHook";
-import { getUser } from "./db/users";
+import { createNewUser, getUser } from "./db/users";
 import axios from "axios";
 import { getUserMetadata, setUserMetaData } from "./redux/user";
 
@@ -25,8 +25,14 @@ function App() {
   useEffect(() => {
     if (user && !user_metadata) {
       user.getIdToken().then((token) => {
-        getUser(token).then(user => {
-          dispatch(setUserMetaData(user));
+        getUser(token).then(res => {
+          if (res.redirectToNewUserSetup) {
+            createNewUser(token, user.uid)
+          } else {
+            dispatch(setUserMetaData(res.user));
+          }
+        }).catch(e => {
+          console.log(e);
         });
       });
     }

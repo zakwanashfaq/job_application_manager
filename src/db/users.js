@@ -2,12 +2,12 @@ import axios from 'axios';
 
 const API_URL = 'https://5mccvb2yva.execute-api.us-east-1.amazonaws.com/PRODUCTION';
 
-export async function createNewUser(uid, firstName, lastName) {
+export async function createNewUser(accessToken, uid) {
     const firstProjectUUID = crypto.randomUUID();
     const data = {
         user: {
-            firstName: firstName,
-            lastName: lastName,
+            firstName: "firstName",
+            lastName: "lastName",
             uid: uid,
             project: [firstProjectUUID]
         }
@@ -15,10 +15,11 @@ export async function createNewUser(uid, firstName, lastName) {
 
     // todo: add handling to create the project in the project collection
 
-    axios.post(API_URL, data, {
+    axios.post(API_URL + "/user", data, {
         headers: {
             'Accept': '*/*',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "Authorization": ("Bearer " + accessToken),
         }
     })
         .then((response) => {
@@ -36,18 +37,30 @@ export async function getUser(accessToken) {
                 "Authorization": ("Bearer " + accessToken),
             },
         });
-        return response.data;
+        return {user: response.data};
     } catch (error) {
+        if (error?.response?.status === 302) {
+            console.log("setting up user");
+            return {
+                redirectToNewUserSetup: true
+            };
+        } else { 
+        console.error('Error:', error);
         console.error('Error:', error);
 
         // You can add user-friendly error messages or other logic here.
-        if (error.response) {
-            console.error('Server responded with status:', error.response.status);
-        } else if (error.request) {
-            console.error('No response received from server.');
-        } else {
-            console.error('Error setting up the request:', error.message);
+            console.error('Error:', error);
+
+        // You can add user-friendly error messages or other logic here.
+            if (error.response) {
+                console.error('Server responded with status:', error.response.status);
+            } else if (error.request) {
+                console.error('No response received from server.');
+            } else {
+                console.error('Error setting up the request:', error.message);
+            }
         }
+        
 
         // Optionally, you can return a default value or throw the error to be caught higher up.
         // For this example, I'm just returning null:
