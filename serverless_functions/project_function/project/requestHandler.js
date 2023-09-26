@@ -61,16 +61,16 @@ export const requestHandler = async (event, postRequesthandler, getRequestHandle
     try {
         switch (event.httpMethod) {
             case 'POST':
-                response = await postRequesthandler(event);
+                response = await postRequesthandler(event, uid);
                 break;
             case 'GET':
-                response = await getRequestHandler(event);
+                response = await getRequestHandler(event, uid);
                 break;
             case 'PUT':
-                response = await updateRequestHandler(event);
+                response = await updateRequestHandler(event, uid);
                 break;
             case 'DELETE':
-                response = await deleteRequestHandler(event);
+                response = await deleteRequestHandler(event, uid);
                 break;
             default:
                 throw new Error(`Unsupported HTTP method: ${event.httpMethod}`);
