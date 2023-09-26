@@ -1,5 +1,6 @@
 import admin from "firebase-admin";
 import FIREBASE_SERVICE_CRED from './serviceCred.js';
+import client from './mongoClientConnection.js';
 
 admin.initializeApp({
     credential: admin.credential.cert(FIREBASE_SERVICE_CRED)
@@ -26,7 +27,6 @@ const headers = {
 
 
 /**
- * 
  * @param {Object} event 
  * @param {Function} postRequesthandler 
  * @param {Function} getRequestHandler 
@@ -34,7 +34,13 @@ const headers = {
  * @param {Function} deleteRequestHandler 
  * @returns 
  */
-export const requestHandler = async (event, postRequesthandler, getRequestHandler, updateRequestHandler, deleteRequestHandler) => {
+export const requestHandler = async (event, context, postRequesthandler, getRequestHandler, updateRequestHandler, deleteRequestHandler) => {
+    if (context) {
+        context.callbackWaitsForEmptyEventLoop = false;
+    }
+
+    await client.connect();
+    
     let response;
     // Handle OPTIONS requests (CORS preflight)
     if (event.httpMethod === 'OPTIONS') {
@@ -61,16 +67,16 @@ export const requestHandler = async (event, postRequesthandler, getRequestHandle
     try {
         switch (event.httpMethod) {
             case 'POST':
-                response = await postRequesthandler(event, uid);
+                response = await postRequesthandler(event, uid, client);
                 break;
             case 'GET':
-                response = await getRequestHandler(event, uid);
+                response = await getRequestHandler(event, uid, client);
                 break;
             case 'PUT':
-                response = await updateRequestHandler(event, uid);
+                response = await updateRequestHandler(event, uid, client);
                 break;
             case 'DELETE':
-                response = await deleteRequestHandler(event, uid);
+                response = await deleteRequestHandler(event, uid, client);
                 break;
             default:
                 throw new Error(`Unsupported HTTP method: ${event.httpMethod}`);
