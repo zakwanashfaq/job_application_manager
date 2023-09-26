@@ -30,6 +30,42 @@ const testGetJson = {
     }
 };
 
+const testPutJson = {
+    "httpMethod": "PUT",
+    "headers": {
+        "Accept": "*/*",
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+    },
+    "body": {
+
+    }
+};
+
+const testDeleteJson = {
+    "httpMethod": "DELETE",
+    "headers": {
+        "Accept": "*/*",
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+    },
+    "body": {
+
+    }
+};
+
+const testOptionsJson = {
+    "httpMethod": "OPTIONS",
+    "headers": {
+        "Accept": "*/*",
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+    },
+    "body": {
+
+    }
+};
+
 async function test(testJson) {
     const res = await handler({
         ...testJson,
@@ -40,3 +76,6 @@ async function test(testJson) {
 
 test(testGetJson);
 test(testPostJson);
+test(testPutJson);
+test(testDeleteJson);
+test(testOptionsJson);
