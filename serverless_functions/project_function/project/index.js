@@ -1,31 +1,15 @@
+import { deleteRequesthandler } from "./deleteRequestHandler.js";
+import { getRequesthandler } from "./getRequestHandler.js";
+import { postRequesthandler } from "./postRequestHandler.js";
 import { requestHandler } from "./requestHandler.js"
+import { updateRequesthandler } from "./updateRequestHandler.js";
 
 export const handler = async (event) => {
     return await requestHandler(
         event,
-        () => {
-            return {
-                statusCode: 200,
-                body: JSON.stringify({ message: "POST request unimplemented" })
-            }
-        },
-        () => {
-            return {
-                statusCode: 200,
-                body: JSON.stringify({ message: "GET request unimplemented" })
-            }
-        },
-        () => {
-            return {
-                statusCode: 200,
-                body: JSON.stringify({ message: "PUT request unimplemented" })
-            }
-        },
-        () => {
-            return {
-                statusCode: 200,
-                body: JSON.stringify({ message: "DELETE request unimplemented" })
-            }
-        }
+        postRequesthandler,
+        getRequesthandler,
+        updateRequesthandler,
+        deleteRequesthandler
     );
 }
