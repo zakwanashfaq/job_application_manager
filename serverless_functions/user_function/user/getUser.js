@@ -1,11 +1,19 @@
 import client from "./mongoClientConnection.js";
 
+let DB_CONNECTION = null;
+
 export async function getUserByUid(uid) {
     try {
-        // Connect the client to the server
-        await client.connect();
-        // Access the 'prod' database and the 'users' collection
-        const db = client.db("prod");
+        let db;
+        if (!DB_CONNECTION) {
+            // Connect the client to the server
+            await client.connect();
+            // Access the 'prod' database and the 'users' collection
+            db = client.db("prod");
+        } else {
+            db = DB_CONNECTION;
+        }
+        
         const userCollection = db.collection("users");
         // Fetch user with the specific uid
         const user = await userCollection.findOne({ uid: uid });

@@ -16,7 +16,7 @@ Resources:
     Properties:
       Handler: index.handler
       Runtime: nodejs16.x
-      CodeUri: s3://resjam-s3-bucket/00857565a484eb57c62a8f0f6d5734e9
+      CodeUri: s3://resjam-s3-bucket/133eeebf5dea0400210e0bd094977e6b
       Layers:
       - Ref: resJamNodeModuleLayer
       - Ref: resJamUtilityModuleLayer
