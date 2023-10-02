@@ -9,21 +9,11 @@ export function createNewUser(accessToken, uid, firstName, lastName) {
             firstName: firstName,
             lastName: lastName,
             uid: uid,
-            // lastOpeanedProject: firstProjectUUID,
-            // projects: [
-            //     {
-            //         projectName: "Collection 1",
-            //         index: 0,
-            //         id: firstProjectUUID,
-            //         dateCreated: new Date(),
-            //         items: []
-            //     }
-            // ]
+            items: []
         }
     };
 
     // todo: add handling to create the project in the project collection
-
     return axios.post(API_URL + "/user", data, {
         headers: {
             'Accept': '*/*',
