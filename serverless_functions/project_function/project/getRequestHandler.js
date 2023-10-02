@@ -1,12 +1,12 @@
-import client from "./mongoClientConnection.js";
 
-export async function getUserByUid(uid) {
+export async function getRequesthandler(event, uid, client) {
     try {
         // Connect the client to the server
         await client.connect();
         // Access the 'prod' database and the 'users' collection
         const db = client.db("prod");
         const userCollection = db.collection("users");
+        // const itemCollection = db.collection("items");
         // Fetch user with the specific uid
         const user = await userCollection.findOne({ uid: uid });
         // null case
@@ -18,7 +18,6 @@ export async function getUserByUid(uid) {
         }
 
         console.log("User fetched successfully:", user);
-        user.version = 2.0;
         return {
             statusCode: 200,
             body: JSON.stringify(user),

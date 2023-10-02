@@ -1,5 +1,5 @@
 import client from "./mongoClientConnection.js";
-
+import {ObjectId} from 'mongodb';
 export async function addUser(data) {
     try {
       // Connect the client to the server
@@ -7,14 +7,11 @@ export async function addUser(data) {
       // Access the 'prod' database and the 'user' collection
       const db = client.db("prod");
       const userCollection = db.collection("users");
-      const projectCollection = db.collection("projects");
-      const firstProjectID = data.projects[0]
-      // Insert a new yser into the 'users' collection
+      let formatted_data = {...data};
+      formatted_data._id = new ObjectId(data.uid);
+      delete data.uid;
+      // Insert a new year into the 'users' collection
       await userCollection.insertOne(data);
-      await projectCollection.insertOne({
-        projectID: firstProjectID,
-        dateCreated: new Date()
-      });
       return {
         statusCode: 200,
         body: JSON.stringify("New user added to collection!"),

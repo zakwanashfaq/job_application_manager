@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: resJam serverless backend service
+Resources:
+  resJamProjectLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs16.x
+      CodeUri: s3://resjam-s3-bucket/90336abfdd81e8d757df0a1b03b48824
+      Layers:
+      - Ref: resJamNodeModuleLayer
+      - Ref: resJamUtilityModuleLayer
+  resJamUserLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs16.x
+      CodeUri: s3://resjam-s3-bucket/00857565a484eb57c62a8f0f6d5734e9
+      Layers:
+      - Ref: resJamNodeModuleLayer
+      - Ref: resJamUtilityModuleLayer
+  resJamNodeModuleLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: resJam-node-module
+      Description: node modules
+      ContentUri: s3://resjam-s3-bucket/43b71b52038ccb5cfee0d3bf48ca2406
+      CompatibleRuntimes:
+      - nodejs16.x
+  resJamUtilityModuleLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: resJam-utility-module
+      Description: node modules
+      ContentUri: s3://resjam-s3-bucket/bf2c2574fe80fd4ecafc360e0f0eed66
+      CompatibleRuntimes:
+      - nodejs16.x

@@ -3,13 +3,22 @@ import axios from 'axios';
 const API_URL = 'https://5mccvb2yva.execute-api.us-east-1.amazonaws.com/PRODUCTION';
 
 export function createNewUser(accessToken, uid, firstName, lastName) {
-    const firstProjectUUID = crypto.randomUUID();
+    //const firstProjectUUID = crypto.randomUUID();
     const data = {
         user: {
             firstName: firstName,
             lastName: lastName,
             uid: uid,
-            projects: [firstProjectUUID]
+            // lastOpeanedProject: firstProjectUUID,
+            // projects: [
+            //     {
+            //         projectName: "Collection 1",
+            //         index: 0,
+            //         id: firstProjectUUID,
+            //         dateCreated: new Date(),
+            //         items: []
+            //     }
+            // ]
         }
     };
 

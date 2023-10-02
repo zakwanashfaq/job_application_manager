@@ -1,0 +1,1 @@
+aws cloudformation package --template-file template.yml --output-template-file packaged.yaml --s3-bucket resjam-s3-bucket
