@@ -18,6 +18,7 @@ export async function getUserByUid(uid) {
         }
 
         console.log("User fetched successfully:", user);
+        user.version = 2.0;
         return {
             statusCode: 200,
             body: JSON.stringify(user),

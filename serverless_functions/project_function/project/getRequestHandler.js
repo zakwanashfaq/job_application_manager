@@ -6,6 +6,7 @@ export async function getRequesthandler(event, uid, client) {
         // Access the 'prod' database and the 'users' collection
         const db = client.db("prod");
         const userCollection = db.collection("users");
+        // const itemCollection = db.collection("items");
         // Fetch user with the specific uid
         const user = await userCollection.findOne({ uid: uid });
         // null case
