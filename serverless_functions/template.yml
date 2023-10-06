@@ -3,6 +3,24 @@ Transform: AWS::Serverless-2016-10-31
 Description: resJam serverless backend service
 
 Resources:
+  resJamNodeModuleLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties: 
+      LayerName: resJam-node-module
+      Description: node modules
+      ContentUri: lambda_layers/resJam-node-module/
+      CompatibleRuntimes: 
+        - nodejs16.x
+
+  resJamUtilityModuleLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties: 
+      LayerName: resJam-utility-module
+      Description: node modules
+      ContentUri: lambda_layers/resJam-utility-module/
+      CompatibleRuntimes: 
+        - nodejs16.x
+
   resJamProjectLambda:
     Type: AWS::Serverless::Function
     Properties:
@@ -23,20 +41,4 @@ Resources:
         - !Ref resJamNodeModuleLayer
         - !Ref resJamUtilityModuleLayer
 
-  resJamNodeModuleLayer:
-    Type: AWS::Serverless::LayerVersion
-    Properties: 
-      LayerName: resJam-node-module
-      Description: node modules
-      ContentUri: lambda_layers/resJam-node-module/
-      CompatibleRuntimes: 
-        - nodejs16.x
-
-  resJamUtilityModuleLayer:
-    Type: AWS::Serverless::LayerVersion
-    Properties: 
-      LayerName: resJam-utility-module
-      Description: node modules
-      ContentUri: lambda_layers/resJam-utility-module/
-      CompatibleRuntimes: 
-        - nodejs16.x
+  
